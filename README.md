@@ -20,8 +20,6 @@ public function registerBundles()
     $bundles = array(
         // ...
 
-        // Admin Generator
-        new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
         new Admingenerator\NlThemeBundle\NlThemeBundle(),
     );
 
@@ -39,5 +37,5 @@ admingenerator_generator:
 Публикация:
 
 ````
-    php app/console assets:install web/
+    php app/console assets:install web
 ````
