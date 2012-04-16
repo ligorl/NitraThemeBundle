@@ -1,18 +1,15 @@
-# The rails admin theme for the symfony2 generator ![project status](http://stillmaintained.com/cedriclombardot/AdmingeneratorActiveAdminThemeBundle.png)#
+# Тема для symfony2 generator#
 
-AdmingeneratorActiveAdminTheme is a theme for the [AdmingeneratorGeneratorBundle](https://github.com/cedriclombardot/AdmingeneratorGeneratorBundle)
+## Установка
 
-## This skin in picture
-
-![Preview of list](https://github.com/cedriclombardot/AdmingeneratorActiveAdminThemeBundle/raw/master/Resources/doc/list-preview.png)
-
-## Installation
-
+Добавить в deps
 ````
-git submodule add git://github.com/cedriclombardot/AdmingeneratorActiveAdminThemeBundle.git vendor/bundles/Admingenerator/ActiveAdminThemeBundle
+[NlThemeBundle]
+    git=git://github.com/vitaliytv/NlThemeBundle.git
+    target=/bundles/Admingenerator/NlThemeBundle
 ````
 
-Add it to the `AppKernel` class:
+Добавить в `AppKernel` класс:
 
 ````
 <?php
@@ -25,33 +22,22 @@ public function registerBundles()
 
         // Admin Generator
         new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
-        new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
+        new Admingenerator\NlThemeBundle\NlThemeBundle(),
     );
 
     // ...
 }
 ````
 
-## With assetic
+## config.yml
 
 ````
 admingenerator_generator:
-    base_admin_template: AdmingeneratorActiveAdminThemeBundle::base_admin.html.twig
+    base_admin_template: NlThemeBundle::base_admin.html.twig
 ````
 
-## Without assetic
-
-````
-admingenerator_generator:
-    base_admin_template: AdmingeneratorActiveAdminThemeBundle::base_admin_assetic_less.html.twig
-````
-
-## With or without assetic
-
-Publish assets:
+Публикация:
 
 ````
     php app/console assets:install web/
 ````
-
-This theme use Super Mono Icons from Double-J Design (http://www.doublejdesign.co.uk)

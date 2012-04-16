@@ -1,17 +1,18 @@
 {
-    "name": "cedriclombardot/admingenerator-activeadmintheme-bundle",
-    "description": "The rails admin theme for the symfony2 generator",
+    "name": "vitaliytv/nl-theme-bundle",
+    "description": "Nitra admin theme for the symfony2 generator",
     "require": {
-        "cedriclombardot/admingenerator-generator-bundle": "dev-master"
+        "vitaliyv/admingenerator-generator-bundle": "dev-master",
+        "zerkalica/MillwrightMenuBundle": "dev-master",
     },
     "authors": [
         {
-            "name": "Cedric LOMBARDOT",
-            "email": "cedric.lombardot@gmail.com"
+            "name": "Nitra Labs",
+            "email": "info@nitralabs.com"
         }
     ],
-    "target-dir": "Admingenerator/ActiveAdminThemeBundle",
+    "target-dir": "Admingenerator/NlThemeBundle",
     "autoload": {
-        "psr-0": { "Admingenerator\\ActiveAdminThemeBundle": "" }
+        "psr-0": { "Admingenerator\\NlThemeBundle": "" }
     }
 }
