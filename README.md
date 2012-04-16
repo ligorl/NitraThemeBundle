@@ -30,6 +30,11 @@ public function registerBundles()
 ## config.yml
 
 ````
+twig:
+    form:
+        resources:
+            - 'NlThemeBundle:Form:fields.html.twig'
+
 admingenerator_generator:
     base_admin_template: NlThemeBundle::base_admin.html.twig
 ````
