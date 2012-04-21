@@ -1,5 +1,4 @@
-/* Ukrainian (UTF-8) initialisation for the jQuery UI date picker plugin. */
-/* Written by Maxim Drogobitskiy (maxdao@gmail.com). */
+/* Модифицирован для Symfony2 */
 jQuery(function($){
 	$.datepicker.regional['uk'] = {
 		closeText: 'Закрити',
@@ -14,10 +13,8 @@ jQuery(function($){
 		dayNamesShort: ['нед','пнд','вів','срд','чтв','птн','сбт'],
 		dayNamesMin: ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'],
 		weekHeader: 'Не',
-		dateFormat: 'd M yy',
 		firstDay: 1,
 		isRTL: false,
 		showMonthAfterYear: false,
 		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['uk']);
 });

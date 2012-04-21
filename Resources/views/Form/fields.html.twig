@@ -1,13 +1,12 @@
 {% block date_widget %}
 {% spaceless %}
         {{ block('field_widget') }}
-
           <script>
           $(function() {
             $( "#{{ id }}" ).datepicker({
-                dateFormat: 'dd.mm.yy',
+                dateFormat: '{{ dateFormat }}',
               });
-
+            $.datepicker.setDefaults($.datepicker.regional['{{locale}}']);	 
           });
           </script>
 {% endspaceless %}

@@ -28,16 +28,14 @@ class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
 
         return $options;
     }
-
+    
     /**
      * {@inheritdoc}
      */
     public function buildViewBottomUp(FormView $view, FormInterface $form)
     {
         $view->set('widget', $form->getAttribute('widget'));
-
-//        $pattern = $form->getAttribute('formatter')->getPattern();
-        $pattern = 'dd.mm.y';
+        $pattern = $form->getAttribute('formatter')->getPattern();
 
         $view->set('date_pattern', $pattern);
         $view->set('dateFormat', $this->convertJqueryDate($pattern));
