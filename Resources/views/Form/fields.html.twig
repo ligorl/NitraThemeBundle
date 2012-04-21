@@ -1,33 +1,14 @@
 {% block date_widget %}
 {% spaceless %}
-    {% if widget == 'single_text' %}
         {{ block('field_widget') }}
 
           <script>
           $(function() {
             $( "#{{ id }}" ).datepicker({
-                dateFormat: '{{ dateFormat }}',
-              {% for key,value in jqdate_options %}
-                {{key}}: '{{value}}',
-              {% endfor %}
-                {#changeMonth: {{ change_month }},#}
-                {#changeYear: {{ change_year }},#}
-                {#minDate: '{{ min_date }}',#}
-                {#maxDate: '{{ max_date }}',#}
-                {#yearRange: '{{ year_range }}',#}
-                {#showOn: '{{ show_on }}'#}
+                dateFormat: 'dd.mm.yy',
               });
-             $( "#{{ id }}" ).datepicker("option", $.datepicker.regional[ "{{locale}}" ] );
+
           });
           </script>
-    {% else %}
-        <div {{ block('widget_container_attributes') }}>
-            {{ date_pattern|replace({
-                '{{ year }}':  form_widget(form.year),
-                '{{ month }}': form_widget(form.month),
-                '{{ day }}':   form_widget(form.day),
-            })|raw }}
-        </div>
-    {% endif %}
 {% endspaceless %}
 {% endblock date_widget %}
