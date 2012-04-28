@@ -30,9 +30,13 @@ class NlFieldGuesser extends DoctrineORMFieldGuesser {
 
     public function getFilterOptions($formType, $dbType, $columnName) {
         if ('date' == $dbType) {
-            return array('format' => 'd MMM y');
+            return array('required' => false, 'format' => 'd MMM y');
         }
 
+        if ('datetime' == $dbType) {
+            return array('required' => false, 'format' => 'd MMM y');
+        }
+        
         return parent::getFilterOptions($formType, $dbType, $columnName);
     }
 }
