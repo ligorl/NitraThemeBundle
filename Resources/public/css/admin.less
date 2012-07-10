@@ -29,10 +29,10 @@ h3						{ font-size: 1.4em; }
 .menu (@color_border: #fff, @color_bg: #000, @transparent: 90%, @color_text: #fff ) { 
                 color: @color_text; background: fadeout(@color_bg, @transparent); border: 1px solid fadeout(@color_border, @transparent); border-radius: @border-radius;
     a           { display: inline-block; padding: 7px 7px; color: fadeout(@color_text, 40%); }
-    &:hover     { background: fadeout(@color_bg, (@transparent - 20%)); border-color: fadeout(@color_border, (@transparent - 20%));
+    &:hover     { background:desaturate(#427a9f, (@transparent - 80%)); border-color: saturate(@color_border, (@transparent - 30%));
         a       { color: @color_text; text-decoration: none; }
     }
-    &.current   { background: @color_bg; border-color: @color_border;
+    &.current,&.current_ancestor   { background: @color_bg; border-color: @color_border;
         a       { color: @color_text;  }
     }
 }
@@ -84,7 +84,7 @@ input[type="text"], input[type="password"], input[type="phone"], input[type="dat
 textarea, select{ .round_box; line-height: 1em; vertical-align: middle; color: #000; font-size: 1.1em; background: #fff;
      &:focus    { .focus_box }
 }
-input[type="text"]{ width: 500px; }
+input[type="text"]	{ width:500px; }
 textarea        { width: 500px; height: 100px; }
 select          { width: auto; max-width: 600px; }
 
@@ -110,17 +110,41 @@ a 				{ color: @color-link; text-decoration: none; cursor: pointer;
 
 /************************** Header ************************************/
 
-#header                 { .gradient (#242F33, #274452); padding: 10px 10px 0; overflow: hidden; 
+#header                 { .gradient (#242F33, #274452);  clear:both; display:block; content:''; 
     .logo               { display: none; float: left; margin-top: -5px; color: fadeout(#fff, 50%); font-family: Georgia; font-style: italic; font-size: 1.5em;}
     .profile            { .menu; float: right; 
         a               { font-size: 0.85em; padding: 3px 5px; }
     }
-    .main_menu li       { .menu (#3A7AA3, #2C5D7D, 70%); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; display: inline-block;  } 
+	.main_menu { position:relative; z-index:1000; padding: 10px 10px 0;
+		li       { .menu (#3A7AA3, #2C5D7D, 70%); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; display: inline-block;
+			ul 			{ display:none;.absolute (40px, 0px); width:98%; height: 31px; padding: 5px 28px;
+				li		{ border-radius:0 0 0 0; border: none;}
+					}
+			&.current, &.current_ancestor ,&.current:hover, &.current_ancestor:hover	{ border-bottom:none;
+				 a  	{ padding-bottom:8px; }
+				 li 		{ background: none;}
+				 ul 		{ display:block;  background:#2C5D7D; z-index: 700;
+					a 	{ color:#FFF;}
+					li.current { background: #427a9f;}
+					li:hover  { background: #32688b;}	
+					
+				}
+				ul:hover { background:#2C5D7D;}	
+			}
+			&:hover { border-bottom:none; 
+				 a  	{ padding-bottom:8px; }
+				 li		{ background:none;
+				 &:hover {background: #32688b; }
+				 }
+			ul     { display:block; background: #427a9f; z-index: 1000;}
+			}
+		}
+	} 
 }    
 
 /************************** Content ************************************/
 
-#content                { position: relative; padding: 0px 10px 10px 10px; overflow: hidden;
+#content                { position: relative; padding: 48px 10px 10px 10px; overflow: hidden; 
     h1                  { .gradient (#e5e5e5, #F7F7F7); margin: 0px -10px 10px -10px; padding: 5px 10px; font-size: 1.5em; border-top: 1px solid #fff; border-bottom: 1px solid @color-border;}
 }
 
@@ -138,6 +162,8 @@ a 				{ color: @color-link; text-decoration: none; cursor: pointer;
     &.list              { background-position: 6px -146px, 0 0; }
     &.copy              { background-position: 6px -326px, 0 0; }
     &.income            { background-position: 6px -566px, 0 0; }
+	&.contract_by_client            { background-position: 6px -326px, 0 0; }
+	&.juridicalperson_by_client{ background-position: 6px -266px, 0 0; }
 }
 
 /* List */
@@ -171,6 +197,7 @@ a 				{ color: @color-link; text-decoration: none; cursor: pointer;
 
 
 /* Forms */
+
 .form_block             { 
     .form_row           { padding: 7px 0px; 
         label           { display: inline-block; width: 200px; padding-right: 20px; text-align: right; font-weight: normal;}
@@ -190,6 +217,16 @@ a 				{ color: @color-link; text-decoration: none; cursor: pointer;
     ul.form_actions     { padding-right: 20px; padding-left: 115px; }
 }
 
+/* login form */
+.login_form 			{ margin-top:15%; 
+	form		 	{.round_box (#274452); display: block; margin: 0 auto; padding: 15px 17px 20px; width: 321px; background-color: #FFFFFF; /*border: 1px solid @color-border; box-shadow: 0 2px 4px #274452; border-radius: @border-radius;*/ }
+	label				{ color: #888888; display: block; font-size: 1.3em;  margin-bottom: 10px;}
+	input 			{ width:93%; margin-bottom: 20px; padding: 10px 10px; font-size: 1.6em; color:@color-link;}
+	input[type="checkbox"] { display:none;}
+	input[type="submit"] { display: block; padding:5px 7px; margin: 0 auto; width:150px; font-size: 1.1em;}
+}
+
+
 /* Filters */
 .filters                { .absolute (45px, 10px); width: 210px; 
     table               { width: 100%; 
@@ -199,7 +236,15 @@ a 				{ color: @color-link; text-decoration: none; cursor: pointer;
         label           { display: block; padding-bottom: 3px; font-size: 0.85em; font-weight: normal; text-align: left;}
         select          { width: 210px; }
         input[type="text"] { width: 190px; }
-        .field_date_range input { width: 85px; }
+		.field_date_range input { width: 85px; }
+		
+		#filters_income_date,
+		#filters_clientservice_start,
+		#filters_clientservice_end		{ overflow:hidden;
+			div {float:left; width:105px;}
+		}
+		
+			
     }
     .actions            { padding-top: 5px; 
         input[type="submit"].submit_button  { background-position: 6px -25px, 0 0; }
