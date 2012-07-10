@@ -39,8 +39,8 @@
                 {% endblock %}
                 {% block profile %}
                 <div class="profile">
-                    <a href="#">Username</a>
-                    <a class='logout' href="#">Вихід</a>
+                    <a href="#">{{ app.user }}</a>
+                    <a class='logout' href="{{ path('fos_user_security_logout') }}">Вихід</a>
                 </div>
                 {% endblock %}
                 {% block menu %}
