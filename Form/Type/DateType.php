@@ -1,34 +1,31 @@
 <?php
 
-
 namespace Admingenerator\NlThemeBundle\Form\Type;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\FormBuilder;
 //use Symfony\Component\HttpFoundation\Session;
 
 class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
 {
 
-    public function getDefaultOptions(array $options) {
+    public function getDefaultOptions(array $options)
+    {
         $originaloptions = $options;
         $options = parent::getDefaultOptions($options);
         //Works only with single text
         $options['widget'] = 'single_text';
 
         // set a default for any passed options that do not have defaults - prevents kaboom for on-the-fly options
-        foreach ($originaloptions as $key=>$value)
-        {
-            if (!isset($options[$key]))
-            {
+        foreach ($originaloptions as $key=>$value) {
+            if (!isset($options[$key])) {
                 $options[$key] = null;
             }
         }
 
         return $options;
     }
-    
+
     /**
      * {@inheritdoc}
      */

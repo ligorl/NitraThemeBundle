@@ -8,23 +8,23 @@
                            filter='cssrewrite'
              %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}            
+            {% endstylesheets %}
             {% stylesheets 'bundles/nltheme/css/admin.less'
                            filter='lessphp,cssrewrite'
              %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
-                
+
         {% block javascript_head %}
-            {# '@NlThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-' ~ app.session.locale ~ '.js' #}    
-            {% javascripts 
+            {# '@NlThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-' ~ app.session.locale ~ '.js' #}
+            {% javascripts
                 '@NlThemeBundle/Resources/public/js/jquery-1.7.2.js'
                 '@NlThemeBundle/Resources/public/js/jquery-ui-1.8.18.custom.min.js'
                 '@NlThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-ru.js'
                 '@NlThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-uk.js'
                 '@NlThemeBundle/Resources/public/js/menu.js'
-            %} 
+            %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
@@ -51,7 +51,7 @@
                 {% endblock %}
             {% endblock %}
         </div>
-            
+
         {% block flashes %}
             {% if app.session.flash('success') %}
                 <div class="notification_box success">
@@ -64,12 +64,12 @@
                 </div>
             {% endif %}
         {% endblock %}
-            
+
         <div id="content">
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}
-            
+
         {% endblock %}
     </body>
 </html>

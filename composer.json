@@ -1,16 +1,25 @@
 {
-    "name": "vitaliytv/nl-theme-bundle",
-    "description": "Nitra admin theme for the symfony2 generator",
-    "require": {
-        "vitaliyv/admingenerator-generator-bundle": "dev-master",
-        "zerkalica/MillwrightMenuBundle": "dev-master",
-    },
+    "name": "nitralas/nl-theme-bundle",
+	"version": "1.0.0-BETA",
+    "description": "Nitra theme for the symfony2 admingenerator",
+	"keywords": ["admingenerator", "theme"],
+	"type": "symfony-bundle",
+	"homepage": "https://github.com/NitraLabs/NlThemeBundle/",
+	"license": "MIT",
     "authors": [
         {
             "name": "Nitra Labs",
-            "email": "info@nitralabs.com"
+            "homepage": "http://nitralabs.com"
+        },	
+        {
+            "name": "Cedric LOMBARDOT",
+            "email": "cedric.lombardot@gmail.com"
         }
-    ],
+    ],	
+    "require": {
+        "cedriclombardot/admingenerator-generator-bundle": "dev-master",
+        "zerkalica/millwright-menu-bundle": "dev-master"
+    },
     "target-dir": "Admingenerator/NlThemeBundle",
     "autoload": {
         "psr-0": { "Admingenerator\\NlThemeBundle": "" }
