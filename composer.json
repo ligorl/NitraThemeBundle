@@ -1,5 +1,5 @@
 {
-    "name": "nitralas/nl-theme-bundle",
+    "name": "nl/nl-theme-bundle",
 	"version": "1.0.0-BETA",
     "description": "Nitra theme for the symfony2 admingenerator",
 	"keywords": ["admingenerator", "theme"],
