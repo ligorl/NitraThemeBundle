@@ -1,13 +1,13 @@
 {% block date_widget %}
-{% spaceless %}
-        {{ block('field_widget') }}
-          <script>
-          $(function() {
-            $( "#{{ id }}" ).datepicker({
-                dateFormat: '{{ dateFormat }}',
-              });
-            $.datepicker.setDefaults($.datepicker.regional['{{locale}}']);
-          });
-          </script>
-{% endspaceless %}
+    {% spaceless %}
+        {{ block('form_widget_simple') }}
+        <script>
+            $(function() {
+              $( "#{{ id }}" ).datepicker({
+                  dateFormat: '{{ dateFormat }}',
+                });
+              $.datepicker.setDefaults($.datepicker.regional['{{locale}}']);
+            });
+        </script>
+    {% endspaceless %}
 {% endblock date_widget %}
