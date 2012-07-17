@@ -2,14 +2,14 @@
 
 namespace Admingenerator\NlThemeBundle\Form\Type;
 
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class DateRangeType extends \Admingenerator\GeneratorBundle\Form\Type\DateRangeType
 {
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         unset($options['years']);
 
@@ -28,24 +28,19 @@ class DateRangeType extends \Admingenerator\GeneratorBundle\Form\Type\DateRangeT
                 ->add('to', new DateType(), $options['to']);
     }
 
-    public function getDefaultOptions(array $options)
+    public function getDefaultOptions()
     {
-        $defaultOptions = array(
-            'format' => null,
-            'years' => range(date('Y'), date('Y') - 120),
-            'to' => null,
-            'from' => null,
-            'widget' => 'single_text',
-        );
-
-        $options = array_replace($defaultOptions, $options);
-
+        $defaultOptions = parent::getDefaultOptions();
+        $defaultOptions['widget'] = 'single_text';
+//
+//        $options = array_replace($defaultOptions, $options);
+//
         if (is_null($defaultOptions['to'])) {
-            $defaultOptions['to'] = array('years' => $defaultOptions['years'], 'widget' => $defaultOptions['widget']);
+            $defaultOptions['to'] = array('years' => $defaultOptions['years'], 'widget' => 'single_text');
         }
 
         if (is_null($defaultOptions['from'])) {
-            $defaultOptions['from'] = array('years' => $defaultOptions['years'], 'widget' => $defaultOptions['widget']);
+            $defaultOptions['from'] = array('years' => $defaultOptions['years'], 'widget' => 'single_text');
         }
 
         return $defaultOptions;
