@@ -14,7 +14,7 @@ class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
     public function finishView(FormViewInterface $view, FormInterface $form, array $options)
     {
         $view->setVar('widget', $options['widget']);
-        $pattern = $form->getAttribute('formatter')->getPattern();
+        $pattern =  "d MMM y"; //$form->getConfig()->getAttribute('formatter')->getPattern();
 
         $view->setVar('date_pattern', $pattern);
         $view->setVar('dateFormat', $this->convertJqueryDate($pattern));
@@ -22,6 +22,7 @@ class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
         $view->setVar('locale', \Locale::getDefault());
     }
 
+    
     protected function convertJqueryDate($format)
     {
         //jquery use a different syntax, have to replace
