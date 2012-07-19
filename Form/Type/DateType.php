@@ -22,7 +22,6 @@ class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
         $view->setVar('locale', \Locale::getDefault());
     }
 
-    
     protected function convertJqueryDate($format)
     {
         //jquery use a different syntax, have to replace
