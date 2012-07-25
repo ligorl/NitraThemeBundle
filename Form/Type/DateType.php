@@ -3,7 +3,7 @@
 namespace Admingenerator\NlThemeBundle\Form\Type;
 
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormViewInterface;
+use Symfony\Component\Form\FormView;
 
 class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
 {
@@ -11,7 +11,7 @@ class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
     /**
      * {@inheritdoc}
      */
-    public function finishView(FormViewInterface $view, FormInterface $form, array $options)
+    public function finishView(FormView $view, FormInterface $form, array $options)
     {
         $view->setVar('widget', $options['widget']);
         $pattern =  "d MMM y"; //$form->getConfig()->getAttribute('formatter')->getPattern();
