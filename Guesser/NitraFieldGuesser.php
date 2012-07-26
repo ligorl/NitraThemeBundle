@@ -1,13 +1,13 @@
 <?php
 
-namespace Admingenerator\NlThemeBundle\Guesser;
+namespace Nitra\NitraThemeBundle\Guesser;
 
 use Admingenerator\GeneratorBundle\Guesser\DoctrineORMFieldGuesser;
 
 /**
  * Переопределяем класс для замены виджетов
  */
-class NlFieldGuesser extends DoctrineORMFieldGuesser
+class NitraFieldGuesser extends DoctrineORMFieldGuesser
 {
     public function getFormType($dbType, $columnName)
     {

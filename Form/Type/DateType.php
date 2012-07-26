@@ -1,6 +1,6 @@
 <?php
 
-namespace Admingenerator\NlThemeBundle\Form\Type;
+namespace Nitra\NitraThemeBundle\Form\Type;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;

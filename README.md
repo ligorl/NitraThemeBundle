@@ -1,4 +1,4 @@
-Getting Started With NlThemeBundle
+Getting Started With NitraThemeBundle
 ==================================
 
 ## Prerequisites
@@ -24,18 +24,18 @@ For more information about translations, check [Symfony documentation](http://sy
 
 Installation is a 3 step process:
 
-1. Download NlThemeBundle using composer
+1. Download NitraThemeBundle using composer
 2. Enable the Bundle
-3. Configure the NlThemeBundle
+3. Configure the NitraThemeBundle
 
-### Step 1: Download NlThemeBundle using composer
+### Step 1: Download NitraThemeBundle using composer
 
-Add NlThemeBundle in your composer.json:
+Add NitraThemeBundle in your composer.json:
 
 ```js
 {
     "require": {
-        "nl/nl-theme-bundle": "dev-master"
+        "nitra/nitra-theme-bundle": "dev-master"
     }
 }
 ```
@@ -43,7 +43,7 @@ Add NlThemeBundle in your composer.json:
 Now tell composer to download the bundle by running the command:
 
 ``` bash
-$ php composer.phar update nl/nl-theme-bundle
+$ php composer.phar update nitra/nitra-theme-bundle
 ```
     
 Composer will install the bundle to your project's `vendor/nl` directory.
@@ -64,24 +64,28 @@ public function registerBundles()
         new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
         new Millwright\MenuBundle\MillwrightMenuBundle(), 
-        new Admingenerator\NlThemeBundle\NlThemeBundle(),
+        new Admingenerator\NitraThemeBundle\NitraThemeBundle(),
     );
 }
 ```
-### Step 3: Configure the NlThemeBundle
+### Step 3: Configure the NitraThemeBundle
 
 Add the following configuration to your `config.yml` file according to which type
 of datastore you are using.
 
 ``` yaml
 # app/config/config.yml
+imports:
+    - { resource: menu.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
+
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     form:
         resources:
-            - 'NlThemeBundle:Form:fields.html.twig'
+            - 'NitraThemeBundle:Form:fields.html.twig'
 
 
 # Assetic Configuration
@@ -94,19 +98,37 @@ assetic:
         cssrewrite: ~
         lessphp: ~
 
+# Doctrine Configuration
+doctrine:
+    orm:
+        filters:
+            softdeleteable:
+                class: Nitra\NitraThemeBundle\Filter\SoftDeleteableFilter
+                enabled: true
+
+# FOS Configuration
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Nitra\NitraThemeBundle\Entity\User
+	
 # Admingenerator Configuration
 admingenerator_generator:
-    base_admin_template: NlThemeBundle::base_admin.html.twig
+    base_admin_template: ::base_admin.html.twig
     use_doctrine_orm: true
     stylesheets: []
     twig:
         use_localized_date: true
         date_format: 'Y-M-d'
-        localized_date_format: 'medium'
+        localized_date_format: 'full'
         localized_datetime_format: 'medium'
         datetime_format: 'Y-m-d H:i'  
         number_format:
             decimal: 2
             decimal_point: ','
             thousand_separator: ' '
+			
+# 
+parameters:
+    knp.doctrine_behaviors.blameable_listener.user_entity: Nitra\NitraThemeBundle\Entity\User			
 ```

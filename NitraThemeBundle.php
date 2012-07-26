@@ -1,10 +1,10 @@
 <?php
 
-namespace Admingenerator\NlThemeBundle;
+namespace Nitra\NitraThemeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class NlThemeBundle extends Bundle
+class NitraThemeBundle extends Bundle
 {
     public function boot()
     {
