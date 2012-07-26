@@ -64,7 +64,8 @@ public function registerBundles()
         new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
         new Millwright\MenuBundle\MillwrightMenuBundle(), 
-        new Admingenerator\NitraThemeBundle\NitraThemeBundle(),
+		new FOS\UserBundle\FOSUserBundle(),
+        new Nitra\NitraThemeBundle\NitraThemeBundle(),
     );
 }
 ```
