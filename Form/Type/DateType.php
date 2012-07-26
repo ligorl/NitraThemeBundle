@@ -13,13 +13,12 @@ class DateType extends \Symfony\Component\Form\Extension\Core\Type\DateType
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        $view->setVar('widget', $options['widget']);
+        $view->vars['widget'] = $options['widget'];
         $pattern =  "d MMM y"; //$form->getConfig()->getAttribute('formatter')->getPattern();
 
-        $view->setVar('date_pattern', $pattern);
-        $view->setVar('dateFormat', $this->convertJqueryDate($pattern));
-
-        $view->setVar('locale', \Locale::getDefault());
+        $view->vars['date_pattern'] = $pattern;
+        $view->vars['dateFormat'] = $this->convertJqueryDate($pattern);
+        $view->vars['locale'] = \Locale::getDefault();
     }
 
     protected function convertJqueryDate($format)
