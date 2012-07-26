@@ -23,8 +23,8 @@
 		"friendsofsymfony/user-bundle": "*",
         "knplabs/doctrine-behaviors": "dev-master"
     },
-    "target-dir": "Admingenerator/NlThemeBundle",
+    "target-dir": "Nitra/NitraThemeBundle",
     "autoload": {
-        "psr-0": { "Admingenerator\\NlThemeBundle": "" }
+        "psr-0": { "Nitra\\NitraThemeBundle": "" }
     }
 }
