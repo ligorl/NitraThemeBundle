@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}NlThemeBundle{% endblock %}</title>
+        <title>{% block title %}NitraThemeBundle{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets 'bundles/nltheme/css/ui-lightness/jquery-ui-1.8.18.custom.css'
+            {% stylesheets 'bundles/nitratheme/css/ui-lightness/jquery-ui-1.8.18.custom.css'
                            filter='cssrewrite'
              %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
-            {% stylesheets 'bundles/nltheme/css/admin.less'
+            {% stylesheets 'bundles/nitratheme/css/admin.less'
                            filter='lessphp,cssrewrite'
              %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
@@ -17,13 +17,13 @@
         {% endblock %}
 
         {% block javascript_head %}
-            {# '@NlThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-' ~ app.session.locale ~ '.js' #}
+            {# '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-' ~ app.session.locale ~ '.js' #}
             {% javascripts
-                '@NlThemeBundle/Resources/public/js/jquery-1.7.2.js'
-                '@NlThemeBundle/Resources/public/js/jquery-ui-1.8.18.custom.min.js'
-                '@NlThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-ru.js'
-                '@NlThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-uk.js'
-                '@NlThemeBundle/Resources/public/js/menu.js'
+                '@NitraThemeBundle/Resources/public/js/jquery-1.7.2.js'
+                '@NitraThemeBundle/Resources/public/js/jquery-ui-1.8.18.custom.min.js'
+                '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-ru.js'
+                '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-uk.js'
+                '@NitraThemeBundle/Resources/public/js/menu.js'
             %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
