@@ -26,18 +26,21 @@ h3			{ font-size: 1.2em; }
 @image-icon: url(../images/action_icons.png); 
 @image-arrow: url(../images/arrow_icons.png); 
 
-.absolute (@top: 0px, @right: 0px) { position: absolute; top: @top; right: @right; }
+.absolute_left  (@top: 0px, @left:  0px) { position: absolute; top: @top; left:  @left; }
+.absolute_right (@top: 0px, @right: 0px) { position: absolute; top: @top; right: @right; }
 
 .menu (@color_border: #fff, @color_bg: #000, @transparent: 90%, @color_text: #fff ) { 
                 color: @color_text; background: fadeout(@color_bg, @transparent); border: 1px solid fadeout(@color_border, @transparent); border-radius: @border-radius;
-    a           { display: inline-block; padding: 7px 7px; color: fadeout(@color_text, 40%); }
-	&:hover { background: fadeout(@color_bg, (@transparent - 20%)); border-color: fadeout(@color_border, (@transparent - 20%));
-        a       { color: @color_text; text-decoration: none; }
+    a, .link    { display: inline-block; padding: 7px 10px; color: fadeout(@color_text, 30%); cursor: pointer; }
+    &:hover     { background: fadeout(@color_bg, (@transparent - 20%)); border-color: fadeout(@color_border, (@transparent - 20%));
+        a, .link{ color: @color_text; text-decoration: none; }
+    }
+    &.active    { background: @color_border; border-color: @color_border;
+        a, .link{ color: @color_text;  }
     }
     &.current   { background: @color_bg; border-color: @color_border;
-        a       { color: @color_text;  }
+        a, .link{ color: @color_text;  }
     }
-	
 }
 
 .round_box (@color: #c1c1c1, @radius: @border-radius) { 
@@ -70,11 +73,11 @@ h3			{ font-size: 1.2em; }
 }
 
 /* BUTTONS */
-.button         { .round_box; .gradient (#D4D4D4, #EEEEEE); display: inline-block; cursor: pointer; font-size: 1em; line-height: 1em; color: #333;
-    &:hover     { .focus_box; .gradient (#C6CFD5, #E8F3F9); text-decoration: none; }
+.button                 { .round_box; .gradient (#D4D4D4, #EEEEEE); display: inline-block; cursor: pointer; font-size: 1em; line-height: 1em; color: #333;
+    &:hover             { .focus_box; .gradient (#C6CFD5, #E8F3F9); text-decoration: none; }
 }
-.button_icon    { .button; .gradient_icon (#D4D4D4, #EEEEEE); padding-left: 30px !important; 
-    &:hover     { .gradient_icon (#C6CFD5, #E8F3F9); }
+.button_icon            { .button; .gradient_icon (#D4D4D4, #EEEEEE); padding-left: 30px !important; 
+    &:hover             { .gradient_icon (#C6CFD5, #E8F3F9); }
 }
 
 input[type="button"], input[type="submit"], button  { .button; height: 26px; } /* for Firefox */ body:not(:-moz-handler-blocked) input[type="button"], input[type="submit"], button { padding: 2px !important; } 
@@ -114,35 +117,28 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
 
 /************************** Header ************************************/
 
-#header                 { .gradient (#242F33, #274452); padding: 10px 10px 0; 
-    .logo               { display: none; float: left; margin-top: -5px; color: fadeout(#fff, 50%); font-family: Georgia; font-style: italic; font-size: 1.5em;}
+#header                 { .gradient (#242F33, #274452); padding: 10px 10px 0; min-height: 20px;
+
+    /* logo */
+    .logo               { float: left; margin-top: -5px; color: fadeout(#fff, 50%); font-family: Georgia; font-style: italic; font-size: 1.5em;}
+
+    /* user menu */
     .profile            { .menu; float: right; 
         a               { font-size: 0.85em; padding: 3px 5px; }
     }
-    .main_menu          { position: relative; z-index:1000; padding: 0 10px 0;
+
+    /* main menu */
+    .main_menu          { position: relative; z-index: 1000; 
+        &.has_submenu   { height: 62px; }
         li              { .menu (#3A7AA3, #2C5D7D, 70%); display: inline-block; border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;   
-            span        { display:block; padding: 7px 10px 8px; cursor: pointer; }
-            ul 		{ display:none; .absolute (30px, 0px); width: 98.3%; height: 31px; padding: 5px 28px 4px 23px; margin-right: -10px;
-                li	{ border-radius: 0 0 0 0; border: none; }
-            }
-            &.active    { border-bottom:none; background: #427A9F; border-color: @color_border; 
-                a  	{ padding-bottom:8px; color:#FFF; }
-                li      { background:none;
-                    &:hover { background: #32688b; }
+            ul 		{ display: none; .absolute_left (28px, -10px); width: 100%; padding: 4px 10px; 
+                li	{ border: 0px; border-radius: @border-radius !important; background: none; font-size: 0.9em;
+                    &:hover    { background: fadeout(#fff, 90%); }
+                    &.current  { background: fadeout(#fff, 80%); }
                 }
-                ul     { display:block; background: #427a9f; z-index: 1000;}
             }
-            &.current	{ border-bottom:none;  background: #2C5D7D;
-                a  	{ padding-bottom:8px; }
-                li      { background: none;}
-                ul 	{ display:block;  background:#2C5D7D; z-index: 700;
-                    a 	{ color:#FFF;}
-                    li 	{ padding:0;}
-                    li.current_item { background: #427a9f;}
-                    li:hover  { background: #32688b;}	
-               }
-               ul:hover { background:#2C5D7D;}	
-            }                   
+            &.active ul { display: block; background: #427a9f; z-index: 1000;}
+            &.current ul{ display: block; background: #2C5D7D; z-index: 700;}  
         }
     }	
 }   
@@ -166,35 +162,30 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
     &.delete            { background-position: 6px -116px, 0 0; }
     &.list              { background-position: 6px -146px, 0 0; }
     &.copy              { background-position: 6px -326px, 0 0; }
-    &.income            { background-position: 6px -566px, 0 0; }
-	&.contract_by_client            { background-position: 6px -326px, 0 0; }
-	&.juridicalperson_by_client{ background-position: 6px -266px, 0 0; }
+    &.payment           { background-position: 6px -566px, 0 0; }
 }
 
-/* List */
+/* Admingenerator list */
 .admin_list             { min-height: 500px; margin-right: 225px;
-    /* list */
+    /* list table */
     table               { .table; 
         /* sorts */
         th.sorted-asc a { display: inline-block; padding-right: 15px; background: @image-arrow right -55px no-repeat; }
-        th.sorted-desc a { display: inline-block; padding-right: 15px; background: @image-arrow right -35px no-repeat; }
-
-        /* custom field styles */
-        .td_Client      { font-weight: bold; }
-        .td_price       { color: #000; }
-        .td_vat         { color: #888; }
-        .td_description { color: #888; font-size: 0.85em; }
+        th.sorted-desc a{ display: inline-block; padding-right: 15px; background: @image-arrow right -35px no-repeat; }
     }
+
     /* list actions */
-    ul.actions          { .absolute (5px, 235px); }
+    ul.actions          { .absolute_right (5px, 235px); }
+
     /* row actions */
     td.actions          { width: 1%; white-space: nowrap;
          a              { padding-left: 20px !important; height: 13px; }
     }           
     /* total info */
     .list_nbresults     { height: 22px; font-size: 0.95em; color: #888;}
+
     /* pager */
-    div.pagination      { .absolute (45px, 235px); 
+    div.pagination      { .absolute_right (45px, 235px); 
          li             {  display: inline-block; margin-left: 5px; }
          a              { .menu (#ddd, #eee, 70%, #999); padding: 2px 7px; font-size: 0.9em;}
     }
@@ -210,8 +201,8 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
         .error ul li    { display: block; padding: 5px 0 5px 225px; color: #d70000; }
         .help           { display: block; padding: 5px 0 5px 225px; color: #999; font-style: italic; }
     }
-    .field_number input { width: 100px; }
-    .field_jquery_date input { width: 100px; }
+    .field_number input         { width: 100px; }
+    .field_jquery_date input    { width: 100px; }
 }
 
 /* form actions */
@@ -223,17 +214,17 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
 }
 
 /* Filters */
-.filters                { .absolute (45px, 10px); width: 210px; 
+.filters                { .absolute_right (45px, 10px); width: 210px; 
     table               { width: 100%; 
         th              { border-bottom: 1px solid @color-border; padding: 5px 4px; color: #000; text-align: left; font-weight: normal; }
     }
     .form_row           { padding: 5px 0px; 
         label           { display: block; padding-bottom: 3px; font-size: 0.85em; font-weight: normal; text-align: left;}
         select          { width: 210px; }
-        input[type="text"] { width: 190px; }
-	.field_date_range  { overflow:hidden;
-            div div     { float:left; width:105px;}
-            input       { width: 85px; }
+        input[type="text"]  { width: 190px; }
+	.field_date_range   { overflow: hidden;
+            div div         { float: left; width: 105px;}
+            input           { width: 85px; }
         }	
     }
     .actions            { padding-top: 5px; 
@@ -242,11 +233,12 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
 }
 
 
-/* login form */
-//.login_form 			{ margin-top:15%; 
-//	form		 	{.round_box (#274452); display: block; margin: 0 auto; padding: 15px 17px 20px; width: 321px; background-color: #FFFFFF; /*border: 1px solid @color-border; box-shadow: 0 2px 4px #274452; border-radius: @border-radius;*/ }
-//	label				{ color: #888888; display: block; font-size: 1.3em;  margin-bottom: 10px;}
-//	input 			{ width:93%; margin-bottom: 20px; padding: 10px 10px; font-size: 1.6em; color:@color-link;}
-//	input[type="checkbox"] { display:none;}
-//	input[type="submit"] { display: block; padding:5px 7px; margin: 0 auto; width:150px; font-size: 1.1em;}
-//}
+/************************** Login page ************************************/
+
+.login_content 		{ .round_box(#ddd); width: 320px; padding: 15px 20px !important; margin: 0 auto; margin-top: 15%; background-color: #fff;
+    .form_row           {
+        label           { display: block; padding-bottom: 5px; text-align: left;   }
+        input           { width: 93%; font-size: 1.5em; color: @color-link;}
+    }
+    input[type="submit"]{ display: block; margin: 10px auto; min-width: 150px; }
+}
