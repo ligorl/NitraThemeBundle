@@ -129,7 +129,7 @@ admingenerator_generator:
             decimal_point: ','
             thousand_separator: ' '
 			
-# 
+# Add blameable listener
 parameters:
     knp.doctrine_behaviors.blameable_listener.user_entity: Nitra\NitraThemeBundle\Entity\User			
 ```
