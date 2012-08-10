@@ -1,3 +1,14 @@
+{% block field_row %}
+    {% spaceless %}
+        <div class="form_row">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock field_row %}
+
+
 {% block date_widget %}
     {% spaceless %}
         {{ block('form_widget_simple') }}
@@ -11,3 +22,14 @@
         </script>
     {% endspaceless %}
 {% endblock date_widget %}
+
+        
+{% block date_range_row %}
+    {% spaceless %}
+        <div class="form_row">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock date_range_row %}

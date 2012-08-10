@@ -35,22 +35,23 @@
     <body>
         <div id="header">
             {% block header %}
+                
                 {% block logo %}
-                <div class="logo">
-                    Nitra Logo
-                </div>
                 {% endblock %}
+                
                 {% block profile %}
                 <div class="profile">
                     <a href="#">{{ app.user }}</a>
                     <a class='logout' href="{{ path('fos_user_security_logout') }}">Вихід</a>
                 </div>
                 {% endblock %}
+                
                 {% block menu %}
                 <div class="main_menu">
                      {{ millwright_menu_render('main') }}
                 </div>
                 {% endblock %}
+                
             {% endblock %}
         </div>
 
@@ -70,6 +71,7 @@
         <div id="content">
             {% block body %}{% endblock %}
         </div>
+            
         {% block javascripts %}
 
         {% endblock %}
