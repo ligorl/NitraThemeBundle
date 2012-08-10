@@ -5,6 +5,7 @@
         <title>{% block title %}NitraThemeBundle{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets 'bundles/nitratheme/css/ui-lightness/jquery-ui-1.8.18.custom.css'
+							'bundles/nltheme/css/colorbox.css'
                            filter='cssrewrite'
              %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
@@ -24,6 +25,7 @@
                 '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-ru.js'
                 '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-uk.js'
                 '@NitraThemeBundle/Resources/public/js/menu.js'
+				'@NlThemeBundle/Resources/public/js/jquery.colorbox-min.js'
             %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
