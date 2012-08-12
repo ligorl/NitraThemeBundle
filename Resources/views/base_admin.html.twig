@@ -5,13 +5,13 @@
         <title>{% block title %}NitraThemeBundle{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets 
-                '@NitraThemeBundle/Resources/public/css/ui-lightness/jquery-ui-1.8.18.custom.css'
-                '@NitraThemeBundle/Resources/public/css/colorbox.css'
+                'bundles/nitratheme/css/ui-lightness/jquery-ui-1.8.18.custom.css'
+                'bundles/nitratheme/css/colorbox.css'
             filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
             {% stylesheets 
-                '@NitraThemeBundle/Resources/public/css/admin.less'
+                'bundles/nitratheme/css/admin.less'
             filter='lessphp,cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
