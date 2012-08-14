@@ -16,9 +16,6 @@ class NitraThemeExtension extends Extension
         $loader->load('services.yml');
 
         $container->setParameter('admingenerator.fieldguesser.doctrine.class', 'Nitra\NitraThemeBundle\Guesser\NitraFieldGuesser');
-    
-        // Используем свой класс для исправления ошибки при фильтрации по списку обьектов (в BETA4)
-        $container->setParameter('admingenerator.queryfilter.doctrine.class', 'Nitra\NitraThemeBundle\QueryFilter\NitraDoctrineQueryFilter');
     }
 
     public function getAlias()
