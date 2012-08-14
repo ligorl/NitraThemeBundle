@@ -4,15 +4,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}NitraThemeBundle{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets 'bundles/nitratheme/css/ui-lightness/jquery-ui-1.8.18.custom.css'
-                           filter='cssrewrite'
-             %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% stylesheets 
+                'bundles/nitratheme/css/ui-lightness/jquery-ui-1.8.18.custom.css'
+                'bundles/nitratheme/css/colorbox.css'
+            filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
-            {% stylesheets 'bundles/nitratheme/css/admin.less'
-                           filter='lessphp,cssrewrite'
-             %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% stylesheets 
+                'bundles/nitratheme/css/admin.less'
+            filter='lessphp,cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
 
@@ -24,8 +25,8 @@
                 '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-ru.js'
                 '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-uk.js'
                 '@NitraThemeBundle/Resources/public/js/menu.js'
-            %}
-            <script src="{{ asset_url }}"></script>
+		'@NitraThemeBundle/Resources/public/js/jquery.colorbox-min.js' %}
+        <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
@@ -33,45 +34,45 @@
     <body>
         <div id="header">
             {% block header %}
-                
+
                 {% block logo %}
                 {% endblock %}
-                
+
                 {% block profile %}
                 <div class="profile">
                     <a href="#">{{ app.user }}</a>
                     <a class='logout' href="{{ path('fos_user_security_logout') }}">Вихід</a>
                 </div>
                 {% endblock %}
-                
+
                 {% block menu %}
                 <div class="main_menu">
                      {{ millwright_menu_render('main') }}
-                </div>
+                    </div>
                 {% endblock %}
-                
+
             {% endblock %}
-        </div>
+                </div>
 
         {% block flashes %}
             {% if app.session.flash('success') %}
                 <div class="notification_box success">
                     {{ app.session.flash('success')|raw }}
-                </div>
+                    </div>
             {% endif %}
             {% if app.session.flash('error') %}
-                <div class="notification_box error">
+                    <div class="notification_box error">
                     {{ app.session.flash('error')|raw }}
-                </div>
+                        </div>
             {% endif %}
         {% endblock %}
 
-        <div id="content">
+                        <div id="content">
             {% block body %}{% endblock %}
-        </div>
-            
+                            </div>
+
         {% block javascripts %}
 
         {% endblock %}
-    </body>
-</html>
+                        </body>
+                    </html>
