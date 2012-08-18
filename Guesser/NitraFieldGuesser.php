@@ -21,7 +21,7 @@ class NitraFieldGuesser extends DoctrineORMFieldGuesser
     public function getFormOptions($formType, $dbType, $columnName)
     {
         if ('date' == $dbType) {
-            return array('required' => true, 'format' => 'd MMM y', 'widget' => 'single_text');
+            return array('required' => $this->isRequired($columnName), 'format' => 'd MMM y', 'widget' => 'single_text');
         }
 
         return parent::getFormOptions($formType, $dbType, $columnName);
