@@ -63,7 +63,8 @@ public function registerBundles()
         new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
-        new Millwright\MenuBundle\MillwrightMenuBundle(), 
+        new Millwright\MenuBundle\MillwrightMenuBundle(),
+		new Millwright\ConfigurationBundle\MillwrightConfigurationBundle(),
 		new FOS\UserBundle\FOSUserBundle(),
         new Nitra\NitraThemeBundle\NitraThemeBundle(),
     );
