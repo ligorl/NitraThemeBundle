@@ -23,12 +23,12 @@
     {% else %}
         <form class="form_block" action="{{ path("fos_user_security_check") }}" method="post">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-            
+
             <div class="form_row">
                 <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
                 <input type="text" id="username" name="_username" value="{{ last_username }}" />
             </div>
-            
+
             <div class="form_row">
                 <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
                 <input type="password" id="password" name="_password" />

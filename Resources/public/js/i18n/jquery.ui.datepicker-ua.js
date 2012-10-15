@@ -1,6 +1,6 @@
-/* Модифицирован для Symfony2 */
+/* Модифицирован для Symfony 2.1 */
 jQuery(function($){
-	$.datepicker.regional['uk'] = {
+	$.datepicker.regional['ua'] = {
 		closeText: 'Закрити',
 		prevText: '&#x3c;',
 		nextText: '&#x3e;',

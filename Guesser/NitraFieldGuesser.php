@@ -9,6 +9,7 @@ use Admingenerator\GeneratorBundle\Guesser\DoctrineORMFieldGuesser;
  */
 class NitraFieldGuesser extends DoctrineORMFieldGuesser
 {
+
     public function getFormType($dbType, $columnName)
     {
         if ('date' == $dbType) {
@@ -37,6 +38,17 @@ class NitraFieldGuesser extends DoctrineORMFieldGuesser
             return array('required' => false, 'format' => 'd MMM y');
         }
 
-        return parent::getFilterOptions($formType, $dbType, $columnName);
+        $options = parent::getFilterOptions($formType, $dbType, $columnName);
+
+        if ('boolean' == $dbType) {
+            $options['choices'] = array(
+                0 => 'Нет',
+                1 => 'Да'
+            );
+            $options['empty_value'] = '';
+        }
+
+        return $options;
     }
+
 }
