@@ -20,7 +20,7 @@
         "cedriclombardot/admingenerator-generator-bundle": "dev-master",
         "zerkalica/millwright-menu-bundle": "dev-master",
         "leafo/lessphp": "0.3.8",
-	"friendsofsymfony/user-bundle": "1.3.0",
+        "friendsofsymfony/user-bundle": "1.3.0",
         "knplabs/doctrine-behaviors": "dev-master"
     },
     "target-dir": "Nitra/NitraThemeBundle",
