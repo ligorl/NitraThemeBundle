@@ -1,6 +1,6 @@
 /* Модифицирован для Symfony 2.1 */
 jQuery(function($){
-	$.datepicker.regional['ua'] = {
+	$.datepicker.regional['uk'] = {
 		closeText: 'Закрити',
 		prevText: '&#x3c;',
 		nextText: '&#x3e;',
@@ -12,7 +12,7 @@ jQuery(function($){
 		dayNames: ['неділя','понеділок','вівторок','середа','четвер','п’ятниця','субота'],
 		dayNamesShort: ['нед','пнд','вів','срд','чтв','птн','сбт'],
 		dayNamesMin: ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'],
-		weekHeader: 'Не',
+		weekHeader: 'Тиж',
 		firstDay: 1,
 		isRTL: false,
 		showMonthAfterYear: false,
