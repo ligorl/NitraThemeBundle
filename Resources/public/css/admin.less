@@ -8,15 +8,15 @@ menu, nav, output, ruby, section, summary, time, input,
 mark, audio, video      { margin: 0; padding: 0; border: 0; font-size: 1em; font-family: Arial, "Trebuchet MS",  Helvetica, sans-serif; vertical-align: baseline; }
 header, footer, aside, 
 nav, article, section   { display: block; }
-body			{ font-size: 0.85em; line-height: 1; min-width: 1000px; color: #444; background: #f7f7f7;  }
-img			{ border: none;}
+body                    { font-size: 0.85em; line-height: 1; min-width: 1000px; color: #444; background: #f7f7f7;  }
+img                     { border: none;}
 ul, li                  { list-style: none; display: block; }
-p 			{ margin: 0.4em 0px; text-align: left;}
-table			{ border-collapse: collapse; border-spacing: 0px;}
-h1, h2, h3, h4, h5, h6 	{ margin: 1em 0 0.8em 0; color: #000; line-height: 1.2em; font-weight:normal;}
-h1			{ font-size: 1.5em; }
-h2			{ font-size: 1.3em; }
-h3			{ font-size: 1.2em; }
+p                       { margin: 0.4em 0px; text-align: left;}
+table                   { border-collapse: collapse; border-spacing: 0px;}
+h1, h2, h3, h4, h5, h6 	{ margin: 1em 0 0.8em 0; color: #000; line-height: 1.2em; font-weight: normal;}
+h1                      { font-size: 1.5em; }
+h2                      { font-size: 1.3em; }
+h3                      { font-size: 1.2em; }
 
 /*************************** Base styles *************************/
 
@@ -29,7 +29,7 @@ h3			{ font-size: 1.2em; }
 .absolute_left  (@top: 0px, @left:  0px) { position: absolute; top: @top; left:  @left; }
 .absolute_right (@top: 0px, @right: 0px) { position: absolute; top: @top; right: @right; }
 
-.menu (@color_border: #fff, @color_bg: #000, @transparent: 90%, @color_text: #fff ) { 
+.menu           (@color_border: #fff, @color_bg: #000, @transparent: 90%, @color_text: #fff ) { 
                 color: @color_text; background: fadeout(@color_bg, @transparent); border: 1px solid fadeout(@color_border, @transparent); border-radius: @border-radius;
     a, .link    { display: inline-block; padding: 7px 10px; color: fadeout(@color_text, 30%); cursor: pointer; }
     &:hover     { background: fadeout(@color_bg, (@transparent - 20%)); border-color: fadeout(@color_border, (@transparent - 20%));
@@ -78,6 +78,15 @@ h3			{ font-size: 1.2em; }
 }
 .button_icon            { .button; .gradient_icon (#D4D4D4, #EEEEEE); padding-left: 30px !important; 
     &:hover             { .gradient_icon (#C6CFD5, #E8F3F9); }
+    &.new               { background-position: 6px 4px, 0 0; }
+    &.filter            { background-position: 6px -25px, 0 0; }
+    &.edit              { background-position: 6px -86px, 0 0; }
+    &.delete            { background-position: 6px -116px, 0 0; }
+    &.list              { background-position: 6px -146px, 0 0; }
+    &.copy              { background-position: 6px -326px, 0 0; }
+    &.print             { background-position: 6px -476px, 0 0; }
+    &.payment           { background-position: 6px -566px, 0 0; }
+    &.save              { background-position: 6px -686px, 0 0; }
 }
 
 input[type="button"], input[type="submit"], button  { .button; height: 26px; } /* for Firefox */ body:not(:-moz-handler-blocked) input[type="button"], input[type="submit"], button { padding: 2px !important; } 
@@ -85,20 +94,32 @@ input[type="submit"].submit_button                  { .button_icon; }
 
 
 /* INPUTS */
-input[type="text"], input[type="password"], input[type="phone"], input[type="date"], input[type="number"], 
-textarea, select        { .round_box; line-height: 1em; vertical-align: middle; color: #000; font-size: 1.1em; background: #fff;
+input[type="text"], input[type="password"], input[type="phone"], input[type="date"], input[type="number"], input[type="email"], 
+textarea, select        { .round_box; width: 500px; line-height: 1em; vertical-align: middle; color: #000; font-size: 1.1em; background: #fff;
      &:focus            { .focus_box }
 }
-input[type="text"]	{ width:500px; }
-textarea                { width: 500px; height: 100px; }
+input[type="password"]  { width: 200px; }
+input[type="phone"]     { width: 200px; }
+input[type="email"]     { width: 200px; }
+input[type="date"]      { width: 100px; }
+input[type="number"]    { width: 100px; }
+textarea                { height: 100px; }
 select                  { width: auto; max-width: 600px; }
 
 
 /* LINKS */
-a 			{ color: @color-link; text-decoration: none; cursor: pointer;
+.link                   { color: @color-link; text-decoration: none; cursor: pointer;
     &:hover             { color: saturate(@color-link, 50%); text-decoration: underline; }
 }
-
+.link_icon              { .link; display: inline-block; padding: 0 0 1px 20px; background: @image-icon no-repeat 0px 20px; 
+    &.new               { background-position: 0px 0px; }
+    &.edit              { background-position: 0px -90px; }
+    &.delete            { background-position: 0px -120px; }
+    &.list              { background-position: 0px -150px; }
+    &.copy              { background-position: 0px -330px; }
+    &.payment           { background-position: 0px -570px; }
+}
+a                       { .link; }
 
 /* TABLE */
 .table                  { width: 100%; background: #fff; border: 1px solid @color-border; 
@@ -131,8 +152,8 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
     .main_menu          { position: relative; z-index: 1000; 
         &.has_submenu   { height: 62px; }
         li              { .menu (#3A7AA3, #2C5D7D, 70%); display: inline-block; border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;   
-            ul 		{ display: none; .absolute_left (28px, -10px); width: 100%; padding: 4px 10px; 
-                li	{ border: 0px; border-radius: @border-radius !important; background: none; font-size: 0.9em;
+            ul          { display: none; .absolute_left (28px, -10px); width: 100%; padding: 4px 10px; 
+                li      { border: 0px; border-radius: @border-radius !important; background: none; font-size: 0.9em;
                     &:hover    { background: fadeout(#fff, 90%); }
                     &.current  { background: fadeout(#fff, 80%); }
                 }
@@ -156,14 +177,7 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
 }
 
 /* Actions */
-.actions a              { .button_icon;
-    &.new               { background-position: 6px 4px, 0 0; }
-    &.edit              { background-position: 6px -86px, 0 0; }
-    &.delete            { background-position: 6px -116px, 0 0; }
-    &.list              { background-position: 6px -146px, 0 0; }
-    &.copy              { background-position: 6px -326px, 0 0; }
-    &.payment           { background-position: 6px -566px, 0 0; }
-}
+.actions a              { .button_icon; }
 
 /* Admingenerator list */
 .admin_list             { min-height: 500px; margin-right: 225px;
@@ -197,14 +211,15 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
 /* Forms */
 .form_block             { 
     .form_row           { padding: 7px 0px; 
-        label           { display: inline-block; width: 200px; padding-right: 20px; text-align: right; font-weight: normal;}
-        div             { display: inline-block; }
+        label           { display: inline-block; width: 200px; padding-right: 20px; text-align: right; font-weight: normal; vertical-align: top; }
+        div             { display: inline-block; vertical-align: top; }
         .error          { display: block; }
         .error ul li    { display: block; padding: 5px 0 5px 225px; color: #d70000; }
         .help           { display: block; padding: 5px 0 5px 225px; color: #999; font-style: italic; }
     }
-    .field_number input         { width: 100px; }
-    .field_jquery_date input    { width: 100px; }
+    .field_number input                 { width: 100px; }
+    .field_amount input[type="text"]    { width: 100px; }
+    .field_jquery_date input            { width: 100px; }
 }
 
 /* form actions */
@@ -216,7 +231,7 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
 }
 
 /* Filters */
-.filters                { .absolute_right (45px, 10px); width: 210px; 
+.filters                { .absolute_right (45px, 10px); width: 210px; max-height: 95%; overflow-y: auto; overflow-x: hidden;
     table               { width: 100%; 
         th              { border-bottom: 1px solid @color-border; padding: 5px 4px; color: #000; text-align: left; font-weight: normal; }
     }
@@ -225,11 +240,11 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
         select          { width: 210px; }
         input[type="text"]  { width: 190px; }
 	.field_date_range   { overflow: hidden;
-            div div         { float: left; width: 105px;}
-            input           { width: 85px; }
+            div div     { float: left; width: 105px;}
+            input       { width: 85px; }
         }	
     }
-    .actions            { padding-top: 5px; 
+    .actions            { padding: 5px 0; 
         input[type="submit"].submit_button  { background-position: 6px -25px, 0 0; }
     }
 }
@@ -237,10 +252,26 @@ a 			{ color: @color-link; text-decoration: none; cursor: pointer;
 
 /************************** Login page ************************************/
 
-.login_content 		{ .round_box(#ddd); width: 320px; padding: 15px 20px !important; margin: 0 auto; margin-top: 15%; background-color: #fff;
+.login_content          { .round_box(#ddd); width: 320px; padding: 15px 20px !important; margin: 0 auto; margin-top: 15%; background-color: #fff;
     .form_row           {
         label           { display: block; padding-bottom: 5px; text-align: left;   }
         input           { width: 93%; font-size: 1.5em; color: @color-link;}
     }
     input[type="submit"]{ display: block; margin: 10px auto; min-width: 150px; }
+}
+
+/************************** Colorbox content ******************************/
+
+#cboxLoadedContent      { padding: 5px; 
+    h1                  { margin-top: 0px; padding-right: 30px; color: #377197; }
+    .form_block         { max-width: 600px; 
+        .form_row       { 
+            label               { width: 120px; }
+            input[type="text"]  { max-width: 400px; }
+            select              { max-width: 400px; }
+        }
+    }
+    .admin_form .actions{ width: 100%; text-align: right;
+        .button         { float: left; }
+    }
 }
