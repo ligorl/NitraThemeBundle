@@ -13,4 +13,4 @@ $(document).ready(function(){
     if ($('.main_menu .active').children('ul').length > 0) {
         $('.main_menu').addClass('has_submenu');
     }
-}) 
+});
