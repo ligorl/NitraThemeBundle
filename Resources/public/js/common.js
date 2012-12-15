@@ -29,7 +29,7 @@ function common() {
         
         $('.notification_box').remove();
         
-        $('#content').before('<div class="notification_box ' + type + '">' + message + '</div>');
+        $('.content').before('<div class="notification_box ' + type + '">' + message + '</div>');
    }
 }
 (function(){

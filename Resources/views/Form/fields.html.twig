@@ -37,6 +37,11 @@
 
 {% block ajax_autocomplete_widget %}
 
+    {% spaceless %}
+        {{ form_widget(form.name) }}
+        {{ form_widget(form.id) }}
+    {% endspaceless %}
+        
     {% stylesheets '@NitraThemeBundle/Resources/public/css/jquery.autocomplete.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -46,15 +51,6 @@
     {% endjavascripts %}
 
     {% spaceless %}
-
-        <div class="form_row">
-
-            {{ form_errors(form) }}
-
-            {{ form_widget(form.name) }}
-            {{ form_widget(form.id) }}
-        </div>
-
 
         <script type="text/javascript">
 
