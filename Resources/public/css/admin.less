@@ -8,7 +8,7 @@ menu, nav, output, ruby, section, summary, time, input,
 mark, audio, video      { margin: 0; padding: 0; border: 0; font-size: 1em; font-family: Arial, "Trebuchet MS",  Helvetica, sans-serif; vertical-align: baseline; }
 header, footer, aside, 
 nav, article, section   { display: block; }
-body                    { font-size: 0.85em; line-height: 1; min-width: 1000px; color: #444; background: #f7f7f7;  }
+body                    { font-size: 13px; line-height: 1; min-width: 1000px; color: #444; background: #f7f7f7;  }
 img                     { border: none;}
 ul, li                  { list-style: none; display: block; }
 p                       { margin: 0.4em 0px; text-align: left;}
@@ -127,7 +127,7 @@ a                       { .link; }
     td                  { padding: 2px 7px; height: 30px; border: 1px solid @color-border; vertical-align: middle; }
     tr:hover td         { background: #FFFFdd; }
     td.td_decimal       { white-space: nowrap; text-align: right; }
-    tr.row_total td     { background: #eaeaea;  }
+    tr.row_total td     { background: #eaeaea; font-weight: bold; }
     tr.row_highlight td { background: #ffa; }
 }
 
@@ -154,16 +154,16 @@ a                       { .link; }
     .logo               { float: left; margin-top: -5px; color: fadeout(#fff, 50%); font-family: Georgia; font-style: italic; font-size: 1.5em;}
 
     /* user menu */
-    .profile            { .menu; float: right; 
-        a               { font-size: 0.85em; padding: 3px 5px; }
+    .profile            { .menu; float: right; position: relative; z-index: 901;
+        a               { font-size: 0.9em; padding: 3px 5px; }
     }
 
     /* main menu */
-    .main_menu          { position: relative; z-index: 1000; 
+    .main_menu          { position: relative; z-index: 900;
         &.has_submenu   { height: 62px; }
         li              { .menu (#3A7AA3, #2C5D7D, 70%); display: inline-block; border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;   
             ul          { display: none; .absolute_left (28px, -10px); width: 100%; padding: 4px 10px; 
-                li      { border: 0px; border-radius: @border-radius !important; background: none; font-size: 0.9em;
+                li      { border: 0px; border-radius: @border-radius !important; background: none;
                     &:hover    { background: fadeout(#fff, 90%); }
                     &.current  { background: fadeout(#fff, 80%); }
                 }
@@ -181,7 +181,7 @@ a                       { .link; }
 }
 
 /* Flashes */
-.notification_box       { padding: 7px 10px; font-size: 0.9em; background: #FFFFCC;
+.notification_box       { padding: 7px 10px; background: #FFFFCC;
     &.success           { background: #D6FFAD; }
     &.error             { background: #fcc; }
 }
@@ -190,7 +190,7 @@ a                       { .link; }
 .actions a              { .button_icon; }
 
 /* Admingenerator list */
-.admin_list             { min-height: 500px; margin-right: 225px;
+.admin_list             { min-height: 500px; margin-right: 225px; overflow-x: auto;
     /* list table */
     table               { .table; 
         /* sorts */
@@ -199,9 +199,7 @@ a                       { .link; }
     }
 
     /* list actions */
-    ul.actions          { .absolute_right (5px, 10px); text-align: right; margin-left: 300px;
-        li              { display: inline; } 
-    }
+    .list_actions       { .absolute_right (5px, 10px); text-align: right; margin-left: 300px; }
 
     /* row actions */
     td.actions          { width: 1%; white-space: nowrap;
@@ -213,7 +211,7 @@ a                       { .link; }
     /* pager */
     div.pagination      { .absolute_right (45px, 235px); 
          li             {  display: inline-block; margin-left: 5px; }
-         a              { .menu (#ddd, #eee, 70%, #999); padding: 2px 7px; font-size: 0.9em;}
+         a              { .menu (#ddd, #eee, 70%, #999); padding: 2px 7px; font-size: 0.95em;}
     }
 }
 
@@ -221,11 +219,12 @@ a                       { .link; }
 /* Forms */
 .form_block             { 
     .form_row           { padding: 7px 0px; 
-        label           { display: inline-block; width: 200px; padding-right: 20px; text-align: right; font-weight: normal; vertical-align: top; }
-        div             { display: inline-block; vertical-align: top; }
-        .error          { display: block; }
-        .error ul li    { display: block; padding: 5px 0 5px 225px; color: #d70000; }
-        .help           { display: block; padding: 5px 0 5px 225px; color: #999; font-style: italic; }
+        label           { display: inline-block; width: 200px; padding: 5px 20px 0 0; text-align: right; font-weight: normal; vertical-align: top; }
+        .field_content  { display: inline-block; vertical-align: top; 
+            .error      { display: block; }
+            .error ul li{ display: block; padding: 5px 0; color: #d70000; }
+            .help       { display: block; padding: 5px 0; color: #999; font-style: italic; }
+        }
     }
     .field_number input                 { width: 100px; }
     .field_amount input[type="text"]    { width: 100px; }
@@ -234,27 +233,25 @@ a                       { .link; }
 
 /* form actions */
 .admin_form             {
-    ul.actions          { display: inline-block; padding-top: 20px; vertical-align: middle;
-        input.submit_button { background-position: 6px -686px, 0 0; }
+    .actions            { display: inline-block; padding: 10px 0 0 220px; vertical-align: middle;
+        a               { margin-left: 10px; }
+        input.submit_button { color: #000; font-weight: bold; background-position: 6px -686px, 0 0; }
     }
-    ul.form_actions     { padding-right: 20px; padding-left: 115px; }
 }
 
 /* Filters */
 .filters                { .absolute_right (45px, 10px); width: 210px; max-height: 95%; overflow-y: auto; overflow-x: hidden;
-    table               { width: 100%; 
-        th              { border-bottom: 1px solid @color-border; padding: 5px 4px; color: #000; text-align: left; font-weight: normal; }
-    }
-    .form_row           { padding: 5px 0px; 
-        label           { display: block; padding-bottom: 3px; font-size: 0.85em; font-weight: normal; text-align: left;}
-        select          { width: 210px; }
-        input[type="text"]  { width: 190px; }
-	.field_date_range   { overflow: hidden;
-            div div     { float: left; width: 105px;}
-            input       { width: 85px; }
+    legend              { display: block; width: 100%; padding: 5px 0px; border-bottom: 1px solid @color-border; color: #000; text-align: left; font-weight: normal; }
+    .form_row           { padding: 3px 0px; 
+        label           { display: block; padding-bottom: 3px; font-size: 0.9em; color: #777; font-weight: normal; text-align: left;}
+        select          { width: 205px; }
+        input[type="text"]  { width: 185px; }
+        &.field_date_range .field_content   { overflow: hidden;
+            .form_row   { float: left; width: 97px; padding: 0px; }
+            input       { width: 77px; font-size: 1em; }
         }	
     }
-    .actions            { padding: 5px 0; 
+    .actions            { padding: 5px 0 20px 0; 
         input[type="submit"].submit_button  { background-position: 6px -25px, 0 0; }
     }
 }

@@ -1,0 +1,24 @@
+{% block form_fieldset %}
+{{ echo_block("form_fieldset_" ~ fieldset|classify|replace({'.': '_'})) }}
+    <fieldset class="form_block form_fieldset_{{ fieldset|classify|replace({'.': '_'}) }} fieldset_tabbable">
+        {% if "NONE" != fieldset %}
+        <legend><span>{{ echo_trans(fieldset,{}, i18n_catalog is defined ? i18n_catalog : "Admin" ) }}</span></legend>
+        {% endif %}
+        {% for rows in builder.fieldsets[fieldset] %}
+            {% for field in rows %}
+                {% if builder.Columns[field].credentials %}
+                      {{ echo_if_granted(builder.Columns[field].credentials, builder.ModelClass) }}
+                {% endif %}
+
+                {{ echo_block("form_" ~ field) }}
+                    {{ echo_twig("form_row(form['" ~ field ~ "'])") }}
+                {{ echo_endblock() }}
+
+                {% if builder.Columns[field].credentials %}
+                    {{ echo_endif () }}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </fieldset>
+{{ echo_endblock() }}
+{% endblock %}
