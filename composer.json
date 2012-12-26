@@ -1,6 +1,6 @@
 {
     "name": "nitra/nitra-theme-bundle",
-	"version": "1.0.0-BETA4",
+	"version": "1.0.0",
     "description": "Nitra theme for the symfony2 admingenerator",
 	"keywords": ["admingenerator", "theme"],
 	"type": "symfony-bundle",
