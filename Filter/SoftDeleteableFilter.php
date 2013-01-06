@@ -20,6 +20,6 @@ class SoftDeleteableFilter extends SQLFilter
             return '';
         }
 
-        return $targetTableAlias . '.deletedAt IS NULL';
+        return $targetTableAlias . '.deleted_at IS NULL';
     }
 }
