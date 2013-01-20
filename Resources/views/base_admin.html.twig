@@ -5,7 +5,7 @@
         <title>{% block title %}NitraThemeBundle{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets
-                'bundles/nitratheme/css/ui-lightness/jquery-ui-1.8.18.custom.css'
+                'bundles/nitratheme/css/ui-lightness/jquery-ui-1.10.0.custom.css'
                 'bundles/nitratheme/css/colorbox.css'
                 'bundles/nitratheme/css/admin.less' %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
@@ -15,12 +15,12 @@
         {% block javascript_head %}
             {# '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-' ~ app.session.locale ~ '.js' #}
             {% javascripts
-                '@NitraThemeBundle/Resources/public/js/jquery-1.7.2.js'
-                '@NitraThemeBundle/Resources/public/js/jquery-ui-1.8.18.custom.min.js'
+                '@NitraThemeBundle/Resources/public/js/jquery-1.9.0.js'
+                '@NitraThemeBundle/Resources/public/js/jquery-ui-1.10.0.custom.js'
                 '@NitraThemeBundle/Resources/public/js/i18n/jquery.ui.datepicker-ru.js'
                 '@NitraThemeBundle/Resources/public/js/common.js'
                 '@NitraThemeBundle/Resources/public/js/menu.js'
-                '@NitraThemeBundle/Resources/public/js/jquery.colorbox-min.js' %}
+                '@NitraThemeBundle/Resources/public/js/jquery.colorbox.js' %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
