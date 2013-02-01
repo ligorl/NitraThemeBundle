@@ -97,6 +97,8 @@ input[type="submit"].submit_button                  { .button_icon; }
 input[type="text"], input[type="password"], input[type="phone"], input[type="date"], input[type="number"], input[type="email"], 
 textarea, select        { .round_box; width: 500px; line-height: 1em; vertical-align: middle; color: #000; font-size: 1.1em; background: #fff;
      &:focus            { .focus_box }
+     &[readonly]        { border-color: #ddd; box-shadow: none; color: #555; }
+     &[disabled]        { border-color: #ddd; box-shadow: none; background-color: #fafafa; color: #999; }
 }
 input[type="password"]  { width: 200px; }
 input[type="phone"]     { width: 200px; }
@@ -127,18 +129,19 @@ a                       { .link; }
     td                  { padding: 2px 7px; height: 30px; border: 1px solid @color-border; vertical-align: middle; }
     tr:hover td         { background: #FFFFdd; }
     td.td_decimal       { white-space: nowrap; text-align: right; }
+    td.td_boolean       { text-align: center; }
     tr.row_total td     { background: #eaeaea; font-weight: bold; }
     tr.row_highlight td { background: #ffa; }
 }
 
 /* POPUP */
 .popup                  { display: none; 
-    .popup_arrow        { display: inline-block; width: 16px; height: 16px; cursor: pointer; background: url(../images/arrow-down.png) no-repeat; }
+    .popup_arrow        { display: inline-block; width: 15px; height: 15px; border: 1px solid #ddd; border-radius: 3px; cursor: pointer; background: @image-arrow 2px -35px no-repeat #fafafa; }
     .popup_content      { display: none; }
     &.popup_ready       { display: inline-block; position: relative; z-index: 1; }
     &.popup_active      { z-index: 1000;  }
     &.popup_active .popup_content    { display: block; z-index: 1000; position: absolute; top: 17px; left: 0px; padding: 8px; background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 2px 2px 4px #999;}
-    &.popup_active .popup_arrow      { background-image: url(../images/arrow-up.png); }
+    &.popup_active .popup_arrow      { background-position: 2px -16px; }
 }
 
 /* OTHER */
@@ -194,8 +197,8 @@ a                       { .link; }
     /* list table */
     table               { .table; 
         /* sorts */
-        th.sorted-asc a { display: inline-block; padding-right: 15px; background: @image-arrow right -55px no-repeat; }
-        th.sorted-desc a{ display: inline-block; padding-right: 15px; background: @image-arrow right -35px no-repeat; }
+        th.sort_asc a   { display: inline-block; padding-right: 15px; background: @image-arrow right -55px no-repeat; }
+        th.sort_desc a  { display: inline-block; padding-right: 15px; background: @image-arrow right -35px no-repeat; }
     }
 
     /* list actions */

@@ -1,0 +1,5 @@
+{% block column_boolean %}
+    {{ echo_if (builder.ModelClass ~ '.' ~ column.getter) }}
+        <b class="green">&#10004;</b>
+    {{ echo_endif () -}}
+{% endblock %}
