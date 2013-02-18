@@ -154,6 +154,25 @@ $Строка_отображения_во_время_набора_с_клави�
         </script>
 
     {% endspaceless %}
-
-
 {% endblock ajax_autocomplete_widget %}
+        
+        
+{% block double_list_widget %}
+{% spaceless %}
+    <script type="text/javascript" src="{{ asset('bundles/admingeneratorgenerator/javascripts/double_list.js') }}"></script>
+    <div class="double_list">
+        <div class="double_list_unselected">
+            {% include "AdmingeneratorGeneratorBundle:Form/DoubleList:unselected_list.html.twig" %}
+        </div>
+        <div class="double_list_links">
+            <a href="#" class="next" onclick="sfDoubleList.move('{{ form.get("id") }}_unselected','{{ form.get("id") }}_selected'); return false;"></a>
+            <br />
+            <a href="#" class="prev" onclick="sfDoubleList.move('{{ form.get("id") }}_selected','{{ form.get("id") }}_unselected'); return false;"></a>
+        </div>
+        <div class="double_list_selected">
+            {% include "AdmingeneratorGeneratorBundle:Form/DoubleList:selected_list.html.twig" %}
+        </div>
+        {% include "AdmingeneratorGeneratorBundle:Form/DoubleList:javascript.html.twig" %}
+    </div>
+{% endspaceless %}
+{% endblock %}

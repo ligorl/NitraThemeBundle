@@ -76,17 +76,22 @@ h3                      { font-size: 1.2em; }
 .button                 { .round_box; .gradient (#D4D4D4, #EEEEEE); display: inline-block; cursor: pointer; font-size: 1em; line-height: 1em; color: #333;
     &:hover             { .focus_box; .gradient (#C6CFD5, #E8F3F9); text-decoration: none; }
 }
-.button_icon            { .button; .gradient_icon (#D4D4D4, #EEEEEE); padding-left: 30px !important; 
+.button_icon            { .button; .gradient_icon (#D4D4D4, #EEEEEE); padding-left: 30px !important; min-height: 13px;
     &:hover             { .gradient_icon (#C6CFD5, #E8F3F9); }
     &.new               { background-position: 6px 4px, 0 0; }
-    &.filter            { background-position: 6px -25px, 0 0; }
     &.edit              { background-position: 6px -86px, 0 0; }
     &.delete            { background-position: 6px -116px, 0 0; }
+    &.filter            { background-position: 6px -25px, 0 0; }
     &.list              { background-position: 6px -146px, 0 0; }
     &.copy              { background-position: 6px -326px, 0 0; }
     &.print             { background-position: 6px -476px, 0 0; }
     &.payment           { background-position: 6px -566px, 0 0; }
     &.save              { background-position: 6px -686px, 0 0; }
+    &.invoice           { background-position: 6px -536px, 0 0; }
+    &.act               { background-position: 6px -716px, 0 0; }
+    &.tool              { background-position: 6px -776px, 0 0; }
+    &.next              { background-position: 6px -806px, 0 0; }
+    &.prev              { background-position: 6px -146px, 0 0; }
 }
 
 input[type="button"], input[type="submit"], button  { .button; height: 26px; } /* for Firefox */ body:not(:-moz-handler-blocked) input[type="button"], input[type="submit"], button { padding: 2px !important; } 
@@ -94,7 +99,7 @@ input[type="submit"].submit_button                  { .button_icon; }
 
 
 /* INPUTS */
-input[type="text"], input[type="password"], input[type="phone"], input[type="date"], input[type="number"], input[type="email"], 
+input[type="text"], input[type="password"], input[type="phone"], input[type="date"], input[type="number"], input[type="email"], input[type="file"],
 textarea, select        { .round_box; width: 500px; line-height: 1em; vertical-align: middle; color: #000; font-size: 1.1em; background: #fff;
      &:focus            { .focus_box }
      &[readonly]        { border-color: #ddd; box-shadow: none; color: #555; }
@@ -120,6 +125,11 @@ select                  { width: auto; max-width: 600px; }
     &.list              { background-position: 0px -150px; }
     &.copy              { background-position: 0px -330px; }
     &.payment           { background-position: 0px -570px; }
+    &.invoice           { background-position: 0px -540px; }
+    &.act               { background-position: 0px -720px; }
+    &.tool              { background-position: 0px -780px; }
+    &.next              { background-position: 0px -810px; }
+    &.prev              { background-position: 0px -150px; }
 }
 a                       { .link; }
 
@@ -142,12 +152,14 @@ a                       { .link; }
     &.popup_active      { z-index: 1000;  }
     &.popup_active .popup_content    { display: block; z-index: 1000; position: absolute; top: 17px; left: 0px; padding: 8px; background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 2px 2px 4px #999;}
     &.popup_active .popup_arrow      { background-position: 2px -16px; }
+    &.popup_right  .popup_content    { left: auto; right: 0px; }
 }
 
 /* OTHER */
 .red                    { color: #d70000; }
 .green                  { color: #009900; }
 .ar                     { text-align: right; }
+.ac                     { text-align: center; }
 
 /************************** Header ************************************/
 
@@ -220,7 +232,8 @@ a                       { .link; }
 
 
 /* Forms */
-.form_block             { 
+.form_block             {
+    legend              { display: block; margin-left: 220px; padding: 20px 0 5px 0; font-size: 1.3em; color: #999; }
     .form_row           { padding: 7px 0px; 
         label           { display: inline-block; width: 200px; padding: 5px 20px 0 0; text-align: right; font-weight: normal; vertical-align: top; }
         .field_content  { display: inline-block; vertical-align: top; 
@@ -229,9 +242,16 @@ a                       { .link; }
             .help       { display: block; padding: 5px 0; color: #999; font-style: italic; }
         }
     }
+    .double_list        { 
+        div             { display: inline-block; vertical-align: top; }
+        div.double_list_label { display: block; padding-bottom: 5px; }
+        div.double_list_links { padding-top: 15px; }
+        select          { width: 250px; height: 100px }
+        a               { .button_icon; padding-left: 20px !important; margin: 5px; }
+    }
     .field_number input                 { width: 100px; }
     .field_amount input[type="text"]    { width: 100px; }
-    .field_jquery_date input            { width: 100px; }
+    .field_content input.hasDatepicker  { width: 100px; }
 }
 
 /* form actions */
