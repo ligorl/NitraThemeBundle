@@ -87,6 +87,8 @@ h3                      { font-size: 1.2em; }
     &.print             { background-position: 6px -476px, 0 0; }
     &.payment           { background-position: 6px -566px, 0 0; }
     &.save              { background-position: 6px -686px, 0 0; }
+    &.save-and-list     { background-position: 6px -686px, 0 0; }
+    &.save-and-add      { background-position: 6px -686px, 0 0; }
     &.invoice           { background-position: 6px -536px, 0 0; }
     &.act               { background-position: 6px -716px, 0 0; }
     &.tool              { background-position: 6px -776px, 0 0; }
@@ -248,7 +250,7 @@ a                       { .link; }
         div             { display: inline-block; vertical-align: top; }
         div.double_list_label { display: block; padding-bottom: 5px; }
         div.double_list_links { padding-top: 15px; }
-        select          { width: 250px; height: 100px }
+        select          { width: 250px; height: 100px; }
         a               { .button_icon; padding-left: 20px !important; margin: 5px; }
     }
     .field_number input                 { width: 100px; }
@@ -259,8 +261,8 @@ a                       { .link; }
 /* form actions */
 .admin_form             {
     .actions            { display: inline-block; padding: 10px 0 0 220px; vertical-align: middle;
-        a               { margin-left: 10px; }
-        input.submit_button { color: #000; font-weight: bold; background-position: 6px -686px, 0 0; }
+        a               { margin-right: 10px; }
+        input           { .button_icon; margin-right: 10px; color: #000; font-weight: bold; }
     }
 }
 
