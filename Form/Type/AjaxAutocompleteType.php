@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  *
@@ -89,9 +89,13 @@ class AjaxAutocompleteType extends AbstractType
 
     }
 
-    public function getDefaultOptions(array $options)
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $options = array(
+        $resolver->setDefaults(array(
             'autocompleteActionRouting' => '',    // Роутинг на контроллер, который будет отдавать данные для списка
             'afterItemSelectJavascript' => '',   // Дополнительные Javascript действия после выбора из списка
             'extraParamsString' => '',            // Дополнительные Get-параметры отсылаемые в Controller
@@ -99,9 +103,7 @@ class AjaxAutocompleteType extends AbstractType
             'deferRequestBy' => 10,                 // Задержка запроса (мсек), на случай, если мы не хотим слать миллион запросов, пока пользователь печатает.
             'maxHeight' => 400,                     // Максимальная высота списка подсказок, в пикселях
             'width' => 300                          // Ширина списка
-        );
-
-        return $options;
+        ));
     }
 
     public function getName()
