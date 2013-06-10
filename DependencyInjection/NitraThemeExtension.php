@@ -16,7 +16,7 @@ class NitraThemeExtension extends Extension
         $loader->load('services.yml');
 
         $container->setParameter('admingenerator.fieldguesser.doctrine.class', 'Nitra\NitraThemeBundle\Guesser\NitraFieldGuesser');
-        
+
         // add NitraTheme form fields template
         $resources = $container->getParameter('twig.form.resources');
         $resources[] = 'NitraThemeBundle:Form:fields.html.twig';

@@ -9,7 +9,7 @@
                     {% if action.conditionalFunction %}
                         {{ echo_if ((action.conditionalInverse == 'true' ? 'not ' : '') ~ builder.ModelClass ~ "." ~ action.conditionalFunction) }}
                     {% endif %}
-                 
+
                     {% set actionRoute  = action.route ? action.route : (builder.routePrefixWithSubfolder ~ '_' ~ bundle_name ~ (builder.BaseGeneratorName ? "_" ~ builder.BaseGeneratorName : "") ~ '_' ~ action.name) %}
                     {% set actionParams = action.route ? null : ("{ 'pk': " ~ builder.ModelClass ~ "." ~ builder.getFieldGuesser().getModelPrimaryKeyName(model) ~ " }") %}
 

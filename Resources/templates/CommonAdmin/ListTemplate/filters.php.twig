@@ -9,7 +9,7 @@
                 {% if builder.filterColumns[field.name].credentials %}
                       {{ echo_if_granted(builder.filterColumns[field.name].credentials) }}
                 {% endif %}
-                
+
                 {{ echo_twig("form_row(form['" ~ field.name ~ "'])") }}
 
                 {% if builder.filterColumns[field.name].credentials %}
@@ -22,7 +22,7 @@
             <input type="submit" class="submit_button" value="{{ echo_trans('list.button.filter') }}" />
             <input type="submit" class="reset_button" name="reset" value="{{ echo_trans('list.button.reset') }}" />
         </div>
-    </form>    
+    </form>
 </div>
 {{ echo_endblock() }}
 {% endblock %}

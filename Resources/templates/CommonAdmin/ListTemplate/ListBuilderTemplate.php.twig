@@ -28,7 +28,7 @@
     {{- block('title') -}}
 
     <div class="admin_list main_content{% if builder.filterColumns|length == 0 %} full_size{% endif %}">
-        
+
         {{- block('list_scopes') -}}
         {{- block('list_nbresults') -}}
         {{- block('form_batch_actions') }}
@@ -45,7 +45,7 @@
     </div>
 
     {{ echo_block("filters") }}
-        {% if builder.filterColumns|length > 0 %}                 
+        {% if builder.filterColumns|length > 0 %}
             {{- block('list_filters') -}}
         {% endif %}
     {{ echo_endblock() }}

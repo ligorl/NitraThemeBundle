@@ -28,7 +28,7 @@
     <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
 {% endspaceless %}
 {% endblock form_label %}
-    
+
 {% block form_errors %}
 {% spaceless %}
     {% if errors|length > 0 %}
@@ -44,7 +44,7 @@
     {% endif %}
 {% endspaceless %}
 {% endblock form_errors %}
-    
+
 {% block form_help %}
 {% spaceless %}
     {% if help %}
@@ -54,7 +54,7 @@
     {% endif %}
 {% endspaceless %}
 {% endblock form_help %}
-    
+
 
 {# --- FORM ROWS --- #}
 
@@ -95,7 +95,7 @@
         {{ form_widget(form.name) }}
         {{ form_widget(form.id) }}
     {% endspaceless %}
-        
+
     {% stylesheets '@NitraThemeBundle/Resources/public/css/jquery.autocomplete.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -155,8 +155,8 @@ $Строка_отображения_во_время_набора_с_клави�
 
     {% endspaceless %}
 {% endblock ajax_autocomplete_widget %}
-        
-  
+
+
 {% block double_list_widget %}
 {% spaceless %}
     <script type="text/javascript" src="{{ asset('bundles/admingeneratorgenerator/javascripts/double_list.js') }}"></script>

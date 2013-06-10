@@ -50,7 +50,7 @@ class NitraFieldGuesser extends DoctrineORMFieldGuesser
 
         return $options;
     }
-    
+
     public function getFilterType($dbType, $columnName)
     {
         if (in_array($dbType, array('date', 'datetime', 'vardatetime', 'datetimetz'))) {

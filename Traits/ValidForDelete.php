@@ -2,7 +2,6 @@
 
 namespace Nitra\NitraThemeBundle\Traits;
 
-
 trait ValidForDelete
 {
     /**
@@ -15,7 +14,7 @@ trait ValidForDelete
         $reflectionClass = new \ReflectionClass($this);
 
         $return = true;
-       
+
         foreach ($reflectionClass->getProperties() as $property) {
             $property->setAccessible(true);
             $value = $property->getValue($this);
