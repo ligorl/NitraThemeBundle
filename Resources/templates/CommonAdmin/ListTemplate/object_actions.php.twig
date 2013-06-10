@@ -9,10 +9,16 @@
                     {% if action.conditionalFunction %}
                         {{ echo_if ((action.conditionalInverse == 'true' ? 'not ' : '') ~ builder.ModelClass ~ "." ~ action.conditionalFunction) }}
                     {% endif %}
+                 
+                    {% set actionRoute  = action.route ? action.route : (builder.routePrefixWithSubfolder ~ '_' ~ bundle_name ~ (builder.BaseGeneratorName ? "_" ~ builder.BaseGeneratorName : "") ~ '_' ~ action.name) %}
+                    {% set actionParams = action.route ? null : ("{ 'pk': " ~ builder.ModelClass ~ "." ~ builder.getFieldGuesser().getModelPrimaryKeyName(model) ~ " }") %}
 
-                    <a class="{{ action.name }} {{ action.class|default('') }}" title="{{ echo_trans(action.label) }}" href="{{ echo_path((action.route ? action.route : builder.routePrefixWithSubfolder ~ '_' ~ bundle_name ~ ( builder.BaseGeneratorName ? "_" ~ builder.BaseGeneratorName : "" ) ~ '_' ~ action.name), "{ 'pk': " ~ builder.ModelClass ~ "." ~ builder.ModelPrimaryKeyName ~ " }") }}"
-                      {% if action.confirm %} data-confirm="{{ echo_trans(action.confirm) }}"{% endif %} >
+                    {{ echo_block("list_object_action_" ~ action.name) }}
+                    <a class="{{ action.name }} {{ action.class|default('') }}" title="{{ echo_trans(action.label) }}" data-action="{{ echo_path(actionRoute, actionParams) }}"
+                      {%- if action.confirm %} data-confirm="{{ echo_trans(action.confirm) }}"{% endif %}
+                      {%- if action.csrfProtected %} data-csrf-token="{{ echo_path(actionRoute, actionParams, ['csrf_token']) }}" {% endif -%} >
                     </a>
+                    {{ echo_endblock() }}
 
                     {% if action.conditionalFunction %}
                         {{ echo_endif () }}
