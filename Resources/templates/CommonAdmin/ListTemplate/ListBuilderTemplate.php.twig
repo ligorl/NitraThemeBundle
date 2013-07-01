@@ -33,14 +33,16 @@
         {{- block('list_nbresults') -}}
         {{- block('form_batch_actions') }}
 
-        <table>
+        <table id="table-list-{{ builder.ModelClass }}">
             {{ block('list_thead') -}}
             {{- block('list_tbody') }}
         </table>
 
-        {{- block('list_paginator') -}}
+        {{- block('list_paginator_pages') -}}
         {{- block('list_batch_actions') -}}
-        {{- block('list_actions') -}}
+        <div id="generic_actions" class="actions list_actions">
+            {{ block('list_actions') -}}
+        </div>
         {{- block('endform_batch_actions') }}
     </div>
 
