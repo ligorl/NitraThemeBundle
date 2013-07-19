@@ -1,13 +1,6 @@
 {% use '../CommonAdmin/title.php.twig' %}
 {% use '../CommonAdmin/stylesheets.php.twig' %}
 {% use '../CommonAdmin/javascripts.php.twig' %}
-{% use '../CommonAdmin/ListTemplate/nbresults.php.twig' %}
-{% use '../CommonAdmin/ListTemplate/thead.php.twig' %}
-{% use '../CommonAdmin/ListTemplate/tbody.php.twig' %}
-{% use '../CommonAdmin/ListTemplate/paginator.php.twig' %}
-{% use '../CommonAdmin/ListTemplate/actions.php.twig' %}
-{% use '../CommonAdmin/ListTemplate/batch_actions.php.twig' %}
-{% use '../CommonAdmin/ListTemplate/filters.php.twig' %}
 {% use '../CommonAdmin/ListTemplate/scopes.php.twig' %}
 
 {{ echo_extends( builder.getBaseAdminTemplate ) }}
@@ -18,8 +11,7 @@
 
 {{ echo_block("javascripts") }}
     {{- block('complementary_javascripts') -}}
-
-   <script src="{{ echo_twig('asset("bundles/admingeneratorgenerator/js/admingenerator/batch-actions.js")') }}"></script>
+    <script src="{{ echo_twig('asset("bundles/admingeneratorgenerator/js/admingenerator/general.js")') }}"></script>
 {{ echo_endblock() }}
 
 {{- block('site_title') -}}
@@ -30,9 +22,8 @@
     <div class="admin_list main_content{% if builder.filterColumns|length == 0 %} full_size{% endif %}">
 
         {{- block('list_scopes') -}}
-        {{- block('list_nbresults') -}}
-        {{- block('form_batch_actions') }}
-
+        {{ echo_include(builder.namespacePrefixForTemplate ~ bundle_name ~ ':' ~ builder.BaseGeneratorName ~ 'List:results.html.twig') }}
+{#
         <table id="table-list-{{ builder.ModelClass }}">
             {{ block('list_thead') -}}
             {{- block('list_tbody') }}
@@ -44,11 +35,12 @@
             {{ block('list_actions') -}}
         </div>
         {{- block('endform_batch_actions') }}
+#}
     </div>
 
     {{ echo_block("filters") }}
         {% if builder.filterColumns|length > 0 %}
-            {{- block('list_filters') -}}
+            {{ echo_include(builder.namespacePrefixForTemplate ~ bundle_name ~ ':' ~ builder.BaseGeneratorName ~ 'List:filters.html.twig') }}
         {% endif %}
     {{ echo_endblock() }}
 {{ echo_endblock() }}
