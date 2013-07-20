@@ -2,9 +2,11 @@
 
 namespace Nitra\NitraThemeBundle\Form\Type;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DateRangeType extends \Admingenerator\GeneratorBundle\Form\Type\DateRangeType
+class DateRangeType extends AbstractType
 {
 
     /**
@@ -31,4 +33,37 @@ class DateRangeType extends \Admingenerator\GeneratorBundle\Form\Type\DateRangeT
                 ->add('to', new DateType(), $options['to']);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent()
+    {
+        return 'form';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+
+        $years = range(date('Y'), date('Y') - 120);
+
+        $resolver->setDefaults(
+            array(
+            'format' => null,
+            'years'  => $years,
+            'to'     => array('years' => $years, 'widget' => 'choice'),
+            'from'   => array('years' => $years, 'widget' => 'choice'),
+            'widget' => 'choice')
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return 'date_range';
+    }
 }
