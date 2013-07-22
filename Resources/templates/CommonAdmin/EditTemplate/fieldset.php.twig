@@ -1,4 +1,4 @@
-{% block form_fieldset %}
+{% block form_fieldset %} 
 {{ echo_block("form_fieldset_" ~ fieldset|classify|replace({'.': '_'})) }}
     <fieldset class="form_block form_fieldset_{{ fieldset|classify|replace({'.': '_'}) }} fieldset_tabbable">
         {% if "NONE" != fieldset %}

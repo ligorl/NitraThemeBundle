@@ -209,7 +209,7 @@ a                       { .link; }
 .actions a              { .button_icon; }
 
 /* Admingenerator list */
-.admin_list             { min-height: 500px; margin-right: 225px; overflow-x: auto;
+.admin_list             { min-height: 500px; margin-right: 225px; overflow-x: auto; overflow-y: none;
     /* list table */
     table               { .table; 
         /* sorts */
@@ -229,8 +229,9 @@ a                       { .link; }
 
     /* pager */
     div.pagination      { .absolute_right (45px, 235px); 
-         li             { .menu (#ddd, #eee, 70%, #999); display: inline-block; margin-left: 5px; }
-         a              { padding: 2px 7px; font-size: 0.95em;}
+         li             { .menu (#ddd, #eee, 70%, #999); display: inline-block; margin-left: 5px; 
+            a           { padding: 2px 7px; font-size: 0.95em;}
+         }
     }
 }
 
