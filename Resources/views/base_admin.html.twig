@@ -20,6 +20,13 @@
                 '@NitraThemeBundle/Resources/public/js/menu.js'
                 '@NitraThemeBundle/Resources/public/js/jquery.colorbox.js' %}
                 <script src="{{ asset_url }}"></script>
+                <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+                <!--[if lt IE 9]>
+                    <script src="{{ asset('components/html5shiv/html5shiv/html5shiv.js') }}"></script>
+                <![endif]-->
+                <!--[if lte IE 7]>
+                    <script src="{{ asset('components/admingeneratorgenerator/js/elusive-iconfont/lte-ie7.js') }}"></script>
+                <![endif]-->
             {% endjavascripts %}
             
             {# Календарь перевод #}
@@ -38,43 +45,54 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <div class="header">
-            {% block header %}
+        <div class="wrapper">
+            <div class="header">
+                {% block header %}
+                    {% block logo %}
+                        <a class="logo" href="" title="{{ 'АВК'|trans({}, 'Admingenerator') }}">{% block brand_text %}{% endblock %}</a>  
+                    {% endblock %}
 
-                {% block logo %}
-                {% endblock %}
-
-                {% block profile %}
-                <div class="profile">
-                    <a href="#">{{ app.user }}</a>
-                    <a class='logout' href="{{ path('fos_user_security_logout') }}">Вихід</a>
-                </div>
-                {% endblock %}
-
-                {% block menu %}
-                <div class="main_menu">
-                     {{ millwright_menu_render('main') }}
-                </div>
-                {% endblock %}
-
-            {% endblock %}
-        </div>
-
-        {% block flashes %}
-            {% for type, flashMessages in app.session.flashbag.all() %}
-                {% for flashMessage in flashMessages %}
-                    <div class="notification_box {{ type }}">
-                        {{ flashMessage }}
+                    {% block profile %}
+                    <div class="profile">
+                        <a href="#">{{ app.user }}</a>
+                        <a class='logout' href="{{ path('fos_user_security_logout') }}">Вихід</a>
                     </div>
+                    {% endblock %}
+
+                    {% block menu %}
+                    <div class="main_menu">
+                         {{ millwright_menu_render('main') }}
+                    </div>
+                    {% endblock %}
+
+                {% endblock %}      
+            </div>
+
+            {% block flashes %}
+                {% for type, flashMessages in app.session.flashbag.all() %}
+                    {% for flashMessage in flashMessages %}
+                        <div class="notification_box {{ type }}">
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-        {% endblock %}
+            {% endblock %}
 
-        <div class="content">
-            {% block body %}{% endblock %}
-        </div>
-
+            <div class="content">
+                {% block body %}{% endblock %}
+            </div>
+        </div>    
+        {% block footer %}
+            <footer>
+              <p>{% block footer_text %}&copy; NitraLabs {{ ("now"|date('Y') > 2012) ? '2013 - ' ~ "now"|date('Y') : '2013' }}{% endblock %}</p>
+            </footer>
+        {% endblock %}    
         {% block javascripts %}
+            {% javascripts filter='?yui_js' output='assetic/js/compiled/admingenerator/bootstrap.min.js'
+                'components/bootstrap/js/bootstrap.min.js'
+            %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
         {% endblock %}
     </body>
 </html>

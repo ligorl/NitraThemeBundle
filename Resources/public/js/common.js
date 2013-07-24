@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    
+        //remove class active in current li
+    $('.main_menu li').removeClass('active');
     // Colorbox link
     $('.colorbox').colorbox();
     

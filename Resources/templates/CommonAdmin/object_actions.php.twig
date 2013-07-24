@@ -49,7 +49,7 @@
 
     {% spaceless %}
     {{ echo_spaceless() }}
-    <a  class="{{ action.name }} {{ action.class|default('') }}" href="{{ echo_path(actionRoute, actionParams) }}" 
+    <a  class="btn-mini {{ action.name }} {{ action.class|default('') }}" href="{{ echo_path(actionRoute, actionParams) }}" 
         title="{{ echo_trans(action.label, {}, translationDomain) }}"
         {%- if action.confirm %} data-confirm="{{ echo_trans(action.confirm, {}, translationDomain) }}" {% endif -%}
         {%- if action.csrfProtected %} data-csrf-token="{{ echo_path(actionRoute, actionParams, ['csrf_token']) }}" {% endif -%}>

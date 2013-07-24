@@ -1,16 +1,23 @@
 $(document).ready(function(){
-    $('.main_menu > ul > li').click(function(){
-        $(this).addClass('active').siblings('li.active').removeClass('active');  
-        // add class if menu has submenu
-        if ($(this).children('ul').length > 0) {
-            $('.main_menu').addClass('has_submenu');
-        } else {
-            $('.main_menu').removeClass('has_submenu');
-        }
-    })
+    //hide sub_menu on click in another place
+    jQuery('html').click(function() { 
+        $('.main_menu li').children('ul').css('display','none');  
+    });
     
-    // first display
-    if ($('.main_menu .active').children('ul').length > 0) {
-        $('.main_menu').addClass('has_submenu');
-    }
+    $('.main_menu > ul > li').click(function(event){
+        event.stopPropagation(); 
+        
+        if ($(this).children('ul').is(":hidden")) {
+            $('.main_menu li').removeClass('active');
+            $('.main_menu li').children('ul').css('display','none'); 
+            $(this).addClass('active');
+            $(this).children('ul').css('display','block');
+        }
+        else {
+            $(this).children('ul').css('display','none');
+            $(this).removeClass('active');
+        }
+               
+    });
+    
 });

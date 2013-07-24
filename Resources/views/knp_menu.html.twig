@@ -1,3 +1,9 @@
 {% extends 'MillwrightMenuBundle:Default:knp_menu.html.twig' %}
 
-{% block spanElement %}<span class="link">{{ block('label') }}</span>{% endblock %}
+{% block spanElement %}
+<a href="#" class="link">
+    {{ block('label') }}
+</a>
+{% endblock %}
+
+{% block label %}<span class="icon {{ item.label }}"></span> {{ parent() }}{% endblock %}

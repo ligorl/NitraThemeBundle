@@ -12,15 +12,24 @@
 {{ echo_block("javascripts") }}
     {{- block('complementary_javascripts') -}}
     <script src="{{ echo_twig('asset("bundles/admingeneratorgenerator/js/admingenerator/general.js")') }}"></script>
+    <script>
+        $(document).ready(function(){
+
+        })
+    </script>
 {{ echo_endblock() }}
 
 {{- block('site_title') -}}
 
 {{ echo_block("body") }}
-    {{- block('title') -}}
-
+    {{- block('title') -}}           
     <div class="admin_list main_content{% if builder.filterColumns|length == 0 %} full_size{% endif %}">
-
+         {{ echo_block("filter_button") }}
+            {% if builder.filterColumns|length > 0 %}
+                <a class="btn-filter btn" onclick="$('.filters').show();"><i class="icon-search icon-white"></i> {{ echo_trans('list.filters') }}</a>
+            {% endif %}
+        {{ echo_endblock() }} 
+             
         {{- block('list_scopes') -}}
         {{ echo_include(builder.namespacePrefixForTemplate ~ bundle_name ~ ':' ~ builder.BaseGeneratorName ~ 'List:results.html.twig') }}
 {#
@@ -37,10 +46,12 @@
         {{- block('endform_batch_actions') }}
 #}
     </div>
-
+    
     {{ echo_block("filters") }}
         {% if builder.filterColumns|length > 0 %}
             {{ echo_include(builder.namespacePrefixForTemplate ~ bundle_name ~ ':' ~ builder.BaseGeneratorName ~ 'List:filters.html.twig') }}
         {% endif %}
     {{ echo_endblock() }}
 {{ echo_endblock() }}
+    
+    
