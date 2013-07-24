@@ -93,7 +93,7 @@ footer                                { padding: 5px 20px; background: #DFDFE0; 
 
 /* BUTTONS */
 
-.btn                                        { padding: 8px 20px 8px 15px; .border(#afafaf); .gradient(#ccc,#f6f6f6); display: inline-block; font-size: 14px; color: #606060; text-shadow: 0 1px 0 #fff; border-radius: 4px; line-height: 20px;
+.btn                                        { padding: 8px 20px 8px 15px; .border(#afafaf); .gradient(#ccc,#f6f6f6); display: inline-block; font-size: 14px; color: #606060; text-shadow: 0 1px 0 #fff; border-radius: 4px; line-height: 20px; cursor: pointer;
      &.btn-filter                           { position: relative; float: right; margin: 0 0px 10px 0;  } 
      &:hover,&:focus,&:active               { text-decoration: none; background: transparent; .gradient(#f6f6f6,#e6e6e6); color: #444; }
      i                                      { display: inline-block; width: 16px; height: 16px; vertical-align: middle; background: url(../images/icon_sprite.png) no-repeat;
@@ -183,7 +183,7 @@ a                       { .link; }
 
 .header                                      { padding: 0; background: #eee url(../images/carbon_bg.png);
     .logo                                    { display: block; float: left; width: 105px; height: 55px; margin: 20px 5px 0px 10px; background: url(../images/logo.png) no-repeat; }
-    div.logo                                 { display: inline-block; margin: 0; float: none; padding: 20px 5px 0px 10px; background: url(../images/logo.png) 10px 15px no-repeat; }
+    div.logo                                 { display: inline-block; margin: 0; float: none; padding: 0; background: url(../images/logo.png) 10px 6px no-repeat; }
         .profile                             { float: right; background: transparent; padding: 15px 5px; text-align: right; 
             a                                { line-height: 20px; color: #eee; font-size: 15px; padding-right: 10px; 
                 &.logout                     { display: block; background: url(../images/icon_sprite.png) 100% -22px no-repeat; padding: 0px 25px 5px 0px !important; color: #eee; border: none; text-decoration: underline; 
@@ -218,8 +218,8 @@ a                       { .link; }
         }
            
             ul                               { display: none; .absolute_left(64px,-2px); padding: 5px 0; width: auto;  background: #fff; background-clip: padding-box; border-radius: 6px; border: 1px solid rgba(0,0,0,0.2); box-shadow: 0 5px 10px rgba(0,0,0,0.2); z-index: 1000; 
-                li                           { display: block; min-width: 200px; width: 100%; height: auto; border: none; background: transparent; text-align: left; 
-                    a                        { padding: 3px 20px 3px 6px; color: #777; white-spice: nowrap; line-height: 20px; 
+                li                           { display: block; min-width: 200px; width: auto; height: auto; border: none; background: transparent; text-align: left; 
+                    a                        { padding: 3px 20px 3px 6px; color: #777; white-space: nowrap; line-height: 20px; 
                         .icon                   { display: inline-block; vertical-align: bottom; margin: 0 10px 0 0; width: 20px; height: 20px; background: #fff url(../images/avk_icons_nav.png) 0px 0px no-repeat; 
                         &.sku_presenter         { background-position: -0px -20px; }
                         &.sku_global            { background-position: -40px -180px; }
@@ -412,7 +412,7 @@ a                       { .link; }
 }
 
 /* Filters */
-.filters                { display: none; .absolute_right(90px,20px); margin: 0; padding-left: 1.26%; width: 600px; background: #fff; .border; .box-shadow; max-height: 300px; overflow-y: auto; overflow-x: hidden; background: #fff;
+.filters                { display: none; .absolute_right(90px,20px); margin: 0; padding-left: 1.26%; width: 600px; background: #fff; .border; .box-shadow; max-height: 800px; overflow-y: auto; overflow-x: hidden; background: #fff;
     .close              { .absolute_right(10px,10px); width: 18px; height: 18px; opacity: 1; background: url(../images/close.png) no-repeat;
         &:hover         { background-position: 0px -26px;}
      }    
