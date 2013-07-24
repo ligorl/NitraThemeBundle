@@ -183,6 +183,7 @@ a                       { .link; }
 
 .header                                      { padding: 0; background: #eee url(../images/carbon_bg.png);
     .logo                                    { display: block; float: left; width: 105px; height: 55px; margin: 20px 5px 0px 10px; background: url(../images/logo.png) no-repeat; }
+    div.logo                                 { display: inline-block; margin: 0; float: none; padding: 20px 5px 0px 10px; background: url(../images/logo.png) 10px 15px no-repeat; }
         .profile                             { float: right; background: transparent; padding: 15px 5px; text-align: right; 
             a                                { line-height: 20px; color: #eee; font-size: 15px; padding-right: 10px; 
                 &.logout                     { display: block; background: url(../images/icon_sprite.png) 100% -22px no-repeat; padding: 0px 25px 5px 0px !important; color: #eee; border: none; text-decoration: underline; 
@@ -206,7 +207,8 @@ a                       { .link; }
                     &.menu_root_equipment    { background-position: 0 -160px; }
                     &.menu_root_document     { background-position: 0 -192px; }
                     &.menu_root_task         { background-position: 0 -224px; }
-                    &.menu_root_employee     { background-position: 0 -256px; }
+                    &.menu_root_employee     { background-position: 0 -288px; }
+                    &.menu_root_user         { background-position: 0 -256px; }
               } 
           }
           &:hover, &.active, &.current       { text-decoration: none;
@@ -216,7 +218,7 @@ a                       { .link; }
         }
            
             ul                               { display: none; .absolute_left(64px,-2px); padding: 5px 0; width: auto;  background: #fff; background-clip: padding-box; border-radius: 6px; border: 1px solid rgba(0,0,0,0.2); box-shadow: 0 5px 10px rgba(0,0,0,0.2); z-index: 1000; 
-                li                           { display: block; min-width: 200px; width: auto; height: auto; border: none; background: transparent; text-align: left; 
+                li                           { display: block; min-width: 200px; width: 100%; height: auto; border: none; background: transparent; text-align: left; 
                     a                        { padding: 3px 20px 3px 6px; color: #777; white-spice: nowrap; line-height: 20px; 
                         .icon                   { display: inline-block; vertical-align: bottom; margin: 0 10px 0 0; width: 20px; height: 20px; background: #fff url(../images/avk_icons_nav.png) 0px 0px no-repeat; 
                         &.sku_presenter         { background-position: -0px -20px; }
@@ -417,8 +419,8 @@ a                       { .link; }
     legend              { display: block; width: 100%; padding: 10px 0px; color: #000; text-align: left; }
     .form_row           { padding: 5px 0px; 
         label           { float: left; width: 200px; text-align: left; }
-        input           { width: 340px; margin-bottom: 10px; }
-        select          { width: 356px; margin-bottom: 10px; }
+        input           { width: 340px; }
+        select          { width: 356px; }
     }        
     .actions            { padding: 5px 0 20px 0; 
         input[type="submit"].submit_button  { background-position: 6px -25px, 0 0; }
