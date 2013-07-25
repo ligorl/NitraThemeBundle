@@ -1,7 +1,8 @@
 $(document).ready(function(){
     //hide sub_menu on click in another place
     jQuery('html').click(function() { 
-        $('.main_menu li').children('ul').css('display','none');  
+        $('.main_menu li').children('ul').css('display','none');
+        $('.main_menu li').removeClass('active');
     });
     
     $('.main_menu > ul > li').click(function(event){
