@@ -94,7 +94,7 @@ footer                                { padding: 5px 20px; background: #DFDFE0; 
 /* BUTTONS */
 
 .btn                                        { padding: 8px 20px 8px 15px; .border(#afafaf); .gradient(#ccc,#f6f6f6); display: inline-block; font-size: 14px; color: #606060; text-shadow: 0 1px 0 #fff; border-radius: 4px; line-height: 20px; cursor: pointer;
-     &.btn-filter                           { position: relative; float: right; margin: 0 0px 10px 0;  } 
+     &.btn-filter                           { position: relative; float: right; margin: 0 0px 10px 10px;  } 
      &:hover,&:focus,&:active               { text-decoration: none; background: transparent; .gradient(#f6f6f6,#e6e6e6); color: #444; }
      i                                      { display: inline-block; width: 16px; height: 16px; vertical-align: middle; background: url(../images/icon_sprite.png) no-repeat;
         &.icon-search                       { background-position: -4px -270px; }
@@ -351,10 +351,9 @@ a                       { .link; }
     }
 
     /* list actions */
-    .list_actions       { text-align: right; margin-left: 300px; }
+    .list_actions       { float: right; text-align: right; margin: -22px 0 10px 10px; }
     
 
-    .new                { .absolute_right(0,126px)}
     /* row actions */
     td.actions          { width: 1%; white-space: nowrap;
          a              { padding-left: 20px !important; height: 13px; }
