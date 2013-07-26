@@ -219,7 +219,7 @@ a                       { .link; }
         }
            
             ul                               { display: none; .absolute_left(64px,-2px); padding: 5px 0; width: auto;  background: #fff; background-clip: padding-box; border-radius: 6px; border: 1px solid rgba(0,0,0,0.2); box-shadow: 0 5px 10px rgba(0,0,0,0.2); z-index: 1000; 
-                li                           { display: block; min-width: 200px; width: auto; height: auto; border: none; background: transparent; text-align: left; 
+                li                           { display: block; width: auto; height: auto; border: none; background: transparent; text-align: left; 
                     a                        { padding: 3px 20px 3px 6px; color: #777; white-space: nowrap; line-height: 20px; 
                         .icon                   { display: inline-block; vertical-align: bottom; margin: 0 10px 0 0; width: 20px; height: 20px; background: #fff url(../images/avk_icons_nav.png) 0px 0px no-repeat; 
                         &.sku_presenter         { background-position: -0px -20px; }
@@ -510,7 +510,7 @@ a                       { .link; }
         legend                                 { padding: 5px 0; margin: 0 auto; font-size: 13px; line-height: 40px; color: #455665; font-weight: bold; text-align: left; border-bottom: #e5e5e5; } 
         .form_row                              {
         .field_content                         { width: 50%; }
-            label                              { width: 150px; text-align: left; }
+            label                              { width: 150px; text-align: left; padding-bottom: 4px; }
             input                              { width: 93%; }
             select                             { width: 100%; }
         }
@@ -566,4 +566,43 @@ a                       { .link; }
     }
 }
 .form_fieldset_Tab_pos_payment                  { width: 40%; float: right; } 
+
+
+/***********Tree table******************/
+.tree-table                                     {
+    tbody                                       {
+            tr                                  {
+                td                              { padding: 6px 7px; }
+                .count                          { font-weight: bold; margin-right: 5px; font-size: 12px; 
+                    &.null                      { color: #999; }
+                }
+                td:first-child                  { background: url(../images/tree.png) no-repeat; }
+                &.collapsed                     {
+                   td:first-child               { 
+                    i                           { background: url(../images/arrows-sprite.png) 0px -956px; display: inline-block; width: 16px; height: 12px; }
+                } 
+                }
+                &.expanded                      {
+                    td:first-child              { 
+                        i                       { background: url(../images/arrows-sprite.png) 0px -981px no-repeat;  display: inline-block; width: 16px; height: 12px; }
+                    }
+                }
+                &.level_1                       { 
+                    td:first-child              { padding-left: 40px !important; background-position: 10px 2px; }
+                }
+                &.level_2                       { 
+                    td:first-child              { padding-left: 80px !important; background-position: 50px -49px; }
+                }
+                &.level_3                       { 
+                    td:first-child              { padding-left: 120px !important; background-position: 90px -102px; }
+                }
+                &.level_4                       { 
+                    td:first-child              { padding-left: 160px !important; background-position: 130px -153px; }
+                }
+                &.level_5                       {
+                    td:first-child              { padding-left: 200px !important; background-position: 0px -200px; }
+                }
+            }    
+    }
+}
     
