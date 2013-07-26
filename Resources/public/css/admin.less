@@ -111,11 +111,12 @@ input[type="submit"].submit_button                  { .button_icon; }
 
 /* INPUTS */
 input[type="text"], input[type="password"], input[type="phone"], input[type="date"], input[type="number"], input[type="email"], input[type="file"],
-textarea, select        { .round_box; width: 500px; line-height: 1em; vertical-align: middle; color: #000; font-size: 1.1em; background: #fff;
+textarea, select        { .round_box(#ccc,2px); width: 500px; line-height: 1em; vertical-align: middle; color: #000; font-size: 1.1em; background: #fff;
      &:focus            { .border(#a0a0a0); box-shadow: none; }
      &[readonly]        { border-color: #ddd; box-shadow: none; color: #555; }
      &[disabled]        { border-color: #ddd; box-shadow: none; background-color: #fafafa; color: #999; }
 }
+
 input[type="password"]  { width: 200px; }
 input[type="phone"]     { width: 200px; }
 input[type="email"]     { width: 200px; }
@@ -194,9 +195,9 @@ a                       { .link; }
 }   
 
 /* main menu */
-.main_menu                                   { position: relative; margin-bottom: 10px; 
-    ul                                       { width: 1160px; margin: 0 auto; 
-        li                                   { display: inline-block; margin: 10px 5px; height: 60px; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8);
+.main_menu                                   { position: relative; padding: 0 80px 0 120px; margin-bottom: 10px; 
+    ul                                       { width: 1160px; margin: 0 auto; vertical-align: middle;
+        li                                   { display: inline-block; margin: 10px 5px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8); 
           .link                              { color: #555; display: block; padding: 2px; text-decoration: none;
              span                            { display: block; width: 32px; height: 32px; margin: 4px auto 6px; font-weight: bold; font-size: 11px; background: url(../images/avk_icons_menu.png) 5px -156px no-repeat; 
                     &.menu_root_sku          { background-position: 0px 0px; }
@@ -498,3 +499,71 @@ a                       { .link; }
 .btn-group .dropdown-toggle:active, .btn-group.open .dropdown-toggle { outline: 0 none; }
 
 .btn-group > .btn + .dropdown-toggle          { box-shadow: 1px 0 0 rgba(255, 255, 255, 0.125) inset, 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05); padding-left: 8px; padding-right: 8px; }
+
+/**********Outlet EditPos *************/
+
+.editPos_form                                  { overflow: hidden; 
+  .left,.right,.center                         { float:left; width: 30%;
+    .head                                      { padding-left: 35px; height: 36px; .gradient_icon(#F8F8F8, #EAEAEA, url(../images/general_icons.png)); text-shadow: 0 1px 0 #fff; line-height: 36px; color: #888; font-size: 13px; font-weight: bold; border-bottom: 1px solid #ccc; box-shadow: 0 1px 0 0 #FFFFFF inset;  }
+    .form_block                                { padding: 10px 6%; border-top: 1px solid #ccc;
+    &:first-child                              { border-top: none;}
+        legend                                 { padding: 5px 0; margin: 0 auto; font-size: 13px; line-height: 40px; color: #455665; font-weight: bold; text-align: left; border-bottom: #e5e5e5; } 
+        .form_row                              {
+        .field_content                         { width: 50%; }
+            label                              { width: 150px; text-align: left; }
+            input                              { width: 93%; }
+            select                             { width: 100%; }
+        }
+    }
+  }
+  .left                                        { width: 32%;
+        .head                                  { background-position: 8px -40px, 0 0; }
+        .form_fieldset_Tab_pos_general         { border-top: none; 
+          legend                               { display: none; }
+      }  
+   }
+   .center                                     { width: 35.72%; border-right: 1px solid #ccc; border-left: 1px solid #ccc;
+         .head                                 { background-position: 8px -144px, 0 0; }
+         .form_fieldset_Tab_pos_contacts       { border-top: none; 
+          input                                { width: 150px; }
+          label                                { width: 150px; }
+          select                               { width: 165px; }
+      }  
+   }
+  .right                                       { width: 32%;
+        .head                                  { background-position: 8px -88px, 0 0; }
+        legend                                 { display: none; }
+         .form_block                           { border: none; }   
+         .form_fieldset_Tab_pos_general        {
+          input                                { width: 150px; }
+          label                                { width: 150px; }
+          select                               { width: 165px; }
+      }
+      .name                                    { display: block; margin-bottom: 10px; padding: 5px 20px 5px 10px; font-size: 1.1em; text-align: right; border-bottom: 1px solid #ccc; background: url(../images/general_icons.png) 100% 2px no-repeat; }
+   }
+   #map-canvas                                 { margin-top: 20px;}
+   .table                                      {
+        th                                     { padding: 6px 7px; color: #707070; font-weight: bold; text-shadow: 0 1px 0 #fff; font-size: 11px; }
+        td                                     { padding: 6px 7px; height: auto; color: #222; text-shadow: 0 1px 0 #fff; font-size: 11px; }
+    }
+    .actions                                   { padding-left: 0;}
+}
+.form_fieldset_Tab_pos_order, .form_fieldset_Tab_pos_payment  { width: 52%; float: left; padding: 10px 2%; height: 130px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    legend                                     { padding: 10px 0 0; margin: 0 auto; font-size: 16px; line-height: 25px; color: #455665; font-weight: bold; text-align: left; border-bottom: #e5e5e5; }
+    .form_row                                  { width: 310px; color: #707070; font-weight: bold;
+         span                                  { display: inline-block; width: 180px; }
+         .value                                { width: auto; color: #5587D6; padding: 2px; }
+         &.count, &.debt                        { 
+            .value                             { background: #729D47; border: 1px solid #729D47; color: #fff; border-radius: 2px; padding: 4px; } 
+         }
+         &.debt                                { 
+            .value                             { background: #D67E66; border: 1px solid #D67E66; } 
+         }
+         &.summ                                 { 
+            .value                             { color: #D67E66; } 
+         }
+         
+    }
+}
+.form_fieldset_Tab_pos_payment                  { width: 40%; float: right; } 
+    
