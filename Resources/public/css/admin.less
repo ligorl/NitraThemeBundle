@@ -117,13 +117,15 @@ textarea, select        { .round_box(#ccc,2px); width: 500px; line-height: 1em; 
      &[disabled]        { border-color: #ddd; box-shadow: none; background-color: #fafafa; color: #999; }
 }
 
-input[type="password"]  { width: 200px; }
-input[type="phone"]     { width: 200px; }
-input[type="email"]     { width: 200px; }
+input[type="password"]  { width: 500px; }
+input[type="phone"]     { width: 500px; }
+input[type="email"]     { width: 500px; }
 input[type="date"]      { width: 100px; }
 input[type="number"]    { width: 100px; }
+input.hasDatepicker     { width: 120px; background: url(../images/icon_sprite.png) 100% -320px no-repeat; }
+
 textarea                { height: 100px; }
-select                  { width: auto; max-width: 600px; }
+select                  { width: 516px; max-width: 600px; }
 legend                  { font-weight: bold; font-size: 1.15em; }
 
 
@@ -371,10 +373,20 @@ a                       { .link; }
 
 
 /* Forms */
-.form_block             {
+
+/* date-iputs */
+.field_date_range       {
+  .field_from, .field_to{ display: inline-block; vertical-align: middle; 
+       label            { width: 20px; }
+           .field_content, .field_row  { width: 200px; }
+  }
+}
+
+.admin_form             {
+    .form_block         { padding: 10px 20px; }
     legend              { display: block; margin-left: 220px; padding: 20px 0 5px 0; font-size: 1.3em; color: #999; }
-    .form_row           { padding: 7px 0px; 
-        label           { display: inline-block; width: 200px; padding: 5px 20px 0 0; text-align: right; font-weight: normal; vertical-align: top; }
+    .form_row           { padding: 4px 0px; 
+        label           { display: inline-block; width: 200px; padding: 5px 20px 0 0px; text-align: left; font-weight: normal; vertical-align: middle; }
         .field_content  { display: inline-block; 
             .error      { display: block; }
             .error ul li{ display: block; padding: 5px 0; color: #d70000; }
@@ -418,10 +430,17 @@ a                       { .link; }
      }    
     legend              { display: block; width: 100%; padding: 10px 0px; color: #000; text-align: left; }
     .form_row           { padding: 5px 0px; 
-        label           { float: left; width: 200px; text-align: left; }
+        label           { float: left; padding: 8px 0; width: 200px; text-align: left; }
         input           { width: 340px; }
         select          { width: 356px; }
-    }        
+        .hasDatepicker  { width: 120px; background: url(../images/icon_sprite.png) 100% -320px no-repeat; }
+    }
+    .field_date_range   {
+        .field_from, .field_to  { display: inline-block; vertical-align: middle; 
+            label       { width: 20px; }
+            .field_content, .field_row  { width: 200px; }
+        }
+    }
     .actions            { padding: 5px 0 20px 0; 
         input[type="submit"].submit_button  { background-position: 6px -25px, 0 0; }
     }
@@ -431,7 +450,7 @@ a                       { .link; }
 /************************** Login page ************************************/
 
 .login_content          { .round_box(#ddd); width: 320px; padding: 15px 20px !important; margin: 0 auto; margin-top: 15%; background-color: #fff;
-    .form_row           {
+    .form_row           { margin-bottom: 15px; 
         label           { display: block; padding-bottom: 5px; text-align: left;   }
         input           { width: 93%; font-size: 1.5em; color: @color-link;}
     }
@@ -500,6 +519,14 @@ a                       { .link; }
 
 .btn-group > .btn + .dropdown-toggle          { box-shadow: 1px 0 0 rgba(255, 255, 255, 0.125) inset, 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05); padding-left: 8px; padding-right: 8px; }
 
+/********form table********************/
+.admin_form                                   {
+     table                                    {
+            th                                { padding: 2px 7px; color: #707070; font-weight: bold; text-shadow: 0 1px 0 #fff; font-size: 11px; }
+            td                                { padding: 3px 7px; height: auto; color: #222; text-shadow: 0 1px 0 #fff; font-size: 11px; }
+        }
+}
+
 /**********Outlet EditPos *************/
 
 .editPos_form                                  { overflow: hidden; 
@@ -507,7 +534,7 @@ a                       { .link; }
     .head                                      { padding-left: 35px; height: 36px; .gradient_icon(#F8F8F8, #EAEAEA, url(../images/general_icons.png)); text-shadow: 0 1px 0 #fff; line-height: 36px; color: #888; font-size: 13px; font-weight: bold; border-bottom: 1px solid #ccc; box-shadow: 0 1px 0 0 #FFFFFF inset;  }
     .form_block                                { padding: 10px 6%; border-top: 1px solid #ccc;
     &:first-child                              { border-top: none;}
-        legend                                 { padding: 5px 0; margin: 0 auto; font-size: 13px; line-height: 40px; color: #455665; font-weight: bold; text-align: left; border-bottom: #e5e5e5; } 
+        legend                                 { padding: 5px 0; margin: 0 auto; font-size: 13px; color: #455665; font-weight: bold; text-align: left; border-bottom: #e5e5e5; } 
         .form_row                              {
         .field_content                         { width: 50%; }
             label                              { width: 150px; text-align: left; padding-bottom: 4px; }
@@ -524,7 +551,8 @@ a                       { .link; }
    }
    .center                                     { width: 35.72%; border-right: 1px solid #ccc; border-left: 1px solid #ccc;
          .head                                 { background-position: 8px -144px, 0 0; }
-         .form_fieldset_Tab_pos_contacts       { border-top: none; 
+         .form_fieldset_Tab_pos_contacts       { border-top: none;
+          legend                               { display: none; }
           input                                { width: 150px; }
           label                                { width: 150px; }
           select                               { width: 165px; }
@@ -542,10 +570,6 @@ a                       { .link; }
       .name                                    { display: block; margin-bottom: 10px; padding: 5px 20px 5px 10px; font-size: 1.1em; text-align: right; border-bottom: 1px solid #ccc; background: url(../images/general_icons.png) 100% 2px no-repeat; }
    }
    #map-canvas                                 { margin-top: 20px;}
-   .table                                      {
-        th                                     { padding: 6px 7px; color: #707070; font-weight: bold; text-shadow: 0 1px 0 #fff; font-size: 11px; }
-        td                                     { padding: 6px 7px; height: auto; color: #222; text-shadow: 0 1px 0 #fff; font-size: 11px; }
-    }
     .actions                                   { padding-left: 0;}
 }
 .form_fieldset_Tab_pos_order, .form_fieldset_Tab_pos_payment  { width: 52%; float: left; padding: 10px 2%; height: 130px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
@@ -573,31 +597,31 @@ a                       { .link; }
     tbody                                       {
             tr                                  {
                 td                              { padding: 6px 7px; }
-                .count                          { font-weight: bold; margin-right: 5px; font-size: 12px; 
+                .count                          { font-weight: bold; margin-right: 5px; font-size: 12px; color: #999;
                     &.null                      { color: #999; }
                 }
-                td:first-child                  { background: url(../images/tree.png) no-repeat; }
+                td:first-child                  { font-weight: bold; background: url(../images/tree.png) no-repeat; }
                 &.collapsed                     {
                    td:first-child               { 
-                    i                           { background: url(../images/arrows-sprite.png) 0px -956px; display: inline-block; width: 16px; height: 12px; }
+                    i                           { background: url(../images/arrows-sprite.png) 0px -1012px; display: inline-block; width: 16px; height: 6px; }
                 } 
                 }
                 &.expanded                      {
                     td:first-child              { 
-                        i                       { background: url(../images/arrows-sprite.png) 0px -981px no-repeat;  display: inline-block; width: 16px; height: 12px; }
+                        i                       { background: url(../images/arrows-sprite.png) 0px -1027px no-repeat;  display: inline-block; width: 16px; height: 12px; }
                     }
                 }
                 &.level_1                       { 
-                    td:first-child              { padding-left: 40px !important; background-position: 10px 2px; }
+                    td:first-child              { padding-left: 40px !important; background-position: 10px -49px; }
                 }
                 &.level_2                       { 
-                    td:first-child              { padding-left: 80px !important; background-position: 50px -49px; }
+                    td:first-child              { padding-left: 80px !important; background-position: 50px -102px; }
                 }
                 &.level_3                       { 
-                    td:first-child              { padding-left: 120px !important; background-position: 90px -102px; }
+                    td:first-child              { padding-left: 120px !important; background-position: 90px -153px; }
                 }
                 &.level_4                       { 
-                    td:first-child              { padding-left: 160px !important; background-position: 130px -153px; }
+                    td:first-child              { padding-left: 160px !important; background-position: 130px -200px; }
                 }
                 &.level_5                       {
                     td:first-child              { padding-left: 200px !important; background-position: 0px -200px; }
@@ -606,3 +630,62 @@ a                       { .link; }
     }
 }
     
+
+
+/*Employee form*/
+.admin_form                                      {
+    .field_parent, .field_filial                 { position: relative; margin: 0 20px; 
+        .image_parent                            {}
+        .field_content                           { display: inline-block; }
+        label                                    { }
+    }
+    .image_staff, .image_parent                  { display: inline-block; margin-left: 15px; height: 40px; vertical-align: middle; }
+}
+
+.hide, .hidden                                   { display: none; }
+    
+
+/******************* Integration *******************/
+.integra                                         { overflow: hidden; padding: 15px;
+    .columnCenter                                { float: left; padding: 200px 15px 0; width: 80px; 
+        .buttonBind,.buttonNew                   { display: block;  margin: 0 5px; line-height: 4em; text-align: center; opacity: 0.8; border-radius: 4px; color: #FFFFFF; background: @color-main; .gradient(@color-main,#A73D38); 
+            &.active                             { cursor: pointer; background: #FF6600; }
+            &:hover                              { text-decoration: none; opacity: 1; }
+        }
+        .buttonNew                               { margin: 10px 5px 0;  }
+        .buttonUnbind                            {}
+    }
+    .column                                      { float: left; padding: 1% 0; width: 44%; border-radius: 5px; 
+        .searchForm                              { margin-bottom: 10px;  height: 170px;
+            div#form                             { display: inline-block; min-height: 66px; width: 65%;
+                input                            { width: 91.55%; }
+                select                           { width: 96%; }
+                label                            { display: none; }
+                .form_row                        { margin-bottom: 5px; }
+                .field_local_unbind_only,.field_global_unbind_only  {
+                     label                       { display: inline-block; }
+                     .field_content              { width: 100px; display: inline-block; }
+                }
+            }
+            input[type="submit"]                 { margin-left: -8.8%; padding: 10px; font-size: 0px;  cursor: pointer; background: url(../images/icon_sprite.png) 0 -363px no-repeat; 
+                &:hover                          { background-position: 0 -397px; }
+            }
+        }
+        .productList                             { overflow-y: scroll; display: block; margin: 0; padding: 2px; height: 250px; background: #FFFFFF; border: 1px solid #CCCCCC;
+            li                                   { padding: 5px 2px; border-bottom: 1px solid #BBBBBB; cursor: pointer;
+                b                                { color: #C50000;}
+                table                            { margin: 5px 0 0 50px; width: 90%; border-collapse: collapse; 
+                    tr                           { border: 1px solid #DDDDDD; }
+                    td                           { padding: 3px 2px; font-size: 0.9em; color: #333333;  }
+                }
+                &.selected                       { background: #FFFFAA; color: #FF6600;
+                    table td                     { border: 1px solid #CCCCCC; }
+                }
+                &:hover                          { background: none repeat scroll 0 0 #FFFFDD; }
+            }
+       }
+   } 
+    
+}
+
+ 
