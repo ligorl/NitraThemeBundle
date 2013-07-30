@@ -154,7 +154,9 @@ a                       { .link; }
 .table                  { width: 100%; background: #fff; border: 1px solid @color-border;
     thead               {
         th              { .gradient (#e5e5e5, #F7F7F7); padding: 7px; line-height: 20px; border: 1px solid @color-border; vertical-align: middle; 
-            a           { color: #444; padding-right: 15px; background: url(../images/arrow_filter.png) 100% -16px no-repeat; }
+            a           { color: #444;
+                i       { display: inline-block; vertical-align: middle; width: 10px; height: 10px; background: url(../images/arrow_filter.png) 100% -16px no-repeat; }
+            }
         }
     }
     td                  { padding: 2px 7px; height: 30px; border: 1px solid @color-border; vertical-align: middle; }
@@ -197,7 +199,7 @@ a                       { .link; }
 }   
 
 /* main menu */
-.main_menu                                   { position: relative; padding: 0 80px 0 120px; margin-bottom: 10px; 
+.main_menu                                   { position: relative; margin: 0 80px 0 120px; margin-bottom: 10px; 
     ul                                       { width: 1160px; margin: 0 auto; vertical-align: middle;
         li                                   { display: inline-block; margin: 10px 5px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8); 
           .link                              { color: #555; display: block; padding: 2px; text-decoration: none;

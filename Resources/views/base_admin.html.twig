@@ -56,8 +56,8 @@
 
                     {% block profile %}
                     <div class="profile">
-                        <a href="#">{{ app.user }}</a>
-                        <a class='logout' href="{{ path('fos_user_security_logout') }}">Вихід</a>
+                        <a href="#" class="user">{{ 'profile.welcome'|trans({'%username%': app.user}, 'Admingenerator')|raw }}</a>
+                        <a class='logout' href="{{ path('fos_user_security_logout') }}">{{ 'profile.logout'|trans({}, 'Admingenerator') }}</a>
                     </div>
                     {% endblock %}
 
