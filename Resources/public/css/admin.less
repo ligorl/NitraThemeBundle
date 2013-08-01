@@ -9,7 +9,7 @@ mark, audio, video      { margin: 0; padding: 0; border: 0; font-size: 1em; font
 header, footer, aside, 
 nav, article, section   { display: block; }
 html, body              { height: 100%; }
-body                    { padding: 0; margin: 0; font-size: 13px; line-height: 1; min-width: 1000px; color: #444; background: #F0F0F1; }
+body                    { padding: 0; margin: 0; font-size: 13px; line-height: 1; min-width: 993px; color: #444; background: #F0F0F1; }
 img                     { border: none;}
 ul, li                  { list-style: none; display: block; }
 p                       { margin: 0.4em 0px; text-align: left;}
@@ -35,7 +35,7 @@ h3                      { font-size: 1.2em; }
 .absolute_right (@top: 0px, @right: 0px) { position: absolute; top: @top; right: @right; }
 
 /***********************Layout******************************/
-.wrapper                              { position: relative; min-width: 1010px; min-height: 100%; height: auto !important; height: 100%; margin: 0 auto; margin-bottom: -34px;  }
+.wrapper                              { position: relative; min-height: 100%; height: auto !important; height: 100%; margin: 0 auto; margin-bottom: -34px;  }
 .content                              { padding: 0 1.46% 90px;  }
 footer                                { padding: 5px 20px; background: #DFDFE0; border-top: 1px solid darken(#DFDFE0,20%); }
 
@@ -158,7 +158,7 @@ a                       { .link; }
             a           { display: inline-block; color: #444; padding-right: 10px; background: url(../images/arrow_filter.png) right center no-repeat; }
         }
     }
-    td                  { padding: 2px 7px; height: 30px; border: 1px solid @color-border; vertical-align: middle; }
+    td                  { padding: 0px 7px; height: 34px; border: 1px solid @color-border; vertical-align: middle; }
     tr:hover td         {  }
     td.td_decimal       { white-space: nowrap; text-align: right; }
     td.td_boolean       { text-align: center; }
@@ -197,7 +197,7 @@ table                   { .table;
                   &:hover                    { text-decoration: none; } 
                 }
                 &.logout                     { display: block; background: url(../images/icon_sprite.png) 100% -22px no-repeat; padding: 0px 25px 5px 0px !important; color: #eee; border: none; text-decoration: underline; 
-                    &:hover                  { text-decoration: underline; color: #eee;  }
+                    &:hover                  { text-decoration: none; color: #eee;  }
                 }        
             }
         }
@@ -205,9 +205,12 @@ table                   { .table;
 
 /* main menu */
 .main_menu                                   { position: relative; margin: 0 80px 0 120px; margin-bottom: 10px; 
-    ul                                       { width: 1160px; margin: 0 auto; vertical-align: middle;
-        li                                   { display: inline-block; margin: 10px 5px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8); 
+    ul                                       { width: 1156px; margin: 0 auto; vertical-align: middle;
+        li                                   { display: inline-block; margin: 10px 4px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8); 
           .link                              { color: #555; display: block; padding: 2px; text-decoration: none;
+             .title                          { display: none; position: relative; margin: 10px 0 0 -28px; min-width: 100px; text-align: center; font-size: 13px; color: #fff; background: #3c3c3c; opacity: 0.9; 
+                &:after                      { .absolute_left(-14px,42%); display: inline-block; content: ''; border-width: 8px; border-style: solid; border-color: transparent transparent #3c3c3c; opacity: 0.9; }
+             }
              span                            { display: block; width: 32px; height: 32px; margin: 4px auto 6px; font-weight: bold; font-size: 11px; background: url(../images/avk_icons_menu.png) 5px -156px no-repeat; 
                     &.menu_root_sku          { background-position: 0px 0px; }
                     &.menu_root_outlet       { background-position: 0 -32px; }
@@ -347,6 +350,9 @@ table                   { .table;
     &:hover             {.gradient_icon(#E6E6E6,#FFF,url(../images/icon_sprite.png)); }
     &.delete            { background-position: 4px -85px, 0 0; }
     &.edit              { background-position: 4px -52px, 0 0; }
+    &.region,&.settlement { background-position: 4px -481px, 0 0; }
+    &.show              { background-position: 4px -543px, 0 0; }
+    &.filials           { background-position: 4px -510px, 0 0; }
     &:first-child       { border-bottom-left-radius: 4px;  border-top-left-radius: 4px;}
     &:last-child        { border-bottom-right-radius: 4px;  border-top-right-radius: 4px;}
 }
@@ -366,7 +372,7 @@ table                   { .table;
     
 
     /* row actions */
-    td.actions          { width: 1%; white-space: nowrap;
+    td.actions          { width: 1%; white-space: nowrap; text-align: center;
          a              { padding-left: 20px !important; height: 13px; }
     }           
     /* total info */
@@ -394,7 +400,7 @@ table                   { .table;
     .form_block         { padding: 10px 20px; }
     legend              { display: block; margin-left: 220px; padding: 20px 0 5px 0; font-size: 1.3em; color: #999; }
     .form_row           { padding: 4px 0px; 
-        label           { display: inline-block; width: 200px; padding: 5px 20px 0 0px; text-align: left; font-weight: normal; vertical-align: middle; }
+        label           { display: inline-block; width: 200px; padding: 5px 20px 3px 0px; text-align: left; font-weight: normal; vertical-align: middle; }
         .field_content  { display: inline-block; 
             .error      { display: block; }
             .error ul li{ display: block; padding: 5px 0; color: #d70000; }
@@ -416,7 +422,7 @@ table                   { .table;
 /* form actions */
 
 .admin_form                                 { border: 1px solid #cfcfcf; border-radius: 3px;
-    .actions                                { display: inline-block; padding: 10px 0 0 220px; vertical-align: middle;
+    .actions                                { display: inline-block; padding: 0 0 10px; vertical-align: middle; text-align: right; width: 756px;
         button,input                        { padding: 7px 14px !important; height: auto; margin-right: 0; background: none; .gradient(#ccc,#f6f6f6); font-weight: normal; }
         .btn                                { padding: 8px 20px 8px 15px; .border(#afafaf); .gradient(#ccc,#f6f6f6); font-size: 14px; color: #606060; text-shadow: 0 1px 0 #fff; border-radius: 4px;
             &:hover,&:focus,&:active        { text-decoration: none; background: transparent; .gradient(#f6f6f6,#e6e6e6); color: #444; }
@@ -495,7 +501,7 @@ table                   { .table;
         .field_ru, .field_uk, .field_ro     {
             .field_content                  {
                 .form_row                   { 
-                    label                   { display: inline-block; width: 200px; margin: 0; padding-left: 0; font-size: 1em; color: #333; text-align: right; background: none; }
+                    label                   { display: inline-block; width: 200px; margin: 0; padding-left: 0; font-size: 1em; color: #333; background: none; }
                 }
             }
         }
@@ -609,7 +615,7 @@ table                   { .table;
 .tree-table                                     {
     tbody                                       {
             tr                                  {
-                td                              { padding: 6px 7px; }
+                td                              { height: 40px;  }
                 .count                          { font-weight: bold; margin-right: 5px; font-size: 12px; color: #999;
                     &.null                      { color: #999; }
                 }
@@ -712,17 +718,89 @@ table                   { .table;
 }
 
 
+/********Route form***********/
+.route_form                                      { overflow: hidden; max-width: 1600px; 
+    legend                                       { display: none; }
+    .column                                      { width: 49%; 
+        &.columnLeft                             { float: left; margin-right: 20px; 
+            select                               { width: 365px; }
+            .field_weekDay,.field_odd            { width: 49%; 
+                select                           { width: 100%; }
+            }
+            .field_weekDay                       { float: left; width: 63%; }
+            .field_odd                           { width: auto; 
+                label                            { width: auto; padding-right: 15px; }
+            }
+            .form_fieldset_Pos                   { overflow: hidden;
+                .posList                             { overflow-y: scroll; display: block; margin: 0; padding: 2px; height: 300px; background: #FFFFFF; border: 1px solid #CCCCCC;
+                li                                   { padding: 5px 2px; border-bottom: 1px solid #BBBBBB; cursor: pointer; white-space: nowrap; 
+                    b                                { color: #C50000;}
+                    table                            { margin: 5px 0 0 50px; width: 90%; border-collapse: collapse; 
+                        tr                           { border: 1px solid #DDDDDD; }
+                        td                           { padding: 3px 2px; font-size: 0.9em; color: #333333; 
+                            a:hover                  { text-decoration: none; }
+                        }
+                    }
+                    &.selected                       { background: #DDFFCF; color: #171717;
+                        table td                     { border: 1px solid #CCCCCC; }
+                    }
+                    &:hover                          { background: none repeat scroll 0 0 #FFFFDD; }
+                }
+                }
+               .avaliblePos                      { float: left; width: 43%; 
+                }
+                .select_button                    { padding-top: 120px; float: left; width: 5%; min-width: 35px; 
+                    .button                       { display: block; width: 100%; height: 30px; background: url(../images/icon_sprite.png) 6px -610px no-repeat; 
+                        &.left                    { background-position: 6px -585px; 
+                          &:hover                 { background-position: 6px -689px; }
+                        }  
+                        &:hover                   { background-position: 6px -714px; }
+                    }
+                }
+                .selectedPos                      { float: left; width: 43%; 
+                
+               }
+               .sort_button                       { padding-top: 130px; float: left; width: 4%; min-width: 25px;  
+                    .sort                         { display: block; width: 100%; height: 20px; background: url(../images/icon_sprite.png) 2px -664px no-repeat;
+                        &.max                     { background-position: 2px -642px; 
+                            &:hover               { background-position: 2px -747px; }
+                        }  
+                        &:hover                   { background-position: 2px -769px; }
+                    }
+               }
+            }
+        }
+        &.columnRight                            { float: right; width: 48%;} 
+    }
+    .buttons                                 { width: 100%; text-align: right;
+        .actions                             { padding-right: 20px; }
+    }
+    #map-canvas                              { width: 100%; height: 410px; }
+    .map_control                             { padding: 15px 0; 
+        input                                { margin: 0 3% 0 10px; vertical-align: bottom; }
+    }
+    
+}
+
+tr.open_list:hover td                        { cursor: pointer; background: #f2f2f2; }
+
+.route_details                               { display: none;
+}
+
 /**************width<1366px*************************/
-@media screen and (max-width:1365px)             {
+@media screen and (max-width:1360px)             {
     .header                                      {
         .logo                                    { margin-top: 15px; }
     }
     .main_menu                                   { 
         ul                                       { width: 810px; 
-            li                                   { width: 65px; height: 50px; 
+            li                                   { width: 62px; height: 50px; 
                 .link                            { font-size: 0; }
             }
         }
+    }
+    .main_menu .link                      {
+        
     }
 }
 

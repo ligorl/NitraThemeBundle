@@ -20,6 +20,7 @@
                 '@NitraThemeBundle/Resources/public/js/common.js'
                 '@NitraThemeBundle/Resources/public/js/menu.js'
                 '@NitraThemeBundle/Resources/public/js/jquery.colorbox.js'
+                '@NitraThemeBundle/Resources/public/js/jquery.stickytableheaders.js'
                  %}
                 <script src="{{ asset_url }}"></script>
                 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -90,6 +91,11 @@
             </footer>
         {% endblock %}    
         {% block javascripts %}
+            <script type="text/javascript">
+                $(function() {
+                $('.admin_list .table').stickyTableHeaders();
+                });
+            </script>
         {% endblock %}
     </body>
 </html>
