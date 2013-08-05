@@ -661,12 +661,13 @@ table                   { .table;
 
 /*Employee form*/
 .admin_form                                      {
+    .image_staff, .image_parent                  { .display_ib; margin-left: 15px; position: absolute; vertical-align: middle; }
     .field_parent, .field_filial                 { position: relative; margin: 0 20px; 
-        .image_parent                            {}
+        .image_parent                            { bottom: 0; }
+        .image_staff                             { top: 0; }
         .field_content                           { .display_ib; }
         label                                    { }
     }
-    .image_staff, .image_parent                  { .display_ib; margin-left: 15px; height: 40px; vertical-align: middle; }
 }
 
 .hide, .hidden                                   { display: none; }
@@ -788,21 +789,18 @@ table                   { .table;
     .map_control                             { padding: 15px 0; 
         input                                { margin: 0 3% 0 10px; vertical-align: bottom; }
     }
+    .info                                    { padding: 10px 20px; 
+        div                                  { padding: 5px 0; }
+    }
     
 }
 
 tr.open_list:hover td                        { cursor: pointer; background: #f2f2f2; }
-
-.route_details                               { 
+.main_content.ui-resizable                   { padding-top: 10px; min-height: 177px; }
+.ui-resizable-s                              { margin: 20px 0; cursor: s-resize; width: 100%; height: 3px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 0 #FFFFFF; 
+    div                                      { padding: 0 6px; width: 40px; height: 6px; border: 1px solid #ccc; box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 0 #FFFFFF; background: #f0f0f1; }
 }
 
-#splitter                                    { width: 100%; min-height: 380px; position: relative; padding-right: 5px; 
-    #TopPane                                 { padding-top: 10px; overflow: auto; }
-    #BottomPane                              { overflow: auto; }
-    .hspliter                                { padding: 6px 0; height: 6px; background: url(../images/icon_sprite.png) center -825px no-repeat; border-top: 1px dotted #ddd; border-bottom: 1px dotted #ddd; 
-        &:hover                              { cursor: pointer; }
-    }
- }
 /**************width<1366px*************************/
 @media screen and (max-width:1335px)             {
     .header                                      {
