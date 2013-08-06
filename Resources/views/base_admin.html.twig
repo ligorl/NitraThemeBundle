@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}NitraThemeBundle{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets
+            {% stylesheets              
                 'bundles/nitratheme/css/ui-lightness/jquery-ui-1.10.3.custom.css'
                 'bundles/nitratheme/css/colorbox.css'
                 'bundles/nitratheme/css/admin.less' %}
@@ -14,12 +14,13 @@
 
         {% block javascript_head %}
             {% javascripts
-                'components/jquery/jquery.js'
+                'components/jquery/jquery.js'           
                 '@NitraThemeBundle/Resources/public/js/jquery-ui-1.10.3.custom.js'
                 '@NitraThemeBundle/Resources/public/js/common.js'
                 '@NitraThemeBundle/Resources/public/js/menu.js'
-                '@NitraThemeBundle/Resources/public/js/jquery.colorbox.js' %}
-                <script src="{{ asset_url }}"></script>
+                '@NitraThemeBundle/Resources/public/js/jquery.colorbox.js'
+                '@NitraThemeBundle/Resources/public/js/jquery.nl-admin-tab.js' %}
+                <script src="{{ asset_url }}"></script>           
             {% endjavascripts %}
             
             {# Календарь перевод #}
@@ -74,7 +75,7 @@
             {% block body %}{% endblock %}
         </div>
 
-        {% block javascripts %}
-        {% endblock %}
+            {% block javascripts %}
+    {% endblock %}
     </body>
 </html>
