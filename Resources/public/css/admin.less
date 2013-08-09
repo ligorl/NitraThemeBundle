@@ -15,7 +15,7 @@ ul, li                  { list-style: none; display: block; }
 p                       { margin: 0.4em 0px; text-align: left;}
 table                   { border-collapse: collapse; border-spacing: 0px;}
 h1, h2, h3, h4, h5, h6 	{ margin: 1em 0 0.8em 0; color: #000; line-height: 1.2em; font-weight: normal;}
-h1                      { font-size: 21px; color: #314251; }
+h1                      { font-family: Arsenal-Regular, Arial, "Trebuchet MS",  Helvetica, sans-serif; font-size: 21px; color: #314251; }
 h2                      { font-size: 1.3em; }
 h3                      { font-size: 1.2em; }
 
@@ -30,6 +30,8 @@ h3                      { font-size: 1.2em; }
 @border-radius: 5px; 
 @image-icon: url(../images/action_icons.png); 
 @image-arrow: url(../images/arrow_icons.png); 
+
+@font-face { font-family: Arsenal-Regular; src: url(../fonts/Arsenal-Regular.otf); }
 
 .absolute_left  (@top: 0px, @left:  0px) { position: absolute; top: @top; left:  @left; }
 .absolute_right (@top: 0px, @right: 0px) { position: absolute; top: @top; right: @right; }
@@ -63,6 +65,7 @@ footer                                { padding: 5px 20px; background: #DFDFE0; 
 
 .gradient (@color_from, @color_to) {
     background-image: @color_from;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@color_from, endColorstr=@color_to);
     background-image: linear-gradient(bottom, @color_from, @color_to);
     background-image: -o-linear-gradient(bottom, @color_from, @color_to);
     background-image: -moz-linear-gradient(bottom, @color_from, @color_to);
@@ -71,6 +74,7 @@ footer                                { padding: 5px 20px; background: #DFDFE0; 
 }
 .gradient_icon (@color_from, @color_to, @icon : @image-icon) {
     background-image: @color_from;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@color_from, endColorstr=@color_to);
     background-image: @icon, linear-gradient(bottom, @color_from, @color_to);
     background-image: @icon, -o-linear-gradient(bottom, @color_from, @color_to);
     background-image: @icon, -moz-linear-gradient(bottom, @color_from, @color_to);
@@ -157,11 +161,11 @@ a                       { .link; }
 /* TABLE */
 .table                   { width: 100%; background: #fff; border: 1px solid @color-border;
     thead               {
-        th              { .gradient (#e5e5e5, #F7F7F7); padding: 7px; line-height: 20px; border: 1px solid @color-border; vertical-align: middle; 
+        th              { .gradient (#eaeaea, #FaFaFa); padding: 7px; line-height: 20px; border: 1px solid @color-border; vertical-align: middle; 
             a           { .display_ib; color: #444; padding-right: 10px; background: url(../images/arrow_filter.png) right center no-repeat; }
         }
     }
-    td                  { padding: 0px 7px; height: 34px; border: 1px solid @color-border; vertical-align: middle; }
+    td                  { padding: 0px 7px; height: 35px; border: 1px solid @color-border; vertical-align: middle; }
     tr:hover td         {  }
     td.td_decimal       { white-space: nowrap; text-align: right; }
     td.td_boolean       { text-align: center; }
@@ -193,7 +197,7 @@ table                   { .table;
 /************************** Header ************************************/
 
 .header                                      { padding: 0; background: #eee url(../images/carbon_bg.png);
-    .logo                                    { display: block; float: left; width: 105px; height: 55px; margin: 20px 0px 0px 10px; background: url(../images/logo.png) no-repeat; }
+    .logo                                    { display: block; float: left; width: 105px; height: 55px; margin: 15px 0px 0px 10px; background: url(../images/logo.png) no-repeat; }
     div.logo                                 { .display_ib; margin: 0; float: none; padding: 0; background: url(../images/logo.png) 8px 6px no-repeat; }
         .profile                             { float: right; background: transparent; padding: 15px 5px; text-align: right; 
             a                                { line-height: 20px; color: #eee; font-size: 15px; padding-right: 10px; 
@@ -208,11 +212,11 @@ table                   { .table;
 }   
 
 /* main menu */
-.main_menu                                   { position: relative; margin: 0 80px 0 120px; margin-bottom: 10px; 
+.main_menu                                   { position: relative; margin: 0 80px 0 120px; margin-bottom: 10px; z-index: 999;
     ul                                       { width: 1156px; margin: 0 auto; vertical-align: middle;
-        li                                   { .display_ib; margin: 10px 4px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8); 
-          .link                              { color: #555; display: block; padding: 2px; text-decoration: none;
-             .title                          { display: none; position: relative; margin: 10px 0 0 -28px; min-width: 100px; text-align: center; font-size: 13px; color: #fff; background: #3c3c3c; opacity: 0.9; 
+        li                                   { .display_ib; margin: 7px 4px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8);
+          .link                              { position: relative; color: #555; display: block; padding: 2px; text-decoration: none;
+             .title                          { overflow: hidden; display: none; position: absolute; margin: 10px 0 0 -25px; min-width: 110px; padding: 6px 0; text-align: center; font-size: 13px; color: #fff; opacity: 0.9; background: #3c3c3c; border-radius: 2px; 
                 &:after                      { .absolute_left(-14px,42%); .display_ib; content: ''; border-width: 8px; border-style: solid; border-color: transparent transparent #3c3c3c; opacity: 0.9; }
              }
              span                            { display: block; width: 32px; height: 32px; margin: 4px auto 6px; font-weight: bold; font-size: 11px; background: url(../images/avk_icons_menu.png) 5px -156px no-repeat; 
@@ -363,6 +367,7 @@ table                   { .table;
 
 /* Admingenerator list */
 .admin_list             { position: relative; 
+    .table-list         { overflow-x: auto; width:100%;
     /* list table */
     table               { .table;
  
@@ -370,7 +375,7 @@ table                   { .table;
         th.sort_asc a   { .display_ib; padding-right: 15px; background: @image-arrow right -55px no-repeat; }
         th.sort_desc a  { .display_ib; padding-right: 15px; background: @image-arrow right -35px no-repeat; }
     }
-
+    }
     /* list actions */
     .list_actions       { float: right; text-align: right; margin: -22px 0 10px 10px; }
     
@@ -697,7 +702,7 @@ table                   { .table;
                 }
             }
          &#filterRight                           {
-            div#form                             { margin-top: 110px; }
+            div#form                             { margin-top: 38px; }
          }
             .buttons                             { position: absolute; bottom: 10px; right: 39%; font-size: 0px; 
                 .reset                           { .display_ib; vertical-align: middle; width: 20px; height: 20px; cursor: pointer; background: url(../images/icon_sprite.png) 0px -432px no-repeat;
@@ -804,7 +809,7 @@ tr.open_list:hover td                        { cursor: pointer; background: #f2f
 /**************width<1366px*************************/
 @media screen and (max-width:1335px)             {
     .header                                      {
-        .logo                                    { margin-top: 15px; }
+        .logo                                    { margin-top: 10px; }
     }
     .main_menu                                   { 
         ul                                       { width: 810px; 
