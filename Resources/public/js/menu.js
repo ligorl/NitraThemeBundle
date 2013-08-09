@@ -1,5 +1,5 @@
 function isBreakPoint(bp) {
-  var bps = [800, 1366];
+  var bps = [800, 1340];
   var w = $(window).width();
   var min, max;
   for (var i = 0, l = bps.length; i < l; i++) {
@@ -12,7 +12,7 @@ function isBreakPoint(bp) {
   return w > min && w <= max;
 }
 
-if (isBreakPoint(1366)) {
+if (isBreakPoint(1340)) {
   (function($){
       $(function() { 
         $('.link').each(function() {

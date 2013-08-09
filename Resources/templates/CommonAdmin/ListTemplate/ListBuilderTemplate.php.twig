@@ -24,11 +24,6 @@
 {{ echo_block("body") }}
     {{- block('title') -}}           
     <div class="admin_list main_content{% if builder.filterColumns|length == 0 %} full_size{% endif %}">
-         {{ echo_block("filter_button") }}
-            {% if builder.filterColumns|length > 0 %}
-                <a class="btn-filter btn" onclick="$('.filters').show();"><i class="icon-search icon-white"></i> {{ echo_trans('list.filters') }}</a>
-            {% endif %}
-        {{ echo_endblock() }} 
              
         {{- block('list_scopes') -}}
         {{ echo_include(builder.namespacePrefixForTemplate ~ bundle_name ~ ':' ~ builder.BaseGeneratorName ~ 'List:results.html.twig') }}
