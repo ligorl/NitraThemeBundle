@@ -157,6 +157,14 @@ legend                  { font-weight: bold; font-size: 1.15em; }
 }
 a                       { .link; }
 
+/*LIST*/
+.item_list              {
+  ul                    { overflow-y: scroll; margin: 0; padding: 2px; background: #FFFFFF; border: 1px solid #CCCCCC;
+     li                 { padding: 5px 2px; border-bottom: 1px solid #BBBBBB; cursor: pointer; white-space: nowrap; 
+        &:hover         { background: none repeat scroll 0 0 #FFFFDD; }
+     }
+  }
+}
 
 /* TABLE */
 .table                   { width: 100%; background: #fff; border: 1px solid @color-border;
@@ -716,7 +724,7 @@ table                   { .table;
                 }
             }
          &#filterRight                           {
-            div#form                             { margin-top: 110px; }
+            div#form                             { margin-top: 36px; }
          }
             .buttons                             { position: absolute; bottom: 10px; right: 39%; font-size: 0px; 
                 .reset                           { .display_ib; vertical-align: middle; width: 20px; height: 20px; cursor: pointer; background: url(../images/icon_sprite.png) 0px -432px no-repeat;
@@ -1522,6 +1530,9 @@ table                   { .table;
                         i                       { background: url(../images/arrows-sprite.png) 0px -1027px no-repeat; .display_ib; width: 16px; height: 12px; }
                     }
                 }
+                &.level_0                       { 
+                    td:first-child              { padding-left: 25px !important; background-position: 0px 0px; }
+                }
                 &.level_1                       { 
                     td:first-child              { padding-left: 40px !important; background-position: 10px -49px; }
                 }
@@ -1539,6 +1550,15 @@ table                   { .table;
                 }
             }    
     }
+}
+.form_filter                                    { margin: 5px 0;
+     select                                     { width: 150px; padding: 2px 4px; margin-right: 20px; }
+     .helper                                    { padding: 4px 0;}
+     input                                      { margin-right: 10px; }
+}
+.staffLegend                                    { position: absolute; top: 250px; right: 250px; width: 50px; 
+    th                                          { line-height: 1.4em; }
+    tr:hover td                                 { cursor: pointer; }
 }
     
 
@@ -1617,12 +1637,13 @@ table                   { .table;
     legend                                       { display: none; }
     .column                                      { width: 63%; 
         &.columnLeft                             { float: left; margin-right: 20px; 
-            select                               { width: 338px; }
-            .field_weekDay,.field_isOdd            { width: 49%; 
+            select                               { width: 354px; }
+            .field_weekDay,.field_isOdd          { width: 49%; 
                 select                           { width: 100%; }
             }
             .field_weekDay                       { float: left; width: 48.4%; }
-            .field_isOdd                         { width: auto; 
+            .field_isOdd                         { width: auto;
+                select                           { width: 123px; }
                 label                            { width: auto; padding-right: 15px; }
             }
             .form_fieldset_Pos                   { overflow: hidden;
@@ -1664,7 +1685,7 @@ table                   { .table;
                }
             }
         }
-        &.columnRight                            { float: right; width: 35%;} 
+        &.columnRight                            { float: right; width: 34.8%;} 
     }
     .buttons                                 { width: 100%; text-align: right;
         .actions                             { padding-right: 20px; }
@@ -1696,7 +1717,18 @@ tr.open_list:hover td                        { cursor: pointer; background: #f2f
     select                                   { width: 255px; }
     .hidden_form                             { display: none !important;}
     #sku                                     { display: block ;}
-    .addSku                                  { .display_ib; width: 24px; height: 24px; background: url(../images/plus.png) no-repeat;}
+    .sku_form input[type="text"]             { width: 458px; float: left; margin-right: 10px; }
+    .item_lists                              { overflow: hidden; 
+        .sku_list                            { .item_list;
+            ul                               { height: 300px; padding-top: 0; }
+        }
+        .select_button                       { float: left; width: auto; margin: 50px 10px 0; 
+            a                                { .display_ib; width: 32px; height: 32px; background: url(../images/icon_sprite.png) 6px -610px no-repeat; }
+         }
+        .all_sku                             { float: left; width: 44%; }
+        .selected_sku                        { float: left; width: 44%; }
+    }
+    
 }
 
 /**************width<1366px*************************/
