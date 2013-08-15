@@ -162,6 +162,7 @@ a                       { .link; }
   ul                    { overflow-y: scroll; margin: 0; padding: 2px; background: #FFFFFF; border: 1px solid #CCCCCC;
      li                 { padding: 5px 2px; border-bottom: 1px solid #BBBBBB; cursor: pointer; white-space: nowrap; 
         &:hover         { background: none repeat scroll 0 0 #FFFFDD; }
+        &.selected      { background: #FFFFDD; color: #171717; }
      }
   }
 }
@@ -180,6 +181,10 @@ a                       { .link; }
     tr.row_total td     { background: #eaeaea; font-weight: bold; }
     tr.row_highlight td { background: #ffa; }
     td.action           { .ac; }
+    &.vertical_table    { width: 600px; 
+        td              { width: 60%; height: 30px; border-top: none; }
+        .title          { width: 40%; font-weight: bold; color: #707070; background: #f2f2f2; }
+    }
 }
 table                   { .table; 
     td                  { height: auto; }
@@ -368,7 +373,7 @@ table                   { .table;
     &.edit              { background-position: 4px -52px, 0 0; }
     &.region,&.settlement { background-position: 4px -481px, 0 0; }
     &.show              { background-position: 4px -543px, 0 0; }
-    &.filials           { background-position: 4px -510px, 0 0; }
+    &.filials           { background-position: 4px -481px, 0 0; }
     &:first-child       { border-bottom-left-radius: 4px;  border-top-left-radius: 4px;}
     &:last-child        { border-bottom-right-radius: 4px;  border-top-right-radius: 4px;}
 }
@@ -1639,9 +1644,10 @@ table                   { .table;
         &.columnLeft                             { float: left; margin-right: 20px; 
             select                               { width: 354px; }
             .field_weekDay,.field_isOdd          { width: 49%; 
+                label                            { width: 100px; }
                 select                           { width: 100%; }
             }
-            .field_weekDay                       { float: left; width: 48.4%; }
+            .field_weekDay                       { float: left; width: 276px; }
             .field_isOdd                         { width: auto;
                 select                           { width: 123px; }
                 label                            { width: auto; padding-right: 15px; }
