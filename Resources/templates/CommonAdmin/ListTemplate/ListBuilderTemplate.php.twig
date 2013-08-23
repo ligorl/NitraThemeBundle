@@ -18,7 +18,9 @@
 
 {{ echo_block("body") }}
     {{- block('title') -}}
-
+        {% if builder.filterColumns|length > 0 %}
+            <div class="actions filter_button"><a class="btn filter" onclick="$('.filters').toggle();"><i class="filter"></i>{{ echo_trans('list.filters') }}</a></div>
+        {% endif %} 
     <div class="admin_list main_content{% if builder.filterColumns|length == 0 %} full_size{% endif %}">
 
         {{- block('list_scopes') -}}
