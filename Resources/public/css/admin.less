@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 	{ margin: 1em 0 0.8em 0; color: #000; line-height: 1.2em
 h1                      { font-size: 1.5em; }
 h2                      { font-size: 1.3em; }
 h3                      { font-size: 1.2em; }
-
+button                  { font-family: inherit; }
 /*************************** Base styles *************************/
 
 @color-link: #377197;
@@ -31,15 +31,15 @@ h3                      { font-size: 1.2em; }
 
 .menu           (@color_border: #fff, @color_bg: #000, @transparent: 90%, @color_text: #fff ) { 
                 color: @color_text; background: fadeout(@color_bg, @transparent); border: 1px solid fadeout(@color_border, @transparent); border-radius: @border-radius;
-    a, .link    { display: inline-block; padding: 7px 10px; color: fadeout(@color_text, 30%); cursor: pointer; }
+    a, span, .link    { display: inline-block; padding: 7px 10px; color: fadeout(@color_text, 30%); cursor: pointer; }
     &:hover     { background: fadeout(@color_bg, (@transparent - 20%)); border-color: fadeout(@color_border, (@transparent - 20%));
-        a, .link{ color: @color_text; text-decoration: none; }
+        a, span, .link{ color: @color_text; text-decoration: none; }
     }
     &.active    { background: @color_border; border-color: @color_border;
-        a, .link{ color: @color_text;  }
+        a, span, .link{ color: @color_text;  }
     }
     &.current   { background: @color_bg; border-color: @color_border;
-        a, .link{ color: @color_text;  }
+        a, span, .link{ color: @color_text;  }
     }
 }
 
@@ -100,6 +100,10 @@ h3                      { font-size: 1.2em; }
 input[type="button"], input[type="submit"], button  { .button; height: 26px; } /* for Firefox */ body:not(:-moz-handler-blocked) input[type="button"], input[type="submit"], button { padding: 2px !important; } 
 input[type="submit"].submit_button                  { .button_icon; }
 
+.btn			{ display: inline-block;  padding: 6px 7px 5px; cursor: pointer; font-size: 1em; line-height: 1em; color: #333; border-radius: 5px; border: 1px solid #c1c1c1; background-image: linear-gradient(bottom,#D4D4D4,#EEEEEE); background-image: -o-linear-gradient(bottom,#D4D4D4,#EEEEEE); background-image: -moz-linear-gradient(bottom,#D4D4D4,#EEEEEE); background-image: -webkit-linear-gradient(bottom,#D4D4D4,#EEEEEE); background-image: -ms-linear-gradient(bottom,#D4D4D4,#EEEEEE); 
+	&:hover		{ border-color: #377197; box-shadow: 0 0 10px #b6d2e4; color: #010101; background-image: linear-gradient(bottom,#C6CFD5,#E8F3F9); background-image: -o-linear-gradient(bottom,#C6CFD5,#E8F3F9); background-image: -moz-linear-gradient(bottom,#C6CFD5,#E8F3F9); background-image: -webkit-linear-gradient(bottom,#C6CFD5,#E8F3F9); background-image: -ms-linear-gradient(bottom,#C6CFD5,#E8F3F9); text-decoration: none;}
+        &::-moz-focus-inner  { border: 0 }
+}
 
 /* INPUTS */
 input[type="text"], input[type="password"], input[type="phone"], input[type="date"], input[type="number"], input[type="email"], input[type="file"],
@@ -209,7 +213,7 @@ a                       { .link; }
 .actions a              { .button_icon; }
 
 /* Admingenerator list */
-.admin_list             { min-height: 500px; margin-right: 225px; overflow-x: auto; overflow-y: none;
+.admin_list             { min-height: 500px; overflow-x: auto; overflow-y: none;
     /* list table */
     table               { .table; 
         /* sorts */
@@ -228,7 +232,7 @@ a                       { .link; }
     .list_nbresults     { height: 22px; font-size: 0.95em; color: #888;}
 
     /* pager */
-    div.pagination      { .absolute_right (45px, 235px); 
+    div.pagination      { .absolute_right (45px, 10px); 
          li             { .menu (#ddd, #eee, 70%, #999); display: inline-block; margin-left: 5px; 
             a           { padding: 2px 7px; font-size: 0.95em;}
          }
@@ -245,6 +249,10 @@ a                       { .link; }
             .error      { display: block; }
             .error ul li{ display: block; padding: 5px 0; color: #d70000; }
             .help       { display: block; padding: 5px 0; color: #999; font-style: italic; }
+            .choice_item            {
+                label               {text-align: left; padding-left: 10px;}
+                input[type="checkbox"]{ vertical-align: bottom;}
+            }
         }
     }
     .double_list        { 
@@ -263,12 +271,16 @@ a                       { .link; }
 .admin_form             {
     .actions            { display: inline-block; padding: 10px 0 0 220px; vertical-align: middle;
         a               { margin-right: 10px; }
-        input           { .button_icon; margin-right: 10px; color: #000; font-weight: bold; }
+        input,button           { .button_icon; margin-right: 10px; color: #000; font-weight: bold; }
     }
 }
 
 /* Filters */
-.filters                { .absolute_right (45px, 10px); width: 210px; max-height: 95%; overflow-y: auto; overflow-x: hidden;
+.filter_button          { .absolute_right (5px, 115px); } 
+.filters                { display: none; .absolute_right (45px, 10px); padding: 20px; width: 210px; max-height: 95%; overflow-y: auto; overflow-x: hidden; background: #fff; border: 1px solid #ccc; box-shadow: 0 2px 4px #aaa;
+    .close              { .absolute_right (5px, 5px); width: 25px; height: 25px; background: url(../images/colorbox/controls.png) -25px 0 no-repeat; 
+        &:hover         { background-position: -25px -25px; }
+    }
     legend              { display: block; width: 100%; padding: 5px 0px; border-bottom: 1px solid @color-border; color: #000; text-align: left; font-weight: normal; }
     .form_row           { padding: 3px 0px; 
         label           { display: block; padding-bottom: 3px; font-size: 0.9em; color: #777; font-weight: normal; text-align: left;}
@@ -308,5 +320,17 @@ a                       { .link; }
     }
     .admin_form .actions{ width: 100%; text-align: right;
         .button         { float: left; }
+    }
+}
+
+/*Page's elements count*/
+
+.btn-group              { position: relative; width: 180px; height: 40px; padding-top: 10px;
+    &:hover ul          { display: inline-block;}
+    .btn-reset          { border: none; cursor: default; background: none;
+        &:hover         { border: none; background: none; box-shadow: none; color: #333;}
+    }
+    ul                  { display: none; .absolute_right(auto); bottom: 40px; .round_box(#ccc); padding: 5px; background: #f7f7f7;
+        li              { padding: 4px;}
     }
 }
