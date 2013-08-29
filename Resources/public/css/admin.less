@@ -213,7 +213,13 @@ a                       { .link; }
 .actions a              { .button_icon; }
 
 /* Admingenerator list */
-.admin_list             { min-height: 500px; overflow-x: auto; overflow-y: none;
+    /* list actions */
+    .list_actions       { .absolute_right (5px, 10px); text-align: right; margin-left: 300px; }
+
+.admin_list             { min-height: 500px; margin-right: 225px; 
+    &.full_size         { margin-right: 0px;  }
+    .table_list         { overflow-x: auto; overflow-y: none; }
+    .results-list       { position: relative; }
     /* list table */
     table               { .table; 
         /* sorts */
@@ -221,8 +227,7 @@ a                       { .link; }
         th.sort_desc a  { display: inline-block; padding-right: 15px; background: @image-arrow right -35px no-repeat; }
     }
 
-    /* list actions */
-    .list_actions       { .absolute_right (5px, 10px); text-align: right; margin-left: 300px; }
+
 
     /* row actions */
     td.actions          { width: 1%; white-space: nowrap;
@@ -232,7 +237,7 @@ a                       { .link; }
     .list_nbresults     { height: 22px; font-size: 0.95em; color: #888;}
 
     /* pager */
-    div.pagination      { .absolute_right (45px, 10px); 
+    div.pagination      { .absolute_right (0px, 0px); 
          li             { .menu (#ddd, #eee, 70%, #999); display: inline-block; margin-left: 5px; 
             a           { padding: 2px 7px; font-size: 0.95em;}
          }
@@ -277,7 +282,9 @@ a                       { .link; }
 
 /* Filters */
 .filter_button          { .absolute_right (5px, 115px); } 
-.filters                { display: none; .absolute_right (45px, 10px); padding: 20px; width: 210px; max-height: 95%; overflow-y: auto; overflow-x: hidden; background: #fff; border: 1px solid #ccc; box-shadow: 0 2px 4px #aaa;
+.toggle_filter          { .absolute_right (42px, 0px); width: 25px; height: 25px; background: url(../images/colorbox/controls.png) -50px 0 no-repeat; }
+.filters                { .absolute_right (45px, 10px); width: 210px; max-height: 95%; overflow-y: auto; overflow-x: hidden; 
+    &.fixed             { display: none; .absolute_right (45px, 10px); padding: 20px; border: 1px solid #ccc; box-shadow: 0 2px 4px #aaa; background: #fff; }
     .close              { .absolute_right (5px, 5px); width: 25px; height: 25px; background: url(../images/colorbox/controls.png) -25px 0 no-repeat; 
         &:hover         { background-position: -25px -25px; }
     }
