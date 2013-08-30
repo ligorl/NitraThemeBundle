@@ -1,35 +1,25 @@
-function isBreakPoint(bp) {
-  var bps = [800, 1340];
-  var w = $(window).width();
-  var min, max;
-  for (var i = 0, l = bps.length; i < l; i++) {
-    if (bps[i] === bp) {
-      min = bps[i-1] || 0;
-      max = bps[i];
-      break;
-    }
-  }
-  return w > min && w <= max;
-}
-
-if (isBreakPoint(1340)) {
-  (function($){
+// menu item's title for  windows.width < 1366px
+(function($){
       $(function() { 
         $('.link').each(function() {
                 var el = $(this);
                 var title = el.text();
                 if (title && title != '') {
                   el.attr('title', '').append('<div class="title">' + title + '</div>');
-                  el.hover(
+                  el.hover(              
                     function() {
+                    if  (($(window).width()) <= 1310) {      
                       el.find('div')
                         .clearQueue()
                         .delay(200)
                         .fadeIn(200);
+                    }
                     },
                     function() {
+                    if  (($(window).width()) <= 1310) {      
                       el.find('div')
                         .fadeOut(500);
+                    }
                     }
                   ).mouseleave(function() {
                     if (el.children().is(':hidden')) el.find('div').clearQueue();
@@ -38,7 +28,7 @@ if (isBreakPoint(1340)) {
               });
       });
     })(jQuery)
-}
+
 
 $(document).ready(function(){
     //hide sub_menu on click in another place
@@ -59,8 +49,7 @@ $(document).ready(function(){
         else {
             $(this).children('ul').css('display','none');
             $(this).removeClass('active');
-        }
-               
+        }          
     });
     
 });

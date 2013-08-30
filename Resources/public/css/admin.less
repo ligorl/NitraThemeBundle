@@ -39,7 +39,7 @@ h3                      { font-size: 1.2em; }
 
 /***********************Layout******************************/
 .wrapper                              { position: relative; min-height: 100%; height: auto !important; height: 100%; margin: 0 auto; margin-bottom: -28px;  }
-.content                              { padding: 0 1.46% 50px;  }
+.content                              { padding: 0 1% 50px;  }
 footer                                { padding: 2px 20px; background: #DFDFE0; border-top: 1px solid darken(#DFDFE0,20%); }
 
 .border(@border-color: @color-border)         { border: 1px solid @border-color; }
@@ -65,7 +65,6 @@ footer                                { padding: 2px 20px; background: #DFDFE0; 
 
 .gradient (@color_from, @color_to) {
     background-image: @color_from;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@color_from, endColorstr=@color_to);
     background-image: linear-gradient(bottom, @color_from, @color_to);
     background-image: -o-linear-gradient(bottom, @color_from, @color_to);
     background-image: -moz-linear-gradient(bottom, @color_from, @color_to);
@@ -73,8 +72,7 @@ footer                                { padding: 2px 20px; background: #DFDFE0; 
     background-image: -ms-linear-gradient(bottom, @color_from, @color_to);
 }
 .gradient_icon (@color_from, @color_to, @icon : @image-icon) {
-    background-image: @color_from;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@color_from, endColorstr=@color_to);
+    background-image: @icon, @color_from;
     background-image: @icon, linear-gradient(bottom, @color_from, @color_to);
     background-image: @icon, -o-linear-gradient(bottom, @color_from, @color_to);
     background-image: @icon, -moz-linear-gradient(bottom, @color_from, @color_to);
@@ -109,8 +107,14 @@ footer                                { padding: 2px 20px; background: #DFDFE0; 
         &.icon-list-alt                     { background-position: -4px -239px; }
         &.icon-refresh                      { background-position: -4px -297px; }
         &.icon-ok                           { background-position: -4px -150px; }
-        &.icon-cancel                       { background-position: -4px -181px; } 
+        &.icon-cancel                       { background-position: -4px -181px; }
     }
+    &.btn-download                          { margin: 40px 0 0 40px; .gradient(#F8F8F8 0%, #EAEAEA 100%); font-size: 11px; font-weight: bold; width: 142px; color: #70A3E2; border: 3px solid #ccc; border-radius: 0;
+        i                                   { display: block; margin: 0 auto; background-position: -5px -878px; }
+        &:hover                             { color: darken(#70A3E2,15%); border-color: #bbb; 
+            i                               { background-position: -5px -902px; }
+        }
+}    
     &::-moz-focus-inner                     { border: 0 }
 }
 input[type="button"], input[type="submit"]          { height: auto; } /* for Firefox */ body:not(:-moz-handler-blocked) input[type="button"], input[type="submit"]
@@ -189,11 +193,11 @@ a                       { .link; }
 /* TABLE */
 .table                   { width: 100%; background: #fff; border: 1px solid @color-border;
     thead               {
-        th              { .gradient (#eaeaea, #FaFaFa); padding: 7px; line-height: 20px; border: 1px solid @color-border; vertical-align: middle; 
+        th              { .gradient (#eaeaea, #FaFaFa); padding: 7px; line-height: 20px; border: 1px solid @color-border; vertical-align: middle; font-size: 12px; 
             a           { .display_ib; color: #444; padding-right: 10px; background: url(../images/arrow_filter.png) right center no-repeat; }
         }
     }
-    td                  { padding: 0px 7px; height: 35px; border: 1px solid @color-border; vertical-align: middle; }
+    td                  { padding: 0px 7px; height: 35px; border: 1px solid @color-border; vertical-align: middle; font-size: 12px; }
     tr:hover td         {  }
     td.td_decimal       { white-space: nowrap; text-align: right; }
     td.td_boolean       { text-align: center; }
@@ -225,7 +229,7 @@ table                   { .table;
 .green                  { color: #009900; }
 .ar                     { text-align: right; }
 .ac                     { text-align: center; }
-
+.no_data                { font-size: 16px; line-height: 2em; color: #455665; }
 /************************** Header ************************************/
 
 .header                                      { padding: 0; background: #eee url(../images/carbon_bg.png);
@@ -245,11 +249,11 @@ table                   { .table;
 
 /* main menu */
 .main_menu                                   { position: relative; margin: 0 80px 0 120px; margin-bottom: 10px; z-index: 999;
-    ul                                       { width: 1156px; margin: 0 auto; vertical-align: middle;
-        li                                   { .display_ib; margin: 7px 4px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8);
+    ul                                       { width: 1120px; margin: 0 auto; vertical-align: middle;
+        li                                   { .display_ib; margin: 7px 3px; height: 60px; vertical-align: middle; border: 1px solid #E3E3E3; color: #555; text-shadow: none; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; width: 100px; .gradient(#f8f8f8,#e8e8e8);
           .link                              { position: relative; color: #555; display: block; padding: 2px; text-decoration: none;
              .title                          { overflow: hidden; display: none; position: absolute; margin: 10px 0 0 -25px; min-width: 110px; padding: 6px 0; text-align: center; font-size: 13px; color: #fff; opacity: 0.9; background: #3c3c3c; border-radius: 2px; 
-                &:after                      { .absolute_left(-14px,42%); .display_ib; content: ''; border-width: 8px; border-style: solid; border-color: transparent transparent #3c3c3c; opacity: 0.9; }
+                &:after                      { .absolute_left(-14px,42%); content: ''; border-width: 8px; border-style: solid; border-color: transparent transparent #3c3c3c; opacity: 0.9; }
              }
              span                            { display: block; width: 32px; height: 32px; margin: 4px auto 6px; font-weight: bold; font-size: 11px; background: url(../images/avk_icons_menu.png) 5px -156px no-repeat; 
                     &.menu_root_sku          { background-position: 0px 0px; }
@@ -355,8 +359,8 @@ table                   { .table;
                         }
                     }
                 }
-                &:before                             { .absolute_left(-14px,9px); .display_ib; content: ''; border-width: 7px; border-style: solid; border-color: transparent transparent rgba(0,0,0,0.2); }
-                &:after                              { .absolute_left(-12px,10px); .display_ib; content: ''; border-width: 6px; border-style: solid; border-color: transparent transparent #fff; }
+                &:before                             { .absolute_left(-14px,9px); content: ''; border-width: 7px; border-style: solid; border-color: transparent transparent #bbb; }
+                &:after                              { .absolute_left(-12px,10px); content: ''; border-width: 6px; border-style: solid; border-color: transparent transparent #fff; }
             }
             &.active ul         { display: block;  border: 1px solid #bbb; 
                 li              {  }
@@ -572,7 +576,7 @@ table                   { .table;
         &.open                                { position: relative;
             .dropdown-menu                    { display: block; } 
         }
-        .dropdown-menu                        { background-clip: padding-box; background-color: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 6px 6px 6px 6px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); display: none; right: -5px; list-style: none outside none; margin: 2px 0 0; min-width: 160px; padding: 5px 0; position: absolute; bottom: 30px; z-index: 1000; font-size: 14px;
+        .dropdown-menu                        { background-clip: padding-box; background-color: #FFFFFF; border: 1px solid #bfbfbf; border-radius: 6px 6px 6px 6px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); display: none; right: -5px; list-style: none outside none; margin: 2px 0 0; min-width: 160px; padding: 5px 0; position: absolute; bottom: 30px; z-index: 1000; font-size: 14px;
             li                                {
                a                              { clear: both; color: #333333; display: block; font-weight: normal; line-height: 20px; padding: 3px 20px; white-space: nowrap; 
                  &:hover                      { background: @color-main; text-decoration: none; color: #fff; }
@@ -596,11 +600,11 @@ table                   { .table;
 }
 
 /**********Outlet EditPos *************/
-.editPos_form                                  {
-    .editPos_table                             { overflow: hidden; background: transparent; border: none; 
+.editPos_form                                  { overflow: hidden; border: 0; 
+    .editPos_table                             { background: transparent; border: 1px solid #cfcfcf; 
       .left,.right,.center                     { padding: 0; border: none; font-size: 13px; vertical-align: top;
-        .head                                  { padding-left: 35px; height: 36px; .gradient_icon(#F8F8F8, #EAEAEA, url(../images/general_icons.png)); text-shadow: 0 1px 0 #fff; line-height: 36px; color: #888; font-size: 13px; font-weight: bold; border-bottom: 1px solid #ccc; box-shadow: 0 1px 0 0 #FFFFFF inset;  }
-        .form_block                            { padding: 10px 6%; border-top: 1px solid #ccc;
+        .head                                  { padding-left: 35px; height: 32px; .gradient_icon(#F8F8F8, #EAEAEA, url(../images/general_icons.png)); text-shadow: 0 1px 0 #fff; line-height: 32px; color: #888; font-size: 13px; font-weight: bold; border-bottom: 1px solid #ccc; box-shadow: 0 1px 0 0 #FFFFFF inset;  }
+        .form_block                            { padding: 6px 6%; border-top: 1px solid #ccc;
         &:first-child                          { border-top: none;}
             legend                             { padding: 5px 0; margin: 0 auto; font-size: 13px; color: #455665; font-weight: bold; text-align: left; border-bottom: #e5e5e5; } 
             .form_row                          {
@@ -626,13 +630,13 @@ table                   { .table;
         }
       }
       .left                                    { width: 32%;
-            .head                              { background-position: 8px -40px, 0 0; }
+            .head                              { background-position: 8px -42px, 0 0; }
             .form_fieldset_Tab_pos_general     { border-top: none; 
               legend                           { display: none; }
           }  
        }
        .center                                 { width: 35.72%; border-right: 1px solid #ccc; border-left: 1px solid #ccc;
-             .head                             { background-position: 8px -144px, 0 0; }
+             .head                             { background-position: 8px -146px, 0 0; }
              .form_fieldset_Tab_pos_contacts   { border-top: none;
               legend                           { display: none; }
               input                            { width: 150px; }
@@ -641,7 +645,7 @@ table                   { .table;
           }
        }
       .right                                   { width: 32%;
-            .head                              { background-position: 8px -88px, 0 0; }
+            .head                              { background-position: 8px -90px, 0 0; }
             legend                             { display: none; }
              .form_block                       { border: none; }   
              .form_fieldset_Tab_pos_general    {
@@ -654,9 +658,10 @@ table                   { .table;
        #map-canvas                             { margin-top: 20px;}
         .actions                               { padding-left: 0;}
     }
-    .columnBottom                              { overflow: hidden; border-top: 1px solid #ccc;
-        .form_fieldset_Tab_pos_order, .form_fieldset_Tab_pos_payment  { width: 45%; float: left; padding: 10px 2%; height: 130px;
+    .columnBottom                              { overflow: hidden; padding: 0; border: 1px solid #ccc; 
+        .form_fieldset_Tab_pos_order, .form_fieldset_Tab_pos_payment  { width: 45%; float: left; padding: 10px 2%;
         .head                                  { font-size: 16px; line-height: 25px; color: #455665; font-weight: bold; }
+        .data                                  { height: 100px; }
         .form_row                              { width: 310px; color: #707070; font-weight: bold;
              span                              { .display_ib; width: 180px; }
              .value                            { width: auto; color: #5587D6; padding: 2px; }
@@ -819,7 +824,7 @@ table                   { .table;
                 label                            { width: auto; padding-right: 15px; }
             }
             .form_fieldset_Pos                   { overflow: hidden;
-                .posList                             { overflow-y: scroll; display: block; margin: 0; padding: 2px; height: 300px; background: #FFFFFF; border: 1px solid #CCCCCC;
+                .posList                             { overflow-y: scroll; display: block; margin: 0; padding: 2px; height: 280px; background: #FFFFFF; border: 1px solid #CCCCCC;
                 li                                   { padding: 5px 2px; border-bottom: 1px solid #BBBBBB; cursor: pointer; white-space: nowrap; 
                     b                                { color: #C50000;}
                     table                            { margin: 5px 0 0 50px; width: 90%; border-collapse: collapse; 
@@ -862,7 +867,7 @@ table                   { .table;
     .buttons                                 { width: 100%; text-align: right;
         .actions                             { padding-right: 20px; }
     }
-    #map-canvas                              { width: 100%; height: 410px; }
+    #map-canvas                              { width: 100%; height: 390px; }
     .map_control                             { padding: 15px 0; 
         input                                { margin: 0 3% 0 10px; vertical-align: bottom; }
     }
