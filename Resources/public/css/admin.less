@@ -771,7 +771,8 @@ table                   { .table;
                 select                           { width: 96%; }
                 label                            { display: none; }
                 .form_row                        { margin-bottom: 5px; }
-                .field_local_unbind_only,.field_global_unbind_only  {
+                .field_local_unbind_only,.field_local_bind_only, 
+                .field_global_unbind_only,.field_global_bind_only  { .display_ib; 
                      label                       { .display_ib; }
                      .field_content              { width: 100px; .display_ib; }
                 }
