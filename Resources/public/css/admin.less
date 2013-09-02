@@ -29,6 +29,9 @@ button                  { font-family: inherit; }
 .absolute_left  (@top: 0px, @left:  0px) { position: absolute; top: @top; left:  @left; }
 .absolute_right (@top: 0px, @right: 0px) { position: absolute; top: @top; right: @right; }
 
+
+.display_ib     { display: inline-block; *zoom: 1; *display: inline; }
+
 .menu           (@color_border: #fff, @color_bg: #000, @transparent: 90%, @color_text: #fff ) { 
                 color: @color_text; background: fadeout(@color_bg, @transparent); border: 1px solid fadeout(@color_border, @transparent); border-radius: @border-radius;
     a, span, .link    { display: inline-block; padding: 7px 10px; color: fadeout(@color_text, 30%); cursor: pointer; }
@@ -184,17 +187,28 @@ a                       { .link; }
     /* main menu */
     .main_menu          { position: relative; z-index: 900;
         &.has_submenu   { height: 62px; }
-        li              { .menu (#3A7AA3, #2C5D7D, 70%); display: inline-block; border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;   
+        &.has_submenu_level2 { height: 96px; }
+        li              { .menu (#3A7AA3, #2C5D7D, 70%); display: inline-block; border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important; 
+            &.active ul { display: block; background: #427a9f; z-index: 1000;
+                ul      { display: none; }
+            }
+            &.current ul{ display: block; background: #2C5D7D; z-index: 700;
+                ul      { display: none; }
+            } 
             ul          { display: none; .absolute_left (28px, -10px); width: 100%; padding: 4px 10px; 
                 li      { border: 0px; border-radius: @border-radius !important; background: none;
                     &:hover    { background: fadeout(#fff, 90%); }
-                    &.current  { background: fadeout(#fff, 80%); }
+                    &.current  { background: fadeout(#fff, 80%);
+                        ul     { display: none; }
+                    }
+                    &.active   { background: fadeout(#fff, 90%); border: 1px solid fadeout(#fff, 90%); padding-bottom: 10px;
+                        ul     { display: block; padding: 4px 20px; background: #5588A9; }
+                    }
+                    ul  { display: none; .absolute_left (34px, -10px);}
                 }
             }
-            &.active ul { display: block; background: #427a9f; z-index: 1000;}
-            &.current ul{ display: block; background: #2C5D7D; z-index: 700;}  
         }
-    }	
+    }
 }   
 
 /************************** Content ************************************/
