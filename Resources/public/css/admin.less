@@ -140,6 +140,20 @@ textarea                { height: 100px; }
 select                  { width: 516px; max-width: 600px; }
 legend                  { font-weight: bold; font-size: 1.15em; }
 
+/* SELECT2 */
+.select2-container .select2-choice { border-color: #ccc !important; border-radius: 2px !important; height: 28px !important; line-height: 28px !important; box-shadow: none;
+    div                 { border-color: #ccc !important; border-radius: 0 2px 2px 0 !important; }
+}
+.select2-drop-active, .select2-dropdown-open  {
+    .select2-choice     { border-color: #a0a0a0 !important; box-shadow: none;}
+}
+.select2-drop-active.select2-dropdown-open.select2-drop-above  {
+    .select2-choice     { border-bottom: #a0a0a0 !important; }
+}
+.select2-container-active{ box-shadow: none !important; 
+    .select2-choice     { box-shadow: none !important;}
+}
+
 
 /* LINKS */
 .link                   { color: @color-link; text-decoration: none; cursor: pointer;
@@ -462,7 +476,7 @@ table                   { .table;
         div             { .display_ib; vertical-align: top; }
         div.double_list_label { display: block; padding-bottom: 5px; }
         div.double_list_links { padding-top: 15px; }
-        select          { width: 250px; height: 100px; }
+        select,.select2-container { width: 250px; height: 100px; }
         a               { .button_icon; padding-left: 20px !important; margin: 5px; }
     }
     .field_number input                 { width: 100px; }
@@ -489,16 +503,16 @@ table                   { .table;
 }
 
 /* Filters */
-.filters                { display: none; .absolute_right(90px,1.46%); margin: 0; padding-left: 1.26%; width: 620px; background: #fff; .border; .box-shadow; max-height: 550px; overflow-y: auto; overflow-x: hidden; text-align: center; background: #fff;
+.filters                { display: none; .absolute_right(90px,1.46%); margin: 0; padding: 10px 0 0 1.26%; width: 620px; background: #fff; .border; .box-shadow; max-height: 550px; overflow-y: auto; overflow-x: hidden; text-align: center; background: #fff;
     form                { position: relative; }
-    .close              { .absolute_right(10px,10px); width: 18px; height: 18px; opacity: 1; background: url(../images/close.png) no-repeat;
+    .close              { .absolute_right(0px,10px); width: 18px; height: 18px; opacity: 1; background: url(../images/close.png) no-repeat;
         &:hover         { background-position: 0px -26px;}
      }    
     legend              { display: block; width: 100%; padding: 10px 0px; color: #000; text-align: left; }
     .form_row           { padding: 5px 0px; 
         label           { float: left; padding: 8px 0; width: 200px; text-align: left; }
         input           { width: 340px; }
-        select          { width: 356px; }
+        select,.select2-container { width: 356px; }
         .hasDatepicker  { width: 120px; background: url(../images/icon_sprite.png) 100% -320px no-repeat; }
     }
     .field_date_range   {
@@ -507,7 +521,7 @@ table                   { .table;
             .field_content, .field_row  { width: 200px; }
         }
     }
-    .actions            { padding: 5px 0 20px 0; 
+    .actions            { padding: 5px 30px 10px 0; text-align: right;
         input[type="submit"].submit_button  { background-position: 6px -25px, 0 0; }
     }
 }
@@ -537,7 +551,7 @@ table                   { .table;
         .form_row       { 
             label               { width: 120px; }
             input[type="text"]  { max-width: 400px; }
-            select              { max-width: 400px; }
+            select,.select2-container { max-width: 400px; }
         }
     }
     .admin_form .actions{ width: 100%; text-align: right;
@@ -611,7 +625,7 @@ table                   { .table;
             .field_content                     { width: 50%; }
                 label                          { width: 40%; text-align: left; padding-bottom: 4px; }
                 input                          { width: 190px; }
-                select                         { width: 205px; }
+                select,.select2-container         { width: 205px; }
             }
             .work_time                         { position: relative; overflow: hidden;
             .field_timeWorkFrom,.field_timeWorkTo,
@@ -641,7 +655,7 @@ table                   { .table;
               legend                           { display: none; }
               input                            { width: 150px; }
               label                            { width: 150px; }
-              select                           { width: 165px; }
+              select,.select2-container        { width: 165px; }
           }
        }
       .right                                   { width: 32%;
@@ -651,7 +665,7 @@ table                   { .table;
              .form_fieldset_Tab_pos_general    {
               input                            { width: 150px; }
               label                            { width: 150px; }
-              select                           { width: 165px; }
+              select,.select2-container        { width: 165px; }
           }
           .name                                { display: block; margin-bottom: 10px; padding: 5px 20px 5px 10px; font-size: 1.1em; text-align: right; border-bottom: 1px solid #ccc; background: url(../images/general_icons.png) 100% 2px no-repeat; }
        }
@@ -661,9 +675,9 @@ table                   { .table;
     .columnBottom                              { overflow: hidden; padding: 0; border: 1px solid #ccc; 
         .form_fieldset_Tab_pos_order, .form_fieldset_Tab_pos_payment  { width: 45%; float: left; padding: 10px 2%;
         .head                                  { font-size: 16px; line-height: 25px; color: #455665; font-weight: bold; }
-        .data                                  { height: 100px; }
+        .data, .no_data                        { height: 100px; }                 
         .form_row                              { width: 310px; color: #707070; font-weight: bold;
-             span                              { .display_ib; width: 180px; }
+             span                              { .display_ib; width: 200px; font-size: 100px; }
              .value                            { width: auto; color: #5587D6; padding: 2px; }
              &.count, &.debt                   { 
                 .value                         { background: #729D47; border: 1px solid #729D47; color: #fff; border-radius: 2px; padding: 4px; } 
@@ -686,11 +700,10 @@ table                   { .table;
 .tree-table                                     {
     tbody                                       {
             tr                                  {
-                td                              { height: 40px;  }
                 .count                          { font-weight: normal; margin-right: 5px; font-size: 11px; color: #999;
                     &.null                      { color: #999; }
                 }
-                td:first-child                  { font-weight: bold; background: url(../images/tree.png) no-repeat; }
+                td:first-child                  { height: 40px; font-weight: bold; background: url(../images/tree.png) no-repeat; }
                 &.collapsed                     {
                    td:first-child               { 
                     i                           { background: url(../images/arrows-sprite.png) 0px -1012px; .display_ib; width: 16px; height: 6px; }
@@ -723,7 +736,7 @@ table                   { .table;
     }
 }
 .form_filter                                    { margin: 5px 0;
-     select                                     { width: 150px; padding: 2px 4px; margin-right: 20px; }
+     select,.select2-container                  { width: 150px; padding: 2px 4px; margin-right: 20px; }
      .helper                                    { padding: 4px 0;}
      input                                      { margin-right: 10px; }
 }
@@ -766,21 +779,22 @@ table                   { .table;
     .column                                      { float: left; width: 44%; border-radius: 5px;
         h3                                       { margin-top: 0; margin-bottom: 0.5em; }
         .searchForm                              { margin-bottom: 10px;  height: 170px; position: relative; 
-            div#form                             { .display_ib; min-height: 66px; width: 65%;
-                input                            { width: 91.55%; }
-                select                           { width: 96%; }
+            div#form                             { .display_ib; min-height: 66px; 
+                input                            { width: 412px; }
+                select,.select2-container        { width: 430px; }
                 label                            { display: none; }
                 .form_row                        { margin-bottom: 5px; }
                 .field_local_unbind_only,.field_local_bind_only, 
                 .field_global_unbind_only,.field_global_bind_only  { .display_ib; 
                      label                       { .display_ib; }
-                     .field_content              { width: 100px; .display_ib; }
+                     .field_content              { width: 80px; .display_ib; }
+                     input                       { width: 80px; }
                 }
             }
          &#filterRight                           {
             div#form                             { margin-top: 36px; }
          }
-            .buttons                             { position: absolute; bottom: 10px; right: 39%; font-size: 0px; 
+            .buttons                             { position: absolute; bottom: 15px; left: 385px; font-size: 0px; 
                 .reset                           { .display_ib; vertical-align: middle; width: 20px; height: 20px; cursor: pointer; background: url(../images/icon_sprite.png) 0px -432px no-repeat;
                     &:hover                      { background-position: 0 -460px; } 
                 }
@@ -814,15 +828,15 @@ table                   { .table;
     legend                                       { display: none; }
     .column                                      { width: 63%; 
         &.columnLeft                             { float: left; margin-right: 20px; 
-            select                               { width: 354px; }
+            select,.select2-container            { width: 350px; }
             .field_weekDay,.field_isOdd          { width: 49%; 
                 label                            { width: 100px; }
-                select                           { width: 100%; }
+                select,.select2-container        { width: 152px; }
             }
             .field_weekDay                       { float: left; width: 276px; }
             .field_isOdd                         { width: auto;
-                select                           { width: 123px; }
-                label                            { width: auto; padding-right: 15px; }
+                select,.select2-container        { width: 114px; }
+                label                            { width: auto; padding: 0 10px; }
             }
             .form_fieldset_Pos                   { overflow: hidden;
                 .posList                             { overflow-y: scroll; display: block; margin: 0; padding: 2px; height: 280px; background: #FFFFFF; border: 1px solid #CCCCCC;
@@ -892,7 +906,7 @@ tr.open_list:hover td                        { cursor: pointer; background: #f2f
 /*TARGET*/
 .target_form                                 {
     input[type="text"],input[type="number"]  { width: 240px; }
-    select                                   { width: 255px; }
+    select,.select2-container                { width: 255px; }
     .hidden_form                             { display: none !important;}
     #sku                                     { display: block ;}
     .sku_form input[type="text"]             { width: 458px; float: left; margin-right: 10px; }  
@@ -927,7 +941,7 @@ tr.open_list:hover td                        { cursor: pointer; background: #f2f
            .form_block                           { 
                .form_row                         {
                    input                         { width: 140px; }
-                   select                        { width: 155px; }
+                   select,.select2-container     { width: 155px; }
                 }
                 .work_time                       {
                     .field_timeWorkTo,.field_timeBreakTo { left: 68%; }
