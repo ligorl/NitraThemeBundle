@@ -29,9 +29,6 @@ button                  { font-family: inherit; }
 .absolute_left  (@top: 0px, @left:  0px) { position: absolute; top: @top; left:  @left; }
 .absolute_right (@top: 0px, @right: 0px) { position: absolute; top: @top; right: @right; }
 
-
-.display_ib     { display: inline-block; *zoom: 1; *display: inline; }
-
 .menu           (@color_border: #fff, @color_bg: #000, @transparent: 90%, @color_text: #fff ) { 
                 color: @color_text; background: fadeout(@color_bg, @transparent); border: 1px solid fadeout(@color_border, @transparent); border-radius: @border-radius;
     a, span, .link    { display: inline-block; padding: 7px 10px; color: fadeout(@color_text, 30%); cursor: pointer; }
@@ -348,5 +345,25 @@ a                       { .link; }
     }
     ul                  { display: none; .absolute_right(auto); bottom: 40px; .round_box(#ccc); padding: 5px; background: #f7f7f7;
         li              { padding: 4px;}
+    }
+}
+
+/* bootstrap double list */
+.double-list            {
+    .btn-group          { width: auto; }
+    .open .dropdown-menu{ display: block; }
+    i                   { margin-top: 1px;  display: inline-block; height: 14px; width: 14px; vertical-align: text-top; line-height: 14px; background: url("../../../components/bootstrap/img/glyphicons-halflings.png") no-repeat; 
+        &.icon-ok       { background-position: -288px 0; }
+    }
+    .icon-chevron-left  { background-position: -432px -72px; }
+    .icon-chevron-right { background-position: -456px -72px; }
+    .dropdown-menu      { display: none; float: left; padding: 5px 0; margin: 2px 0 0; min-width: 200px; background-clip: padding-box; background: #FFFFFF; border-radius: 6px; border-bottom: 1px solid rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(0, 0, 0, 0.2); box-shadow: 0 5px 10px #ddd; list-style-type: none; 
+        li              {
+            a           { clear: both; color: #333333; display: block; font-weight: normal; line-height: 20px; padding: 3px 20px; padding-left: 20px; white-space: nowrap; font-size: 1.1em; 
+                &:hover, &:focus { text-decoration: none; font-weight: bold; 
+                     i           { visibility: visible; }
+                } 
+            }
+        }
     }
 }
