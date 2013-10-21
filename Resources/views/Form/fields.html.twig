@@ -33,7 +33,7 @@
 {% block form_errors %}
 {% spaceless %}
     {% if errors|length > 0 %}
-    <ul>
+    <ul class="errors">
         {% for error in errors %}
             <li>{{
                 error.messagePluralization is null
@@ -88,7 +88,19 @@
         </script>
     {% endspaceless %}
 {% endblock date_widget %}
-
+        
+{% block choice_widget_expanded %}
+{% spaceless %}
+        <ul {{ block('widget_container_attributes') }} class="collection">
+            {% for child in form %}
+                <li>
+                    {{ form_widget(child) }}
+                    {{ form_label(child) }}
+                </li>        
+            {% endfor %}
+        </ul>        
+{% endspaceless %}
+{% endblock choice_widget_expanded %}        
 
 {% block ajax_autocomplete_widget %}
 
