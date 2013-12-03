@@ -28,14 +28,14 @@
             </table>
         </div>        
 
-        <div class="form-actions list-actions">
+        <div class="form-actions footer_list_actions">
         {% if batch_actions is defined and batch_actions|length > 0 %}
-            <div id="batch_actions" class="pull-left btn-toolbar">
+            <div id="batch_actions" class="batch_actions">
                 {{ block('batch_actions') }}
             </div>
         {% endif -%}
                 
-            <div class="pull-right btn-toolbar">
+            <div class="pagination_page_count">
                 {{- block('list_paginator_perpage') -}}
             </div>
 
