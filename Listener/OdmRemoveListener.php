@@ -27,7 +27,7 @@ class OdmRemoveListener
                 $cm = $dm->getClassMetadata($documentClassName);
 
                 foreach ($cm->getAssociationNames() as $associationName) {
-                    if($currentDocumentClass == $cm->getAssociationTargetClass($associationName)){
+                    if(($currentDocumentClass == $cm->getAssociationTargetClass($associationName)) || is_subclass_of($currentDocumentClass, $cm->getAssociationTargetClass($associationName))) {    
                         $searchObj = $dm->getRepository($documentClassName)->findOneBy(array($associationName . '.$id' => new \MongoId($currentDocument->getId())));
                         if($searchObj){
                             $isRefExists = TRUE;
