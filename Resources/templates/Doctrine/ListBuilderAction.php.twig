@@ -78,11 +78,18 @@
     {
         if ($this->getSortColumn()) {
             if (!strstr($this->getSortColumn(), '.')) { //direct column
-                $query->orderBy('q.'.$this->getSortColumn(), $this->getSortOrder());
+                $query->orderBy('q.' . $this->getSortColumn(), $this->getSortOrder());
             } else {
                 list($table, $column) = explode('.', $this->getSortColumn(), 2);
-                $this->addJoinFor($table, $query);
-                $query->orderBy($this->getSortColumn(), $this->getSortOrder());
+                if (strstr($column, '.')) { //table.table.column
+                    list ($subTable, $column) = explode('.', $column, 2);
+                    $table = $table . '.' . $subTable;
+                    $this->addJoinFor($table, $query);
+                    $query->orderBy($subTable . '.' . $column, $this->getSortOrder());
+                } else { //table.column
+                    $this->addJoinFor($table, $query);
+                    $query->orderBy($this->getSortColumn(), $this->getSortOrder());
+                }
             }
         }
     }
@@ -114,12 +121,18 @@
 {% block addJoinFor -%}
     protected function addJoinFor($table, $query)
     {
-        if ($table == 'translations') {
-            $query->innerJoin('q.' . $table, $table)
-                    ->andWhere($table . '.locale = :locale')
-                    ->setParameter('locale', $this->getRequest()->getLocale());
-        } else {
-            $query->innerJoin('q.' . $table, $table);
+        if (strstr($table, '.')) { //table.table.column
+            list($table, $subtable) = explode('.', $table, 2);
+            if ($subtable == 'translations') {
+                $query->leftJoin('q.' . $table, $table)
+                        ->leftJoin($table . '.' . $subtable, $subtable, $subtable . ".locale = '" . $this->getRequest()->getLocale() . "'");
+            }
+        } else { //translations.column
+            if ($table == 'translations') {
+                $query->leftJoin('q.' . $table, $table, $table . ".locale = '" . $this->getRequest()->getLocale() . "'");
+            } else { //table.column
+                $query->leftJoin('q.' . $table, $table);
+            }
         }
     }
 {% endblock %}
