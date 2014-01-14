@@ -125,7 +125,7 @@
             list($table, $subtable) = explode('.', $table, 2);
             if ($subtable == 'translations') {
                 $query->leftJoin('q.' . $table, $table)
-                        ->leftJoin($table . '.' . $subtable, $subtable, $subtable . ".locale = '" . $this->getRequest()->getLocale() . "'");
+                        ->leftJoin($table . '.' . $subtable, $subtable,\Doctrine\ORM\Query\Expr\Join::WITH, $subtable . ".locale = '" . $this->getRequest()->getLocale() . "'");
             }
         } else { //translations.column
             if ($table == 'translations') {
