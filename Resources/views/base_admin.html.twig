@@ -55,51 +55,52 @@
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        <div class="wrapper">
-            <div class="header">
-                {% block header %}
-                    {% block logo %}
-                        <a class="logo" href="" title="{{ 'АВК'|trans({}, 'Admingenerator') }}"></a>  
-                    {% endblock %}
-
-                    {% block profile %}
-                    <div class="profile">
-                        <a href="#" class="user">{{ 'profile.welcome'|trans({'%username%': app.user}, 'Admingenerator')|raw }}</a>
-                        <a class='logout' href="{{ path('fos_user_security_logout') }}">{{ 'profile.logout'|trans({}, 'Admingenerator') }}</a>
-                    </div>
-                    {% endblock %}
-
-                    {% block menu %}
-                    <div class="main_menu">
-                         {{ millwright_menu_render('main') }}
-                    </div>
-                    {% endblock %}
-
-                {% endblock %}      
-            </div>
-
-            {% block flashes %}
-                {% for type, flashMessages in app.session.flashbag.all() %}
-                    {% for flashMessage in flashMessages %}
-                        <div class="notification_box {{ type }}">
-                            {{ flashMessage }}
+     <body class="{% block body_class '' %}">
+        {% block body_wrapper %}
+            <div class="wrapper">
+                <div class="header">
+                    {% block header %}
+                        {% block logo %}
+                            <a class="logo" href="" title="{{ 'АВК'|trans({}, 'Admingenerator') }}"></a>  
+                        {% endblock %}
+    
+                        {% block profile %}
+                        <div class="profile">
+                            <a href="#" class="user">{{ 'profile.welcome'|trans({'%username%': app.user}, 'Admingenerator')|raw }}</a>
+                            <a class='logout' href="{{ path('fos_user_security_logout') }}">{{ 'profile.logout'|trans({}, 'Admingenerator') }}</a>
                         </div>
+                        {% endblock %}
+    
+                        {% block menu %}
+                        <div class="main_menu">
+                             {{ millwright_menu_render('main') }}
+                        </div>
+                        {% endblock %}
+    
+                    {% endblock %}      
+                </div>
+    
+                {% block flashes %}
+                    {% for type, flashMessages in app.session.flashbag.all() %}
+                        {% for flashMessage in flashMessages %}
+                            <div class="notification_box {{ type }}">
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
+                {% endblock %}
+    
+                <div class="content">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>    
+            {% block footer %}
+                <footer>
+                  <p>{% block footer_text %}&copy; NitraLabs {{ ("now"|date('Y') > 2012) ? '2013 - ' ~ "now"|date('Y') : '2013' }}{% endblock %}</p>
+                </footer>
+            {% endblock %}    
+            {% block javascripts %}
             {% endblock %}
-
-            <div class="content">
-                {% block body %}{% endblock %}
-            </div>
-        </div>    
-        {% block footer %}
-            <footer>
-              <p>{% block footer_text %}&copy; NitraLabs {{ ("now"|date('Y') > 2012) ? '2013 - ' ~ "now"|date('Y') : '2013' }}{% endblock %}</p>
-            </footer>
-        {% endblock %}    
-        {% block javascripts %}
-
-        {% endblock %}
+       {% block body_wrapper %}    
     </body>
 </html>
